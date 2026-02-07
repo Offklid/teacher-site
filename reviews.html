@@ -30,19 +30,22 @@
       <p class="section-subtitle">Родители и ученики могут оставить отзыв. Регистрация не требуется — достаточно указать имя и email.</p>
 
       <!-- Cusdis: виджет комментариев/отзывов -->
-      <!-- 1. Зарегистрируйся на https://cusdis.com (бесплатно)
-           2. Создай проект (Website)
-           3. Скопируй Website ID и вставь вместо YOUR_APP_ID ниже -->
-      <div id="cusdis_thread"
-        data-host="https://cusdis.com"
-        data-app-id="YOUR_APP_ID"
-        data-page-id="reviews"
-        data-page-url=""
-        data-page-title="Отзывы — Сайт учителя химии и биологии"
-        data-theme="light"
-      ></div>
+      <div class="cusdis-wrapper">
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="4033d6e0-1be2-4dac-bc9e-a57837087b15"
+          data-page-id="reviews"
+          data-page-url=""
+          data-page-title="Отзывы — Сайт учителя химии и биологии"
+          data-theme="light"
+          data-lang="ru"
+        ></div>
+      </div>
       <script>
-        document.getElementById('cusdis_thread').setAttribute('data-page-url', window.location.href);
+        (function() {
+          var el = document.getElementById('cusdis_thread');
+          if (el) el.setAttribute('data-page-url', window.location.href);
+        })();
       </script>
       <script src="https://cusdis.com/js/cusdis.es.js" defer></script>
     </section>
