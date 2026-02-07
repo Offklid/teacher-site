@@ -369,6 +369,30 @@ body {
   font-size: 0.95rem;
 }
 
+/* ========== Cusdis (отзывы) ========== */
+.section--reviews {
+  max-width: 70%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.cusdis-wrapper {
+  min-height: 400px;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+#cusdis_thread {
+  min-height: 300px;
+  width: 100%;
+}
+
+#cusdis_thread iframe {
+  min-height: 400px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 /* ========== Мобильное меню ========== */
 @media (max-width: 768px) {
   .nav-list {
