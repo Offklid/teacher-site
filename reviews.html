@@ -35,7 +35,38 @@
     </section>
 
     <section class="section section--reviews">
-      <p class="section-subtitle">Родители и ученики могут оставить отзыв. Регистрация не требуется — достаточно указать имя и email.</p>
+      <!-- Вступительный блок -->
+      <div class="reviews-intro">
+        <div class="reviews-intro-icon">💬</div>
+        <h2 class="reviews-intro-title">Ваше мнение важно для меня!</h2>
+        <p class="reviews-intro-text">
+          Здравствуйте! Я очень ценю обратную связь от учеников и родителей. Ваши отзывы помогают мне становиться лучше как преподавателю и создавать более интересные и понятные уроки.
+        </p>
+        <p class="reviews-intro-text">
+          Если вам понравились мои занятия, методы преподавания или вы заметили прогресс в учёбе — буду рада, если вы поделитесь своими впечатлениями. Это вдохновляет меня продолжать работу с энтузиазмом! 🌿
+        </p>
+      </div>
+
+      <!-- Информационные карточки -->
+      <div class="reviews-info-cards">
+        <div class="reviews-info-card">
+          <div class="reviews-info-icon">✍️</div>
+          <h3>Как оставить отзыв?</h3>
+          <p>Просто заполните форму ниже — укажите имя и напишите ваш отзыв. Email необязателен, но если хотите получить ответ — укажите его.</p>
+        </div>
+        <div class="reviews-info-card">
+          <div class="reviews-info-icon">⏱️</div>
+          <h3>Модерация</h3>
+          <p>Все отзывы проходят модерацию перед публикацией. Обычно это занимает не более суток. Спасибо за понимание!</p>
+        </div>
+        <div class="reviews-info-card">
+          <div class="reviews-info-icon">🌟</div>
+          <h3>О чём писать?</h3>
+          <p>Расскажите о своих впечатлениях от уроков, успехах в учёбе, интересных экспериментах или подготовке к экзаменам.</p>
+        </div>
+      </div>
+
+      <h3 class="reviews-section-title">Отзывы учеников и родителей</h3>
 
       <!-- Русская локализация для Cusdis (должна быть до загрузки виджета) -->
       <script>
@@ -74,6 +105,60 @@
         })();
       </script>
       <script src="https://cusdis.com/js/cusdis.es.js" defer></script>
+      
+      <!-- Автоматическая подстройка высоты iframe -->
+      <script>
+        // Функция для подстройки высоты iframe
+        function adjustIframeHeight() {
+          const iframe = document.querySelector('#cusdis_thread iframe');
+          if (iframe && iframe.contentWindow) {
+            try {
+              // Пытаемся получить высоту содержимого iframe
+              const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+              if (iframeDoc && iframeDoc.body) {
+                const height = iframeDoc.body.scrollHeight;
+                iframe.style.height = (height + 50) + 'px';
+              }
+            } catch (e) {
+              // Если не можем получить доступ к содержимому (CORS), используем MutationObserver
+              console.log('Using fallback height adjustment');
+            }
+          }
+        }
+
+        // Наблюдаем за появлением iframe
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+              const iframe = document.querySelector('#cusdis_thread iframe');
+              if (iframe) {
+                // Ждем загрузки iframe
+                iframe.addEventListener('load', function() {
+                  adjustIframeHeight();
+                  // Периодически проверяем высоту (для динамического контента)
+                  setInterval(adjustIframeHeight, 1000);
+                });
+              }
+            }
+          });
+        });
+
+        // Начинаем наблюдение
+        const cusdisThread = document.getElementById('cusdis_thread');
+        if (cusdisThread) {
+          observer.observe(cusdisThread, { childList: true, subtree: true });
+        }
+
+        // Также слушаем сообщения от iframe (если Cusdis отправляет высоту)
+        window.addEventListener('message', function(event) {
+          if (event.data && event.data.type === 'cusdis' && event.data.height) {
+            const iframe = document.querySelector('#cusdis_thread iframe');
+            if (iframe) {
+              iframe.style.height = event.data.height + 'px';
+            }
+          }
+        });
+      </script>
     </section>
   </main>
 
