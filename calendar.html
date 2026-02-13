@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Календарь событий — Учитель химии и биологии</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Химия и биология</a>
+      
+      <!-- Бургер-меню -->
+      <button class="burger-menu" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="nav-list">
+        <li><a href="index.html#about">Об учителе</a></li>
+        <li><a href="index.html#materials">Материалы</a></li>
+        <li><a href="index.html#students">Ученикам</a></li>
+        <li><a href="index.html#parents">Родителям</a></li>
+        <li><a href="reviews.html">Отзывы</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <p class="breadcrumb"><a href="index.html">Главная</a> → Ученикам → Календарь событий</p>
+      <h1>Календарь событий</h1>
+    </section>
+
+    <!-- Календарь событий -->
+    <section class="calendar-section fade-in-up">
+      <div class="calendar-header">
+        <div class="calendar-nav">
+          <button class="calendar-prev">← Назад</button>
+          <span class="calendar-current-month">Февраль 2025</span>
+          <button class="calendar-next">Вперед →</button>
+          <button class="calendar-today">Сегодня</button>
+        </div>
+      </div>
+      
+      <div class="calendar-grid">
+        <div class="calendar-weekdays">
+          <div class="calendar-weekday">Пн</div>
+          <div class="calendar-weekday">Вт</div>
+          <div class="calendar-weekday">Ср</div>
+          <div class="calendar-weekday">Чт</div>
+          <div class="calendar-weekday">Пт</div>
+          <div class="calendar-weekday">Сб</div>
+          <div class="calendar-weekday">Вс</div>
+        </div>
+        <div class="calendar-days">
+          <!-- Дни будут добавлены через JavaScript -->
+        </div>
+      </div>
+      
+      <div class="calendar-legend">
+        <div class="calendar-legend-item">
+          <span class="calendar-legend-dot test"></span>
+          <span>Контрольная работа</span>
+        </div>
+        <div class="calendar-legend-item">
+          <span class="calendar-legend-dot olympiad"></span>
+          <span>Олимпиада</span>
+        </div>
+        <div class="calendar-legend-item">
+          <span class="calendar-legend-dot excursion"></span>
+          <span>Экскурсия</span>
+        </div>
+        <div class="calendar-legend-item">
+          <span class="calendar-legend-dot deadline"></span>
+          <span>Дедлайн</span>
+        </div>
+      </div>
+      
+      <div class="events-list">
+        <h3 class="events-list-title">События месяца</h3>
+        <div class="events-list-container">
+          <!-- События будут добавлены через JavaScript -->
+        </div>
+      </div>
+      
+      <div class="quick-links" style="margin-top: 2rem;">
+        <a href="index.html#students" class="quick-link">← Ученикам</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© Сайт учителя химии и биологии. Сделано с заботой об учёбе.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
