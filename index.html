@@ -5,8 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modern.css">
+  
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+  
   <!-- Анимированные декоративные элементы -->
   <div class="side-decorations">
     <!-- Пузырьки слева -->
@@ -191,11 +203,11 @@
       </div>
 
       <h1>Учитель химии и биологии</h1>
-      <p>Материалы для учёбы, расписание, эксперименты и подготовка к ОГЭ/ЕГЭ — всё в одном месте.</p>
+      <p><span class="typed-text"></span><span class="typed-cursor">|</span></p>
     </section>
 
     <!-- Об учителе -->
-    <section id="about" class="section fade-in-up">
+    <section id="about" class="section" data-aos="fade-up">
       <h2 class="section-title">Об учителе</h2>
       <p class="section-subtitle">Кратко о преподавателе и контактах</p>
       <div class="about-content">
@@ -212,15 +224,15 @@
       
       <!-- Интересные факты -->
       <div class="fun-facts">
-        <div class="fun-fact fade-in">
+        <div class="fun-fact" data-aos="fade-right" data-aos-delay="100">
           <span class="fun-fact-icon">💡</span>
           <p class="fun-fact-text">Знаете ли вы, что в теле человека содержится столько углерода, что из него можно сделать 9000 карандашей?</p>
         </div>
-        <div class="fun-fact fade-in">
+        <div class="fun-fact" data-aos="fade-right" data-aos-delay="200">
           <span class="fun-fact-icon">🧬</span>
           <p class="fun-fact-text">ДНК человека на 99.9% идентична ДНК любого другого человека на планете!</p>
         </div>
-        <div class="fun-fact fade-in">
+        <div class="fun-fact" data-aos="fade-right" data-aos-delay="300">
           <span class="fun-fact-icon">⚗️</span>
           <p class="fun-fact-text">Вода - единственное вещество на Земле, которое встречается в природе в трех состояниях одновременно.</p>
         </div>
@@ -228,17 +240,17 @@
     </section>
 
     <!-- Материалы: карточки предметов -->
-    <section id="materials" class="section fade-in-up">
+    <section id="materials" class="section" data-aos="fade-up">
       <h2 class="section-title">Материалы</h2>
       <p class="section-subtitle">Учебные материалы, презентации, задания и лабораторные по предметам</p>
       <div class="subjects-grid">
-        <a href="chemistry.html" class="subject-card chemistry scale-in">
+        <a href="chemistry.html" class="subject-card chemistry" data-aos="flip-left" data-aos-delay="100">
           <div class="subject-card-icon">⚗️</div>
           <h3>Химия</h3>
           <p>Презентации, конспекты, тесты, лабораторные работы и разбор заданий ОГЭ/ЕГЭ.</p>
           <span class="subject-card-arrow">Перейти →</span>
         </a>
-        <a href="biology.html" class="subject-card biology scale-in">
+        <a href="biology.html" class="subject-card biology" data-aos="flip-left" data-aos-delay="200">
           <div class="subject-card-icon">🌿</div>
           <h3>Биология</h3>
           <p>Схемы, таблицы, фото, видео, тесты и подготовка к экзаменам.</p>
@@ -273,21 +285,21 @@
     </section>
 
     <!-- Актуальные объявления -->
-    <section class="announcements-section fade-in-up">
+    <section class="announcements-section" data-aos="fade-up">
       <div class="announcements-container">
         <h2 class="announcements-title">📢 Актуальные объявления</h2>
         <div class="announcements-grid">
-          <div class="announcement-card">
+          <div class="announcement-card" data-aos="fade-up" data-aos-delay="100">
             <span class="announcement-date">15 февраля</span>
             <h4 class="announcement-title">Контрольная работа по химии</h4>
             <p class="announcement-text">8 класс - тема "Периодическая система элементов". Повторите материал!</p>
           </div>
-          <div class="announcement-card">
+          <div class="announcement-card" data-aos="fade-up" data-aos-delay="200">
             <span class="announcement-date">20 февраля</span>
             <h4 class="announcement-title">Олимпиада по биологии</h4>
             <p class="announcement-text">Школьный этап для 9-11 классов. Регистрация до 18 февраля.</p>
           </div>
-          <div class="announcement-card">
+          <div class="announcement-card" data-aos="fade-up" data-aos-delay="300">
             <span class="announcement-date">25 февраля</span>
             <h4 class="announcement-title">Экскурсия в музей</h4>
             <p class="announcement-text">10 класс - музей естествознания. Выезд в 9:00 от школы.</p>
@@ -297,49 +309,49 @@
     </section>
 
     <!-- Ученикам -->
-    <section id="students" class="section fade-in-up">
+    <section id="students" class="section" data-aos="fade-up">
       <h2 class="section-title">Ученикам</h2>
       <p class="section-subtitle">Расписание, домашние задания, полезные ссылки</p>
       <div class="quick-links">
-        <a href="calendar.html" class="quick-link">📅 Календарь событий</a>
-        <a href="schedule.html" class="quick-link">🕐 Расписание</a>
-        <a href="homework.html" class="quick-link">📝 Домашние задания</a>
-        <a href="links.html" class="quick-link">🔗 Полезные ссылки</a>
-        <a href="exam.html" class="quick-link">📚 ОГЭ / ЕГЭ</a>
+        <a href="calendar.html" class="quick-link" data-aos="zoom-in" data-aos-delay="100">📅 Календарь событий</a>
+        <a href="schedule.html" class="quick-link" data-aos="zoom-in" data-aos-delay="200">🕐 Расписание</a>
+        <a href="homework.html" class="quick-link" data-aos="zoom-in" data-aos-delay="300">📝 Домашние задания</a>
+        <a href="links.html" class="quick-link" data-aos="zoom-in" data-aos-delay="400">🔗 Полезные ссылки</a>
+        <a href="exam.html" class="quick-link" data-aos="zoom-in" data-aos-delay="500">📚 ОГЭ / ЕГЭ</a>
       </div>
     </section>
 
     <!-- Родителям -->
-    <section id="parents" class="section fade-in-up">
+    <section id="parents" class="section" data-aos="fade-up">
       <h2 class="section-title">Родителям</h2>
       <p class="section-subtitle">Информация о курсе, оценивании и как связаться</p>
       <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Программа, критерии, успехи ребёнка — всегда на связи.</p>
       <div class="quick-links">
-        <a href="grading.html" class="quick-link">📋 Критерии оценивания</a>
-        <a href="contact.html" class="quick-link">✉️ Связаться</a>
-        <a href="reviews.html" class="quick-link">💬 Отзывы</a>
+        <a href="grading.html" class="quick-link" data-aos="zoom-in" data-aos-delay="100">📋 Критерии оценивания</a>
+        <a href="contact.html" class="quick-link" data-aos="zoom-in" data-aos-delay="200">✉️ Связаться</a>
+        <a href="reviews.html" class="quick-link" data-aos="zoom-in" data-aos-delay="300">💬 Отзывы</a>
       </div>
     </section>
   </main>
 
   <!-- Компактная секция достижений -->
-  <section class="achievements-compact">
+  <section class="achievements-compact" data-aos="fade-up">
     <div class="achievements-compact-container">
-      <h2 class="achievements-compact-title fade-in-up">Наши результаты</h2>
-      <div class="achievements-stats fade-in-up">
-        <div class="achievement-stat">
+      <h2 class="achievements-compact-title">Наши результаты</h2>
+      <div class="achievements-stats">
+        <div class="achievement-stat" data-aos="zoom-in" data-aos-delay="100">
           <span class="achievement-stat-number">4.3</span>
           <span class="achievement-stat-label">Средний балл ОГЭ</span>
         </div>
-        <div class="achievement-stat">
+        <div class="achievement-stat" data-aos="zoom-in" data-aos-delay="200">
           <span class="achievement-stat-number">80</span>
           <span class="achievement-stat-label">Средний балл ЕГЭ</span>
         </div>
-        <div class="achievement-stat">
+        <div class="achievement-stat" data-aos="zoom-in" data-aos-delay="300">
           <span class="achievement-stat-number">15+</span>
           <span class="achievement-stat-label">Призеров олимпиад</span>
         </div>
-        <div class="achievement-stat">
+        <div class="achievement-stat" data-aos="zoom-in" data-aos-delay="400">
           <span class="achievement-stat-number">95%</span>
           <span class="achievement-stat-label">Поступили в вузы</span>
         </div>
@@ -352,5 +364,59 @@
   </footer>
 
   <script src="js/main.js"></script>
+  
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  
+  <!-- Initialize Libraries -->
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+    
+    // Initialize Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+        line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out' }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+        modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+    
+    // Initialize Typed.js
+    new Typed('.typed-text', {
+      strings: [
+        'Материалы для учёбы, расписание, эксперименты 🧪',
+        'Подготовка к ОГЭ и ЕГЭ 📚',
+        'Интересные уроки химии и биологии 🌿',
+        'Всё для успешной учёбы в одном месте ✨'
+      ],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      loop: true,
+      showCursor: false
+    });
+  </script>
 </body>
 </html>

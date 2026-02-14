@@ -1,0 +1,251 @@
+/* Современные стили поверх базовых */
+
+/* Hero Section - Modern */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 10rem 1.5rem 12rem;
+  background: transparent;
+  color: white;
+  text-align: center;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, #fff 0%, #667eea 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero p {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  line-height: 1.8;
+  min-height: 60px;
+}
+
+.typed-cursor {
+  color: var(--color-accent);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Glassmorphism Cards */
+.subject-card,
+.content-card,
+.announcement-card,
+.fun-fact,
+.reviews-info-card {
+  background: rgba(22, 33, 62, 0.7) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(102, 126, 234, 0.2) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+}
+
+.subject-card:hover,
+.content-card:hover,
+.announcement-card:hover,
+.fun-fact:hover,
+.reviews-info-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4) !important;
+  border-color: var(--color-accent) !important;
+}
+
+/* Section Titles with Gradient */
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+/* Quick Links - Modern Buttons */
+.quick-link {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  color: white !important;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.quick-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.quick-link:hover::before {
+  left: 100%;
+}
+
+.quick-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Achievements Section - Modern */
+.achievements-compact {
+  background: rgba(22, 33, 62, 0.5) !important;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(102, 126, 234, 0.2);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.achievement-stat-number {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 4rem;
+  font-weight: 800;
+}
+
+/* Announcements - Modern */
+.announcements-section {
+  background: transparent !important;
+}
+
+.announcement-card::before {
+  background: var(--gradient-accent);
+}
+
+/* Fun Facts - Neon Effect */
+.fun-fact {
+  position: relative;
+  overflow: hidden;
+}
+
+.fun-fact::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.fun-fact:hover::after {
+  opacity: 1;
+}
+
+.fun-fact-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(240, 147, 251, 0.5));
+}
+
+/* Footer - Modern */
+.footer {
+  background: rgba(15, 15, 35, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* Reviews Page - Modern */
+.reviews-intro {
+  background: rgba(22, 33, 62, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+}
+
+.reviews-intro-title {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Page Hero - Modern */
+.page-hero {
+  background: rgba(22, 33, 62, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.subject-card-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation for Icons */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.reviews-info-icon,
+.fun-fact-icon {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Glow Effect on Hover */
+.subject-card:hover .subject-card-icon,
+.reviews-info-card:hover .reviews-info-icon {
+  filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
