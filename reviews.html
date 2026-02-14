@@ -109,7 +109,7 @@
           reply_placeholder: 'Ваш комментарий',
           reply_btn: 'Ответить',
           sending: 'Отправляется...',
-          mod_badge: 'MOD',
+          mod_badge: 'Учитель',
           content_is_required: 'Заполните текст комментария',
           nickname_is_required: 'Заполните имя',
           comment_has_been_sent: 'Комментарий отправлен. Он будет опубликован после модерации.'
@@ -117,14 +117,25 @@
       </script>
 
       <!-- Cusdis: виджет комментариев/отзывов -->
-      <div class="cusdis-wrapper">
+      <div class="cusdis-wrapper" data-aos="fade-up">
+        <style>
+          /* Дополнительные стили для Cusdis iframe */
+          #cusdis_thread iframe {
+            color-scheme: dark;
+          }
+          
+          /* Переопределение стилей внутри iframe (если возможно) */
+          #cusdis_thread {
+            color: #e0e7ff !important;
+          }
+        </style>
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
           data-app-id="4033d6e0-1be2-4dac-bc9e-a57837087b15"
           data-page-id="reviews"
           data-page-url=""
           data-page-title="Отзывы — Сайт учителя химии и биологии"
-          data-theme="light"
+          data-theme="dark"
           data-lang="ru"
         ></div>
       </div>
@@ -136,7 +147,7 @@
       </script>
       <script src="https://cusdis.com/js/cusdis.es.js" defer></script>
       
-      <!-- Автоматическая подстройка высоты iframe -->
+      <!-- Автоматическая подстройка высоты iframe и применение темной темы -->
       <script>
         // Функция для подстройки высоты iframe
         function adjustIframeHeight() {
@@ -148,11 +159,95 @@
               if (iframeDoc && iframeDoc.body) {
                 const height = iframeDoc.body.scrollHeight;
                 iframe.style.height = (height + 50) + 'px';
+                
+                // Применяем темную тему к содержимому iframe
+                applyDarkThemeToIframe(iframeDoc);
               }
             } catch (e) {
               // Если не можем получить доступ к содержимому (CORS), используем MutationObserver
               console.log('Using fallback height adjustment');
             }
+          }
+        }
+
+        // Функция для применения темной темы к iframe
+        function applyDarkThemeToIframe(iframeDoc) {
+          if (!iframeDoc) return;
+          
+          try {
+            // Добавляем стили для темной темы
+            let style = iframeDoc.getElementById('custom-dark-theme');
+            if (!style) {
+              style = iframeDoc.createElement('style');
+              style.id = 'custom-dark-theme';
+              style.textContent = `
+                body {
+                  background: transparent !important;
+                  color: #e0e7ff !important;
+                }
+                * {
+                  color: #e0e7ff !important;
+                }
+                input, textarea {
+                  background: rgba(30, 41, 59, 0.8) !important;
+                  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+                  color: #e0e7ff !important;
+                  border-radius: 10px !important;
+                  padding: 10px 14px !important;
+                  transition: all 0.3s ease !important;
+                }
+                input:focus, textarea:focus {
+                  border-color: rgba(102, 126, 234, 0.6) !important;
+                  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+                  outline: none !important;
+                }
+                input::placeholder, textarea::placeholder {
+                  color: #a5b4fc !important;
+                  opacity: 0.7 !important;
+                }
+                button {
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                  color: white !important;
+                  border: none !important;
+                  border-radius: 12px !important;
+                  padding: 10px 24px !important;
+                  font-weight: 600 !important;
+                  cursor: pointer !important;
+                  transition: all 0.3s ease !important;
+                  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+                }
+                button:hover {
+                  transform: translateY(-2px) !important;
+                  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5) !important;
+                }
+                /* Кнопка "Ответить" - меньше */
+                button:not([type="submit"]) {
+                  padding: 6px 16px !important;
+                  font-size: 13px !important;
+                  border-radius: 10px !important;
+                  background: rgba(102, 126, 234, 0.2) !important;
+                  color: #a5b4fc !important;
+                  box-shadow: none !important;
+                  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+                }
+                button:not([type="submit"]):hover {
+                  background: rgba(102, 126, 234, 0.3) !important;
+                  color: #e0e7ff !important;
+                  transform: translateY(-1px) !important;
+                  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2) !important;
+                }
+                a {
+                  color: #a5b4fc !important;
+                }
+                .cusdis-comment {
+                  background: rgba(30, 41, 59, 0.4) !important;
+                  border: 1px solid rgba(102, 126, 234, 0.2) !important;
+                }
+              `;
+              iframeDoc.head.appendChild(style);
+            }
+          } catch (e) {
+            console.log('Cannot apply custom styles to iframe:', e);
           }
         }
 
@@ -162,8 +257,14 @@
             if (mutation.addedNodes.length) {
               const iframe = document.querySelector('#cusdis_thread iframe');
               if (iframe) {
+                // Добавляем класс загрузки
+                document.querySelector('.cusdis-wrapper').classList.add('loading');
+                
                 // Ждем загрузки iframe
                 iframe.addEventListener('load', function() {
+                  // Убираем класс загрузки
+                  document.querySelector('.cusdis-wrapper').classList.remove('loading');
+                  
                   adjustIframeHeight();
                   // Периодически проверяем высоту (для динамического контента)
                   setInterval(adjustIframeHeight, 1000);

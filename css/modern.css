@@ -520,3 +520,204 @@
     display: none;
   }
 }
+
+
+/* ========== Cusdis Reviews Widget Styling ========== */
+.cusdis-wrapper {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(22, 33, 62, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(31, 38, 135, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cusdis-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+}
+
+/* Стилизация iframe Cusdis */
+#cusdis_thread iframe {
+  width: 100% !important;
+  border: none !important;
+  border-radius: 8px;
+  background: transparent !important;
+  min-height: 400px;
+}
+
+/* Переопределение стилей Cusdis для темной темы */
+#cusdis_thread {
+  --cusdis-color-primary: #667eea;
+  --cusdis-color-primary-light: rgba(102, 126, 234, 0.1);
+  --cusdis-color-text: #e0e7ff;
+  --cusdis-color-text-secondary: #a5b4fc;
+  --cusdis-color-background: rgba(30, 41, 59, 0.6);
+  --cusdis-color-border: rgba(102, 126, 234, 0.2);
+  --cusdis-border-radius: 12px;
+  --cusdis-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Стили для кнопок внутри Cusdis */
+#cusdis_thread button,
+#cusdis_thread [type="submit"],
+#cusdis_thread .cusdis-button {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 10px 24px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+#cusdis_thread button:hover,
+#cusdis_thread [type="submit"]:hover,
+#cusdis_thread .cusdis-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5) !important;
+}
+
+/* Кнопка "Ответить" - меньше размером */
+#cusdis_thread button:not([type="submit"]),
+#cusdis_thread .cusdis-reply-button,
+#cusdis_thread [class*="reply"] button {
+  padding: 6px 16px !important;
+  font-size: 13px !important;
+  border-radius: 10px !important;
+  background: rgba(102, 126, 234, 0.2) !important;
+  color: #a5b4fc !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+}
+
+#cusdis_thread button:not([type="submit"]):hover,
+#cusdis_thread .cusdis-reply-button:hover,
+#cusdis_thread [class*="reply"] button:hover {
+  background: rgba(102, 126, 234, 0.3) !important;
+  color: #e0e7ff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Стили для полей ввода */
+#cusdis_thread input,
+#cusdis_thread textarea {
+  border-radius: 10px !important;
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+  color: #e0e7ff !important;
+  padding: 10px 14px !important;
+  transition: all 0.3s ease !important;
+}
+
+#cusdis_thread input:focus,
+#cusdis_thread textarea:focus {
+  border-color: rgba(102, 126, 234, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+  outline: none !important;
+}
+
+#cusdis_thread input::placeholder,
+#cusdis_thread textarea::placeholder {
+  color: #a5b4fc !important;
+  opacity: 0.7 !important;
+}
+
+/* Дополнительные стили для улучшения видимости */
+.cusdis-wrapper {
+  color: #e0e7ff;
+}
+
+/* Стили для заголовка секции отзывов */
+.reviews-section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 3rem 0 2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Анимация появления блока */
+.cusdis-wrapper {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Улучшенная видимость для мобильных */
+@media (max-width: 768px) {
+  .cusdis-wrapper {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .reviews-section-title {
+    font-size: 1.5rem;
+  }
+  
+  #cusdis_thread button,
+  #cusdis_thread [type="submit"],
+  #cusdis_thread .cusdis-button {
+    padding: 8px 20px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Стили для загрузки */
+.cusdis-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(102, 126, 234, 0.3);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.cusdis-wrapper.loading::after {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Эффект свечения при наведении */
+.cusdis-wrapper:hover {
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3), 
+              0 0 30px rgba(240, 147, 251, 0.2);
+  transition: all 0.3s ease;
+}
