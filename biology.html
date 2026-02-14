@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Биология — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modern.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="particles-js"></div>
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="logo">Химия и биология</a>
@@ -40,10 +46,72 @@
           <line x1="40" y1="20" x2="60" y2="55" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
         </svg>
 
-        <div class="decor-dna">🧬</div>
-        <div class="decor-flask">🧪</div>
-        <div class="decor-leaf">🍃</div>
-        <div class="decor-molecule">⚛️</div>
+        <svg class="decor-dna" viewBox="0 0 100 100" width="80" height="80">
+          <defs>
+            <linearGradient id="dnaGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.8" />
+              <stop offset="100%" style="stop-color:#f093fb;stop-opacity:0.8" />
+            </linearGradient>
+          </defs>
+          <g class="dna-strand">
+            <circle cx="30" cy="20" r="6" fill="url(#dnaGradient3)"/>
+            <circle cx="70" cy="20" r="6" fill="url(#dnaGradient3)"/>
+            <line x1="30" y1="20" x2="70" y2="20" stroke="url(#dnaGradient3)" stroke-width="2"/>
+            <circle cx="35" cy="40" r="6" fill="url(#dnaGradient3)"/>
+            <circle cx="65" cy="40" r="6" fill="url(#dnaGradient3)"/>
+            <line x1="35" y1="40" x2="65" y2="40" stroke="url(#dnaGradient3)" stroke-width="2"/>
+            <circle cx="30" cy="60" r="6" fill="url(#dnaGradient3)"/>
+            <circle cx="70" cy="60" r="6" fill="url(#dnaGradient3)"/>
+            <line x1="30" y1="60" x2="70" y2="60" stroke="url(#dnaGradient3)" stroke-width="2"/>
+            <circle cx="35" cy="80" r="6" fill="url(#dnaGradient3)"/>
+            <circle cx="65" cy="80" r="6" fill="url(#dnaGradient3)"/>
+            <line x1="35" y1="80" x2="65" y2="80" stroke="url(#dnaGradient3)" stroke-width="2"/>
+          </g>
+        </svg>
+        <svg class="decor-flask" viewBox="0 0 100 100" width="75" height="75">
+          <defs>
+            <linearGradient id="flaskGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.8" />
+              <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.8" />
+            </linearGradient>
+          </defs>
+          <path d="M35 10 L35 30 L25 60 Q25 80 50 80 Q75 80 75 60 L65 30 L65 10 Z" 
+                fill="url(#flaskGradient3)" stroke="#fff" stroke-width="2" opacity="0.7"/>
+          <rect x="30" y="5" width="40" height="8" fill="#fff" opacity="0.5" rx="2"/>
+          <ellipse cx="50" cy="65" rx="15" ry="8" fill="#fff" opacity="0.3" class="flask-bubble"/>
+        </svg>
+        <svg class="decor-leaf" viewBox="0 0 100 100" width="70" height="70">
+          <defs>
+            <linearGradient id="leafGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6bc491;stop-opacity:0.9" />
+              <stop offset="100%" style="stop-color:#4a9c6d;stop-opacity:0.9" />
+            </linearGradient>
+          </defs>
+          <path d="M50 10 Q70 30 70 50 Q70 70 50 90 Q30 70 30 50 Q30 30 50 10 Z" 
+                fill="url(#leafGradient3)" stroke="#fff" stroke-width="2" opacity="0.7"/>
+          <path d="M50 10 L50 90" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+          <path d="M50 30 Q60 40 50 50" stroke="#fff" stroke-width="1" opacity="0.4" fill="none"/>
+          <path d="M50 50 Q40 60 50 70" stroke="#fff" stroke-width="1" opacity="0.4" fill="none"/>
+        </svg>
+        <svg class="decor-molecule" viewBox="0 0 100 100" width="80" height="80">
+          <defs>
+            <radialGradient id="moleculeGradient3">
+              <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.8" />
+            </radialGradient>
+          </defs>
+          <g class="molecule-atoms">
+            <circle cx="50" cy="50" r="12" fill="url(#moleculeGradient3)" opacity="0.9"/>
+            <circle cx="25" cy="30" r="8" fill="url(#moleculeGradient3)" opacity="0.8"/>
+            <circle cx="75" cy="30" r="8" fill="url(#moleculeGradient3)" opacity="0.8"/>
+            <circle cx="30" cy="75" r="8" fill="url(#moleculeGradient3)" opacity="0.8"/>
+            <circle cx="70" cy="75" r="8" fill="url(#moleculeGradient3)" opacity="0.8"/>
+            <line x1="50" y1="50" x2="25" y2="30" stroke="#fff" stroke-width="2" opacity="0.5"/>
+            <line x1="50" y1="50" x2="75" y2="30" stroke="#fff" stroke-width="2" opacity="0.5"/>
+            <line x1="50" y1="50" x2="30" y2="75" stroke="#fff" stroke-width="2" opacity="0.5"/>
+            <line x1="50" y1="50" x2="70" y2="75" stroke="#fff" stroke-width="2" opacity="0.5"/>
+          </g>
+        </svg>
       </div>
       <p class="breadcrumb"><a href="index.html">Главная</a> → Материалы → Биология</p>
       <h1>Биология</h1>
@@ -54,21 +122,43 @@
       <p class="section-subtitle">Материалы к урокам, фото, тесты и подготовка к экзаменам</p>
       <div class="content-grid">
         <div class="content-card">
-          <div class="content-card-image">🖼️</div>
+          <div class="content-card-image">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
           <div class="content-card-body">
             <h4>Материал 1</h4>
             <p>Добавь описание и ссылку</p>
           </div>
         </div>
         <div class="content-card">
-          <div class="content-card-image">📄</div>
+          <div class="content-card-image">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <line x1="12" y1="9" x2="8" y2="9"/>
+            </svg>
+          </div>
           <div class="content-card-body">
             <h4>Материал 2</h4>
             <p>Добавь описание и ссылку</p>
           </div>
         </div>
         <div class="content-card">
-          <div class="content-card-image">📄</div>
+          <div class="content-card-image">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <line x1="12" y1="9" x2="8" y2="9"/>
+            </svg>
+          </div>
           <div class="content-card-body">
             <h4>Материал 3</h4>
             <p>Добавь описание и ссылку</p>
@@ -76,7 +166,13 @@
         </div>
       </div>
       <div class="quick-links" style="margin-top: 2rem;">
-        <a href="exam.html" class="quick-link">📚 ОГЭ / ЕГЭ по биологии</a>
+        <a href="exam.html" class="quick-link">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          ОГЭ / ЕГЭ по биологии
+        </a>
         <a href="index.html#materials" class="quick-link">← К материалам</a>
       </div>
     </section>
@@ -87,5 +183,15 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+    particlesJS('particles-js', {
+      particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } }, size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } }, line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' } },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } } },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>

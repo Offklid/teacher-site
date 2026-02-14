@@ -249,3 +249,274 @@
     font-size: 2rem;
   }
 }
+
+
+/* ========== Animated SVG Icons in Hero ========== */
+
+/* DNA Strand Animation */
+.decor-dna .dna-strand {
+  animation: dna-rotate 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes dna-rotate {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+}
+
+/* Flask Bubble Animation */
+.flask-bubble {
+  animation: bubble-rise 2s ease-in-out infinite;
+}
+
+@keyframes bubble-rise {
+  0%, 100% { transform: translateY(0); opacity: 0.3; }
+  50% { transform: translateY(-10px); opacity: 0.6; }
+}
+
+/* Leaf Sway Animation */
+.decor-leaf {
+  animation: leaf-sway 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Molecule Rotation */
+.molecule-atoms {
+  animation: molecule-spin 6s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes molecule-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Atom Orbits */
+.atom-orbits {
+  animation: atom-pulse 3s ease-in-out infinite;
+}
+
+@keyframes atom-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Electron Orbit Animation */
+.electron {
+  animation: electron-orbit 3s linear infinite;
+}
+
+@keyframes electron-orbit {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Enhanced Hero Decor Positioning */
+.decor-dna {
+  bottom: 18%;
+  right: 10%;
+  filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.6));
+}
+
+.decor-flask {
+  top: 48%;
+  left: 14%;
+  filter: drop-shadow(0 0 20px rgba(79, 172, 254, 0.6));
+}
+
+.decor-leaf {
+  bottom: 22%;
+  left: 18%;
+  filter: drop-shadow(0 0 20px rgba(107, 196, 145, 0.6));
+}
+
+.decor-molecule {
+  top: 35%;
+  right: 15%;
+  filter: drop-shadow(0 0 20px rgba(240, 147, 251, 0.6));
+}
+
+.decor-atom {
+  top: 12%;
+  left: 8%;
+  filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.6));
+}
+
+/* Hover Effects for SVG Icons */
+.hero-decor svg:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+
+/* ========== SVG Icons Styling ========== */
+
+/* Subject Card Icons */
+.subject-card-icon svg {
+  color: inherit;
+  transition: all var(--transition);
+}
+
+.subject-card.chemistry .subject-card-icon svg {
+  color: #4facfe;
+}
+
+.subject-card.biology .subject-card-icon svg {
+  color: #6bc491;
+}
+
+.subject-card:hover .subject-card-icon svg {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 0 15px currentColor);
+}
+
+/* Fun Fact Icons */
+.fun-fact-icon svg {
+  color: var(--color-accent);
+  transition: all var(--transition);
+}
+
+.fun-fact:hover .fun-fact-icon svg {
+  transform: scale(1.15) rotate(10deg);
+  filter: drop-shadow(0 0 20px var(--color-accent));
+}
+
+/* Reviews Icons */
+.reviews-intro-icon svg {
+  color: var(--color-accent);
+  filter: drop-shadow(0 0 15px rgba(240, 147, 251, 0.5));
+  animation: icon-float 3s ease-in-out infinite;
+}
+
+.reviews-info-icon svg {
+  color: var(--color-accent);
+  transition: all var(--transition);
+}
+
+.reviews-info-card:hover .reviews-info-icon svg {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 20px var(--color-accent));
+}
+
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* General SVG Icon Enhancements */
+.subject-card-icon,
+.fun-fact-icon,
+.reviews-info-icon,
+.reviews-intro-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ========== Quick Link Icons ========== */
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quick-link-icon {
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.quick-link:hover .quick-link-icon {
+  transform: scale(1.1) translateY(-2px);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+/* ========== Announcements Icon ========== */
+.announcements-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.announcements-icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  animation: bell-ring 2s ease-in-out infinite;
+}
+
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(-10deg); }
+  20%, 40% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+}
+
+/* ========== Content Card Image Icons ========== */
+.content-card-image svg {
+  color: var(--color-accent);
+  transition: all var(--transition);
+}
+
+.content-card:hover .content-card-image svg {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 0 15px var(--color-accent));
+}
+
+/* ========== About Photo Icon ========== */
+.about-photo svg {
+  color: var(--color-accent);
+  filter: drop-shadow(0 0 20px rgba(240, 147, 251, 0.5));
+  animation: icon-float 3s ease-in-out infinite;
+}
+
+/* ========== Hero Decor SVG Positioning (for chemistry/biology pages) ========== */
+.hero-decor .decor-dna,
+.hero-decor .decor-flask,
+.hero-decor .decor-leaf,
+.hero-decor .decor-molecule {
+  position: absolute;
+  opacity: 0.6;
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.5));
+}
+
+.hero-decor .decor-dna {
+  top: 15%;
+  right: 10%;
+  animation: dna-rotate 4s ease-in-out infinite;
+}
+
+.hero-decor .decor-flask {
+  top: 45%;
+  left: 8%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero-decor .decor-leaf {
+  bottom: 20%;
+  left: 12%;
+  animation: leaf-sway 3s ease-in-out infinite;
+}
+
+.hero-decor .decor-molecule {
+  top: 30%;
+  right: 15%;
+  animation: molecule-spin 6s linear infinite;
+}
+
+/* Responsive - hide decorative SVGs on small screens */
+@media (max-width: 768px) {
+  .hero-decor .decor-dna,
+  .hero-decor .decor-flask,
+  .hero-decor .decor-leaf,
+  .hero-decor .decor-molecule {
+    display: none;
+  }
+}

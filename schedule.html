@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Расписание — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modern.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="particles-js"></div>
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="logo">Химия и биология</a>
@@ -31,21 +37,42 @@
       <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Здесь можно разместить расписание по классам или ссылку на общее расписание школы.</p>
       <div class="content-grid">
         <a href="#" class="content-card" style="text-decoration: none; color: inherit;">
-          <div class="content-card-image">📅</div>
+          <div class="content-card-image">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
           <div class="content-card-body">
             <h4>8 класс</h4>
             <p>Химия и биология</p>
           </div>
         </a>
         <a href="#" class="content-card" style="text-decoration: none; color: inherit;">
-          <div class="content-card-image">📅</div>
+          <div class="content-card-image">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
           <div class="content-card-body">
             <h4>9 класс</h4>
             <p>Химия и биология</p>
           </div>
         </a>
         <a href="#" class="content-card" style="text-decoration: none; color: inherit;">
-          <div class="content-card-image">📅</div>
+          <div class="content-card-image">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
           <div class="content-card-body">
             <h4>10–11 класс</h4>
             <p>Химия и биология</p>
@@ -63,5 +90,15 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+    particlesJS('particles-js', {
+      particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } }, size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } }, line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' } },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } } },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>

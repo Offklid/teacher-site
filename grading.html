@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Критерии оценивания — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modern.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="particles-js"></div>
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="logo">Химия и биология</a>
@@ -33,7 +39,13 @@
         <p style="margin-bottom: 1rem;">Добавь информацию о своей системе оценивания и требованиях к работам учеников.</p>
       </div>
       <div class="quick-links" style="margin-top: 2rem;">
-        <a href="contact.html" class="quick-link">✉️ Связаться</a>
+        <a href="contact.html" class="quick-link">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Связаться
+        </a>
         <a href="index.html#parents" class="quick-link">← Родителям</a>
       </div>
     </section>
@@ -44,5 +56,15 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+    particlesJS('particles-js', {
+      particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } }, size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } }, line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' } },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } } },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>

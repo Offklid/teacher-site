@@ -5,8 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Отзывы — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modern.css">
+  
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="logo">Химия и биология</a>
@@ -36,37 +47,56 @@
 
     <section class="section section--reviews">
       <!-- Вступительный блок -->
-      <div class="reviews-intro">
-        <div class="reviews-intro-icon">💬</div>
+      <div class="reviews-intro" data-aos="fade-up">
+        <div class="reviews-intro-icon">
+          <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M8 10h8"/>
+            <path d="M8 14h4"/>
+          </svg>
+        </div>
         <h2 class="reviews-intro-title">Ваше мнение важно для меня!</h2>
         <p class="reviews-intro-text">
           Здравствуйте! Я очень ценю обратную связь от учеников и родителей. Ваши отзывы помогают мне становиться лучше как преподавателю и создавать более интересные и понятные уроки.
         </p>
         <p class="reviews-intro-text">
-          Если вам понравились мои занятия, методы преподавания или вы заметили прогресс в учёбе — буду рада, если вы поделитесь своими впечатлениями. Это вдохновляет меня продолжать работу с энтузиазмом! 🌿
+          Если вам понравились мои занятия, методы преподавания или вы заметили прогресс в учёбе — буду рада, если вы поделитесь своими впечатлениями. Это вдохновляет меня продолжать работу с энтузиазмом!
         </p>
       </div>
 
       <!-- Информационные карточки -->
       <div class="reviews-info-cards">
-        <div class="reviews-info-card">
-          <div class="reviews-info-icon">✍️</div>
+        <div class="reviews-info-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="reviews-info-icon">
+            <svg viewBox="0 0 24 24" width="50" height="50" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+            </svg>
+          </div>
           <h3>Как оставить отзыв?</h3>
           <p>Просто заполните форму ниже — укажите имя и напишите ваш отзыв. Email необязателен, но если хотите получить ответ — укажите его.</p>
         </div>
-        <div class="reviews-info-card">
-          <div class="reviews-info-icon">⏱️</div>
+        <div class="reviews-info-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="reviews-info-icon">
+            <svg viewBox="0 0 24 24" width="50" height="50" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
           <h3>Модерация</h3>
           <p>Все отзывы проходят модерацию перед публикацией. Обычно это занимает не более суток. Спасибо за понимание!</p>
         </div>
-        <div class="reviews-info-card">
-          <div class="reviews-info-icon">🌟</div>
+        <div class="reviews-info-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="reviews-info-icon">
+            <svg viewBox="0 0 24 24" width="50" height="50" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
           <h3>О чём писать?</h3>
           <p>Расскажите о своих впечатлениях от уроков, успехах в учёбе, интересных экспериментах или подготовке к экзаменам.</p>
         </div>
       </div>
 
-      <h3 class="reviews-section-title">Отзывы учеников и родителей</h3>
+      <h3 class="reviews-section-title" data-aos="fade-up">Отзывы учеников и родителей</h3>
 
       <!-- Русская локализация для Cusdis (должна быть до загрузки виджета) -->
       <script>
@@ -167,5 +197,41 @@
   </footer>
 
   <script src="js/main.js"></script>
+  
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <!-- Initialize Libraries -->
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+    
+    // Initialize Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] },
+        shape: { type: 'circle' },
+        opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+        line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 },
+        move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+        modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>

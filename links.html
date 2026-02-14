@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Полезные ссылки — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modern.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="particles-js"></div>
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="logo">Химия и биология</a>
@@ -29,12 +35,54 @@
     <section class="section">
       <p class="section-subtitle">Ресурсы для изучения химии и биологии</p>
       <div class="quick-links" style="flex-direction: column; align-items: flex-start;">
-        <a href="#" class="quick-link" target="_blank" rel="noopener">🔬 Ресурс по химии 1</a>
-        <a href="#" class="quick-link" target="_blank" rel="noopener">🔬 Ресурс по химии 2</a>
-        <a href="#" class="quick-link" target="_blank" rel="noopener">🌿 Ресурс по биологии 1</a>
-        <a href="#" class="quick-link" target="_blank" rel="noopener">🌿 Ресурс по биологии 2</a>
-        <a href="#" class="quick-link" target="_blank" rel="noopener">📚 ФИПИ (ОГЭ/ЕГЭ)</a>
-        <a href="#" class="quick-link" target="_blank" rel="noopener">📺 Решу ЕГЭ / Решу ОГЭ</a>
+        <a href="#" class="quick-link" target="_blank" rel="noopener">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 3v6l-3 9h12l-3-9V3"/>
+            <path d="M6 18h12"/>
+            <path d="M7 21h10"/>
+          </svg>
+          Ресурс по химии 1
+        </a>
+        <a href="#" class="quick-link" target="_blank" rel="noopener">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 3v6l-3 9h12l-3-9V3"/>
+            <path d="M6 18h12"/>
+            <path d="M7 21h10"/>
+          </svg>
+          Ресурс по химии 2
+        </a>
+        <a href="#" class="quick-link" target="_blank" rel="noopener">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+            <path d="M12 2v20"/>
+            <path d="M12 7c-2.5 0-4.5 2-4.5 4.5S9.5 16 12 16"/>
+            <path d="M12 7c2.5 0 4.5 2 4.5 4.5S14.5 16 12 16"/>
+          </svg>
+          Ресурс по биологии 1
+        </a>
+        <a href="#" class="quick-link" target="_blank" rel="noopener">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+            <path d="M12 2v20"/>
+            <path d="M12 7c-2.5 0-4.5 2-4.5 4.5S9.5 16 12 16"/>
+            <path d="M12 7c2.5 0 4.5 2 4.5 4.5S14.5 16 12 16"/>
+          </svg>
+          Ресурс по биологии 2
+        </a>
+        <a href="#" class="quick-link" target="_blank" rel="noopener">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          ФИПИ (ОГЭ/ЕГЭ)
+        </a>
+        <a href="#" class="quick-link" target="_blank" rel="noopener">
+          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="15" rx="2" ry="2"/>
+            <polyline points="17 2 12 7 7 2"/>
+          </svg>
+          Решу ЕГЭ / Решу ОГЭ
+        </a>
       </div>
       <p style="color: var(--color-text-muted); margin-top: 2rem; font-size: 0.9rem;">Добавь свои любимые сайты, видеоуроки и интерактивные платформы.</p>
       <div class="quick-links" style="margin-top: 1.5rem;">
@@ -48,5 +96,15 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+    particlesJS('particles-js', {
+      particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } }, size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } }, line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' } },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } } },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
