@@ -1,0 +1,491 @@
+/* Интерактивная анатомия */
+.anatomy-section {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  margin: 3rem auto;
+  max-width: 1600px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.anatomy-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.anatomy-section .section-title {
+  position: relative;
+  z-index: 1;
+}
+
+.anatomy-section .section-subtitle {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3rem;
+}
+
+.anatomy-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.anatomy-viewer {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2.5rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.anatomy-canvas {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.anatomy-canvas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.anatomy-placeholder {
+  text-align: center;
+  color: var(--color-text-muted);
+  z-index: 1;
+}
+
+.anatomy-placeholder svg {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.anatomy-placeholder p {
+  font-size: 0.95rem;
+}
+
+.anatomy-sidebar {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 100px;
+}
+
+.anatomy-sidebar h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.anatomy-systems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.anatomy-system-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.anatomy-system-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateX(4px);
+}
+
+.anatomy-system-btn.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.system-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.skeletal-icon {
+  background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+}
+
+.muscular-icon {
+  background: linear-gradient(135deg, #ef5350 0%, #c62828 100%);
+}
+
+.circulatory-icon {
+  background: linear-gradient(135deg, #ff6b6b 0%, #d63031 100%);
+}
+
+.nervous-icon {
+  background: linear-gradient(135deg, #ffd93d 0%, #f39c12 100%);
+}
+
+.digestive-icon {
+  background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+}
+
+.respiratory-icon {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+}
+
+.system-icon svg {
+  color: #fff;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.system-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.system-info p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.anatomy-details {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.anatomy-details h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.anatomy-details p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.anatomy-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.anatomy-details li {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.anatomy-details li::before {
+  content: '•';
+  position: absolute;
+  left: 0.5rem;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.anatomy-note {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  margin-top: 2rem;
+}
+
+.anatomy-note svg {
+  flex-shrink: 0;
+  color: #667eea;
+}
+
+.anatomy-note p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .anatomy-viewer {
+    grid-template-columns: 1fr;
+  }
+  
+  .anatomy-sidebar {
+    position: static;
+  }
+  
+  .anatomy-section {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .anatomy-section {
+    padding: 2rem 1rem;
+    margin: 2rem 1rem;
+  }
+  
+  .anatomy-canvas {
+    padding: 1.5rem;
+    min-height: 500px;
+  }
+  
+  .anatomy-sidebar {
+    padding: 1.5rem;
+  }
+  
+  .anatomy-system-btn {
+    padding: 0.75rem;
+  }
+  
+  .system-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .system-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .system-info h4 {
+    font-size: 0.9rem;
+  }
+  
+  .system-info p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .anatomy-note {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* Стили для изображений анатомии */
+.anatomy-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.anatomy-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.anatomy-image {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  display: block;
+  object-fit: contain;
+  border-radius: 16px;
+  filter: brightness(1.05) contrast(1.1) saturate(1.1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1rem;
+}
+
+.anatomy-image:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1) contrast(1.15) saturate(1.15);
+}
+
+.anatomy-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: 16px;
+  mix-blend-mode: overlay;
+}
+
+.anatomy-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.anatomy-particles .particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.6;
+  bottom: 20%;
+  left: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.anatomy-particles .particle:nth-child(1) { left: 20%; }
+.anatomy-particles .particle:nth-child(2) { left: 40%; }
+.anatomy-particles .particle:nth-child(3) { left: 50%; }
+.anatomy-particles .particle:nth-child(4) { left: 60%; }
+.anatomy-particles .particle:nth-child(5) { left: 80%; }
+
+.anatomy-label {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.anatomy-label h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+/* Адаптивность для изображений */
+@media (max-width: 768px) {
+  .anatomy-image-wrapper {
+    max-width: 300px;
+  }
+  
+  .anatomy-label h3 {
+    font-size: 1.25rem;
+  }
+}
+
+
+/* Стили для 3D моделей */
+.model-3d-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.model-3d-container iframe {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000;
+}
+
+.model-label {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  width: 100%;
+}
+
+.model-label h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.model-label p {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Адаптивность для 3D моделей */
+@media (max-width: 768px) {
+  .model-3d-container iframe {
+    height: 450px;
+  }
+  
+  .model-label {
+    padding: 1rem;
+  }
+  
+  .model-label h3 {
+    font-size: 1.2rem;
+  }
+  
+  .model-label p {
+    font-size: 0.8rem;
+  }
+}

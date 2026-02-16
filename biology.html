@@ -6,7 +6,11 @@
   <title>Биология — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/modern.css">
+  <link rel="stylesheet" href="css/skeleton.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Google Model Viewer для 3D моделей -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -118,6 +122,127 @@
       
     </section>
 
+    <!-- Интерактивная анатомия -->
+    <section class="section anatomy-section" data-aos="fade-up">
+      <h2 class="section-title">Интерактивная анатомия человека</h2>
+      <p class="section-subtitle">Нажмите на систему органов для изучения</p>
+      
+      <div class="anatomy-container">
+        <div class="anatomy-viewer">
+          <div class="anatomy-canvas" id="anatomyCanvas">
+            <!-- Здесь будет загружаться интерактивная модель -->
+            <div class="anatomy-placeholder">
+              <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+              </svg>
+              <p>Загрузка интерактивной модели...</p>
+            </div>
+          </div>
+          
+          <div class="anatomy-sidebar">
+            <h3>Системы органов</h3>
+            <div class="anatomy-systems">
+              <button class="anatomy-system-btn active" data-system="skeletal">
+                <div class="system-icon skeletal-icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                  </svg>
+                </div>
+                <div class="system-info">
+                  <h4>Скелетная система</h4>
+                  <p>206 костей</p>
+                </div>
+              </button>
+              
+              <button class="anatomy-system-btn" data-system="muscular">
+                <div class="system-icon muscular-icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+                <div class="system-info">
+                  <h4>Мышечная система</h4>
+                  <p>~640 мышц</p>
+                </div>
+              </button>
+              
+              <button class="anatomy-system-btn" data-system="circulatory">
+                <div class="system-icon circulatory-icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                  </svg>
+                </div>
+                <div class="system-info">
+                  <h4>Кровеносная система</h4>
+                  <p>~100 000 км сосудов</p>
+                </div>
+              </button>
+              
+              <button class="anatomy-system-btn" data-system="nervous">
+                <div class="system-icon nervous-icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 1v6m0 6v10M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h10M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+                  </svg>
+                </div>
+                <div class="system-info">
+                  <h4>Нервная система</h4>
+                  <p>86 млрд нейронов</p>
+                </div>
+              </button>
+              
+              <button class="anatomy-system-btn" data-system="digestive">
+                <div class="system-icon digestive-icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M8 6h8M7 10h10M8 14h8M9 18h6"/>
+                  </svg>
+                </div>
+                <div class="system-info">
+                  <h4>Пищеварительная</h4>
+                  <p>~9 метров</p>
+                </div>
+              </button>
+              
+              <button class="anatomy-system-btn" data-system="respiratory">
+                <div class="system-icon respiratory-icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0M12 2v7m0 4v9"/>
+                  </svg>
+                </div>
+                <div class="system-info">
+                  <h4>Дыхательная</h4>
+                  <p>~20 000 вдохов/день</p>
+                </div>
+              </button>
+            </div>
+            
+            <div class="anatomy-details" id="anatomyDetails">
+              <h4>Скелетная система</h4>
+              <p>Скелет взрослого человека состоит из 206 костей. Он выполняет опорную, защитную и двигательную функции. Самая длинная кость - бедренная, самая маленькая - стремечко в ухе.</p>
+              <ul>
+                <li>Череп: 22 кости</li>
+                <li>Позвоночник: 33-34 позвонка</li>
+                <li>Грудная клетка: 25 костей</li>
+                <li>Конечности: 126 костей</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="anatomy-note">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <p>Для более детального изучения анатомии рекомендуем использовать специализированные атласы и 3D-модели</p>
+      </div>
+    </section>
+
     <section class="section">
       <p class="section-subtitle">Презентации, конспекты, тесты и дополнительные материалы</p>
       
@@ -152,6 +277,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/skeleton.js"></script>
   <script src="js/drive-parser.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
