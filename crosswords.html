@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кроссворды — Учитель химии и биологии</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modern.css">
+  <link rel="stylesheet" href="css/crosswords.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="particles-js"></div>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Химия и биология</a>
+      
+      <button class="burger-menu" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="nav-list">
+        <li><a href="index.html#about">Об учителе</a></li>
+        <li><a href="index.html#materials">Материалы</a></li>
+        <li><a href="index.html#students">Ученикам</a></li>
+        <li><a href="index.html#parents">Родителям</a></li>
+        <li><a href="reviews.html">Отзывы</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-decor">
+        <svg class="decor-atom" viewBox="0 0 80 80" width="80" height="80">
+          <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
+          <circle cx="40" cy="20" r="8" fill="rgba(255,255,255,0.14)"/>
+          <circle cx="20" cy="55" r="8" fill="rgba(255,255,255,0.14)"/>
+          <circle cx="60" cy="55" r="8" fill="rgba(255,255,255,0.14)"/>
+        </svg>
+      </div>
+      <p class="breadcrumb"><a href="index.html">Главная</a> → Кроссворды</p>
+      <h1>Интерактивные кроссворды</h1>
+      <p class="hero-subtitle">Проверь свои знания по химии и биологии</p>
+    </section>
+
+    <section class="section">
+      <!-- Фильтры -->
+      <div class="crossword-filters">
+        <div class="filter-group">
+          <label>Предмет:</label>
+          <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterCrosswords('all', 'subject', this)">Все</button>
+            <button class="filter-btn" onclick="filterCrosswords('chemistry', 'subject', this)">Химия</button>
+            <button class="filter-btn" onclick="filterCrosswords('biology', 'subject', this)">Биология</button>
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <label>Класс:</label>
+          <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterCrosswords('all', 'grade', this)">Все</button>
+            <button class="filter-btn" onclick="filterCrosswords('8', 'grade', this)">8 класс</button>
+            <button class="filter-btn" onclick="filterCrosswords('9', 'grade', this)">9 класс</button>
+            <button class="filter-btn" onclick="filterCrosswords('10', 'grade', this)">10 класс</button>
+            <button class="filter-btn" onclick="filterCrosswords('11', 'grade', this)">11 класс</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Список кроссвордов -->
+      <div class="crosswords-grid" id="crosswords-list">
+        <!-- Кроссворды загружаются из JS -->
+      </div>
+    </section>
+
+    <!-- Модальное окно с кроссвордом -->
+    <div class="crossword-modal" id="crossword-modal">
+      <div class="crossword-modal-content">
+        <button class="crossword-modal-close" onclick="closeCrossword()">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        
+        <div class="crossword-header">
+          <h2 id="crossword-title"></h2>
+          <p id="crossword-description"></p>
+        </div>
+        
+        <div class="crossword-container">
+          <div class="crossword-grid-container" id="crossword-grid">
+            <!-- Сетка кроссворда -->
+          </div>
+          
+          <div class="crossword-clues">
+            <div class="clues-section">
+              <h3>По горизонтали</h3>
+              <div id="clues-across"></div>
+            </div>
+            <div class="clues-section">
+              <h3>По вертикали</h3>
+              <div id="clues-down"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="crossword-actions">
+          <button class="btn-secondary" onclick="clearCrossword()">Очистить</button>
+          <button class="btn-primary" onclick="checkCrossword()">Проверить</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© Сайт учителя химии и биологии. Сделано с заботой об учёбе.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/crosswords-data.js"></script>
+  <script src="js/crosswords.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+    particlesJS('particles-js', {
+      particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } }, size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } }, line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' } },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } } },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>
