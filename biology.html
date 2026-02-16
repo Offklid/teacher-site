@@ -119,52 +119,21 @@
     </section>
 
     <section class="section">
-      <p class="section-subtitle">Материалы к урокам, фото, тесты и подготовка к экзаменам</p>
-      <div class="content-grid">
-        <div class="content-card">
-          <div class="content-card-image">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-          </div>
-          <div class="content-card-body">
-            <h4>Материал 1</h4>
-            <p>Добавь описание и ссылку</p>
-          </div>
-        </div>
-        <div class="content-card">
-          <div class="content-card-image">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <line x1="12" y1="9" x2="8" y2="9"/>
-            </svg>
-          </div>
-          <div class="content-card-body">
-            <h4>Материал 2</h4>
-            <p>Добавь описание и ссылку</p>
-          </div>
-        </div>
-        <div class="content-card">
-          <div class="content-card-image">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <line x1="12" y1="9" x2="8" y2="9"/>
-            </svg>
-          </div>
-          <div class="content-card-body">
-            <h4>Материал 3</h4>
-            <p>Добавь описание и ссылку</p>
-          </div>
-        </div>
+      <p class="section-subtitle">Презентации, конспекты, тесты и дополнительные материалы</p>
+      
+      <!-- Фильтры по классам -->
+      <div class="grade-filters">
+        <button class="grade-filter-btn active" onclick="filterByGrade('biology', 8)">8 класс</button>
+        <button class="grade-filter-btn" onclick="filterByGrade('biology', 9)">9 класс</button>
+        <button class="grade-filter-btn" onclick="filterByGrade('biology', 10)">10 класс</button>
+        <button class="grade-filter-btn" onclick="filterByGrade('biology', 11)">11 класс</button>
       </div>
+      
+      <!-- Контейнер для материалов -->
+      <div class="materials-grid" id="biology-materials">
+        <!-- Материалы будут загружены из materials.js -->
+      </div>
+      
       <div class="quick-links" style="margin-top: 2rem;">
         <a href="exam.html" class="quick-link">
           <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
@@ -183,6 +152,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/drive-parser.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
@@ -192,6 +162,22 @@
       interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } } },
       retina_detect: true
     });
+    
+    // Автоматическая загрузка материалов из Google Drive для 8 класса (по умолчанию)
+    let currentGrade = 8;
+    displayMaterialsFromDrive('biology', currentGrade, 'biology-materials');
+    
+    // Функция для фильтрации по классам
+    function filterByGrade(subject, grade) {
+      currentGrade = grade;
+      displayMaterialsFromDrive(subject, grade, 'biology-materials');
+      
+      // Обновляем активную кнопку
+      document.querySelectorAll('.grade-filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
   </script>
 </body>
 </html>
