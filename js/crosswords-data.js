@@ -11,16 +11,13 @@ const crosswordsData = [
     difficulty: "easy",
     size: { rows: 12, cols: 12 },
     words: [
-      { word: "АЗОТ", clue: "Составляет 78% атмосферы Земли", direction: "across", row: 1, col: 5, number: 1 },
-      { word: "НАТРИЙ", clue: "Мягкий металл, бурно реагирует с водой", direction: "down", row: 0, col: 5, number: 2 },
-      { word: "ЗОЛОТО", clue: "Драгоценный металл желтого цвета", direction: "down", row: 0, col: 7, number: 3 },
-      { word: "КАЛИЙ", clue: "Щелочной металл, необходим для работы сердца", direction: "down", row: 3, col: 3, number: 4 },
-      { word: "ЖЕЛЕЗО", clue: "Металл, из которого делают сталь", direction: "down", row: 2, col: 4, number: 5 },
-      { word: "ВОДОРОД", clue: "Первый элемент таблицы Менделеева, самый легкий газ", direction: "across", row: 7, col: 1, number: 7 },
-      { word: "УГЛЕРОД", clue: "Основа всех органических соединений", direction: "down", row: 3, col: 1, number: 8 },
-      { word: "ФОСФОР", clue: "Светится в темноте, используется в спичках", direction: "across", row: 9, col: 3, number: 9 },
-      { word: "МЕДЬ", clue: "Металл красноватого цвета, хороший проводник", direction: "across", row: 6, col: 1, number: 10 },
-      { word: "СЕРА", clue: "Желтое вещество, горит синим пламенем", direction: "down", row: 7, col: 9, number: 11 }
+      { word: "АЗОТ", clue: "Составляет 78% атмосферы Земли" },
+      { word: "ЗОЛОТО", clue: "Драгоценный металл желтого цвета" },
+      { word: "КАЛИЙ", clue: "Щелочной металл, необходим для работы сердца" },
+      { word: "ЖЕЛЕЗО", clue: "Металл, из которого делают сталь" },
+      { word: "ВОДОРОД", clue: "Первый элемент таблицы Менделеева, самый легкий газ" },
+      { word: "УГЛЕРОД", clue: "Основа всех органических соединений" },
+      { word: "ФОСФОР", clue: "Светится в темноте, используется в спичках" }
     ]
   },
   {
@@ -32,19 +29,19 @@ const crosswordsData = [
     difficulty: "easy",
     size: { rows: 15, cols: 15 },
     words: [
-      { word: "ХРОМОСОМА", clue: "Структура, содержащая ДНК в ядре клетки", direction: "across", row: 9, col: 2, number: 1 },
-      { word: "ВАКУОЛЬ", clue: "Резервуар для хранения веществ в клетке", direction: "across", row: 7, col: 5, number: 2 },
-      { word: "ДНК", clue: "Молекула наследственности", direction: "down", row: 7, col: 2, number: 12 },
-      { word: "МИТОХОНДРИЯ", clue: "Энергетическая станция клетки, вырабатывает АТФ", direction: "across", row: 11, col: 5, number: 4 },
-      { word: "МЕМБРАНА", clue: "Оболочка, окружающая клетку", direction: "across", row: 3, col: 2, number: 5 },
-      { word: "ОБОЛОЧКА", clue: "Внешняя структура клетки", direction: "across", row: 4, col: 4, number: 6 },
-      { word: "МЕМБРАНА", clue: "Оболочка, окружающая клетку", direction: "across", row: 3, col: 2, number: 7 },
-      { word: "БЕЛОК", clue: "Основной строительный материал клетки", direction: "down", row: 2, col: 8, number: 8 },
-      { word: "ОРГАН", clue: "Часть организма, выполняющая определенную функцию", direction: "down", row: 0, col: 5, number: 9 },
-      { word: "ХЛОРОПЛАСТ", clue: "Органоид фотосинтеза у растений", direction: "across", row: 6, col: 1, number: 10 },
-      { word: "КЛЕТКА", clue: "Основная единица жизни", direction: "down", row: 5, col: 2, number: 11 },
-      { word: "ЦИТОПЛАЗМА", clue: "Внутренняя среда клетки", direction: "down", row: 4, col: 10, number: 13 },
-      { word: "ТКАНЬ", clue: "Группа клеток с одинаковой функцией", direction: "across", row: 5, col: 10, number: 14 }
+      { word: "ХРОМОСОМА", clue: "Структура, содержащая ДНК в ядре клетки" },
+      { word: "ВАКУОЛЬ", clue: "Резервуар для хранения веществ в клетке" },
+      { word: "ДНК", clue: "Молекула наследственности" },
+      { word: "МИТОХОНДРИЯ", clue: "Энергетическая станция клетки, вырабатывает АТФ" },
+      { word: "МЕМБРАНА", clue: "Оболочка, окружающая клетку" },
+      { word: "ОБОЛОЧКА", clue: "Внешняя структура клетки" },
+      { word: "МЕМБРАНА", clue: "Оболочка, окружающая клетку" },
+      { word: "БЕЛОК", clue: "Основной строительный материал клетки" },
+      { word: "ОРГАН", clue: "Часть организма, выполняющая определенную функцию" },
+      { word: "ХЛОРОПЛАСТ", clue: "Органоид фотосинтеза у растений" },
+      { word: "КЛЕТКА", clue: "Основная единица жизни" },
+      { word: "ЦИТОПЛАЗМА", clue: "Внутренняя среда клетки" },
+      { word: "ТКАНЬ", clue: "Группа клеток с одинаковой функцией" }
     ]
   },
   {
@@ -56,14 +53,14 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 12, cols: 12 },
     words: [
-      { word: "ОКИСЛЕНИЕ", clue: "Процесс отдачи электронов атомом", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "ИОНЫ", clue: "Заряженные частицы", direction: "down", row: 0, col: 2, number: 2 },
-      { word: "РЕАГЕНТ", clue: "Исходное вещество в химической реакции", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "АТОМ", clue: "Наименьшая частица химического элемента", direction: "down", row: 5, col: 2, number: 4 },
-      { word: "СИНТЕЗ", clue: "Реакция соединения веществ", direction: "across", row: 7, col: 2, number: 5 },
-      { word: "ЭНЕРГИЯ", clue: "Выделяется или поглощается в реакции", direction: "down", row: 5, col: 4, number: 6 },
-      { word: "ПРОДУКТ", clue: "Вещество, образующееся в результате реакции", direction: "down", row: 0, col: 8, number: 7 },
-      { word: "АНАЛИЗ", clue: "Реакция разложения вещества", direction: "across", row: 3, col: 6, number: 8 }
+      { word: "ОКИСЛЕНИЕ", clue: "Процесс отдачи электронов атомом" },
+      { word: "ИОНЫ", clue: "Заряженные частицы" },
+      { word: "РЕАГЕНТ", clue: "Исходное вещество в химической реакции" },
+      { word: "АТОМ", clue: "Наименьшая частица химического элемента" },
+      { word: "СИНТЕЗ", clue: "Реакция соединения веществ" },
+      { word: "ЭНЕРГИЯ", clue: "Выделяется или поглощается в реакции" },
+      { word: "ПРОДУКТ", clue: "Вещество, образующееся в результате реакции" },
+      { word: "АНАЛИЗ", clue: "Реакция разложения вещества" }
     ]
   },
   {
@@ -75,13 +72,13 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 12, cols: 12 },
     words: [
-      { word: "ЖЕЛУДОК", clue: "Орган, где происходит переваривание белков", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "КИШЕЧНИК", clue: "Орган, где всасываются питательные вещества", direction: "down", row: 0, col: 2, number: 2 },
-      { word: "ПЕЧЕНЬ", clue: "Орган, вырабатывающий желчь", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "ЖЕЛЧЬ", clue: "Жидкость, расщепляющая жиры", direction: "down", row: 5, col: 2, number: 4 },
-      { word: "ФЕРМЕНТ", clue: "Вещество, ускоряющее переваривание пищи", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "СЛЮНА", clue: "Жидкость, начинающая переваривание углеводов", direction: "down", row: 0, col: 7, number: 6 },
-      { word: "ПИЩЕВОД", clue: "Трубка, соединяющая рот и желудок", direction: "across", row: 3, col: 5, number: 7 }
+      { word: "ЖЕЛУДОК", clue: "Орган, где происходит переваривание белков" },
+      { word: "КИШЕЧНИК", clue: "Орган, где всасываются питательные вещества" },
+      { word: "ПЕЧЕНЬ", clue: "Орган, вырабатывающий желчь" },
+      { word: "ЖЕЛЧЬ", clue: "Жидкость, расщепляющая жиры" },
+      { word: "ФЕРМЕНТ", clue: "Вещество, ускоряющее переваривание пищи" },
+      { word: "СЛЮНА", clue: "Жидкость, начинающая переваривание углеводов" },
+      { word: "ПИЩЕВОД", clue: "Трубка, соединяющая рот и желудок" }
     ]
   },
   {
@@ -93,13 +90,13 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 12, cols: 12 },
     words: [
-      { word: "МЕТАН", clue: "Простейший углеводород, болотный газ", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "ЭТАН", clue: "Углеводород с двумя атомами углерода", direction: "down", row: 0, col: 1, number: 2 },
-      { word: "БЕНЗОЛ", clue: "Ароматический углеводород с формулой C6H6", direction: "across", row: 4, col: 1, number: 3 },
-      { word: "НЕФТЬ", clue: "Природная смесь углеводородов", direction: "down", row: 4, col: 3, number: 4 },
-      { word: "КИСЛОТА", clue: "Органическое соединение с карбоксильной группой", direction: "across", row: 7, col: 0, number: 5 },
-      { word: "АЛКАН", clue: "Насыщенный углеводород", direction: "down", row: 7, col: 6, number: 6 },
-      { word: "СПИРТ", clue: "Органическое соединение с гидроксильной группой", direction: "across", row: 3, col: 7, number: 7 }
+      { word: "МЕТАН", clue: "Простейший углеводород, болотный газ" },
+      { word: "ЭТАН", clue: "Углеводород с двумя атомами углерода" },
+      { word: "БЕНЗОЛ", clue: "Ароматический углеводород с формулой C6H6" },
+      { word: "НЕФТЬ", clue: "Природная смесь углеводородов" },
+      { word: "КИСЛОТА", clue: "Органическое соединение с карбоксильной группой" },
+      { word: "АЛКАН", clue: "Насыщенный углеводород" },
+      { word: "СПИРТ", clue: "Органическое соединение с гидроксильной группой" }
     ]
   },
   {
@@ -111,13 +108,13 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 12, cols: 12 },
     words: [
-      { word: "ГЕН", clue: "Единица наследственной информации", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "НАСЛЕДСТВО", clue: "Передача признаков потомству", direction: "down", row: 0, col: 2, number: 2 },
-      { word: "МУТАЦИЯ", clue: "Внезапное изменение в генетическом материале", direction: "across", row: 4, col: 0, number: 3 },
-      { word: "АЛЛЕЛЬ", clue: "Различные формы одного гена", direction: "down", row: 4, col: 3, number: 4 },
-      { word: "ГЕНОТИП", clue: "Совокупность всех генов организма", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "ФЕНОТИП", clue: "Совокупность внешних признаков организма", direction: "down", row: 0, col: 9, number: 6 },
-      { word: "ХРОМОСОМА", clue: "Структура, содержащая ДНК в ядре клетки", direction: "across", row: 2, col: 5, number: 7 }
+      { word: "ГЕН", clue: "Единица наследственной информации" },
+      { word: "НАСЛЕДСТВО", clue: "Передача признаков потомству" },
+      { word: "МУТАЦИЯ", clue: "Внезапное изменение в генетическом материале" },
+      { word: "АЛЛЕЛЬ", clue: "Различные формы одного гена" },
+      { word: "ГЕНОТИП", clue: "Совокупность всех генов организма" },
+      { word: "ФЕНОТИП", clue: "Совокупность внешних признаков организма" },
+      { word: "ХРОМОСОМА", clue: "Структура, содержащая ДНК в ядре клетки" }
     ]
   },
   {
@@ -129,12 +126,12 @@ const crosswordsData = [
     difficulty: "hard",
     size: { rows: 15, cols: 11 },
     words: [
-      { word: "ЭЛЕКТРОД", clue: "Проводник, через который ток входит или выходит", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "КАТОД", clue: "Отрицательный электрод", direction: "down", row: 0, col: 5, number: 2 },
-      { word: "АНОД", clue: "Положительный электрод", direction: "across", row: 4, col: 0, number: 3 },
-      { word: "ЭЛЕКТРОЛИЗ", clue: "Разложение вещества электрическим током", direction: "down", row: 0, col: 2, number: 4 },
-      { word: "ИОНИЗАЦИЯ", clue: "Процесс образования ионов", direction: "across", row: 7, col: 1, number: 5 },
-      { word: "ОКИСЛИТЕЛЬ", clue: "Вещество, принимающее электроны", direction: "down", row: 4, col: 8, number: 6 }
+      { word: "ЭЛЕКТРОД", clue: "Проводник, через который ток входит или выходит" },
+      { word: "КАТОД", clue: "Отрицательный электрод" },
+      { word: "АНОД", clue: "Положительный электрод" },
+      { word: "ЭЛЕКТРОЛИЗ", clue: "Разложение вещества электрическим током" },
+      { word: "ИОНИЗАЦИЯ", clue: "Процесс образования ионов" },
+      { word: "ОКИСЛИТЕЛЬ", clue: "Вещество, принимающее электроны" }
     ]
   },
   {
@@ -146,12 +143,12 @@ const crosswordsData = [
     difficulty: "hard",
     size: { rows: 13, cols: 13 },
     words: [
-      { word: "ДАРВИН", clue: "Автор теории естественного отбора", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "АДАПТАЦИЯ", clue: "Приспособление организма к среде обитания", direction: "down", row: 0, col: 1, number: 2 },
-      { word: "ОТБОР", clue: "Процесс выживания наиболее приспособленных", direction: "across", row: 4, col: 0, number: 3 },
-      { word: "БОРЬБА", clue: "Конкуренция за существование", direction: "down", row: 4, col: 2, number: 4 },
-      { word: "ПОПУЛЯЦИЯ", clue: "Группа особей одного вида на определенной территории", direction: "across", row: 8, col: 0, number: 5 },
-      { word: "ВИД", clue: "Основная единица систематики живых организмов", direction: "across", row: 2, col: 8, number: 7 }
+      { word: "ДАРВИН", clue: "Автор теории естественного отбора" },
+      { word: "АДАПТАЦИЯ", clue: "Приспособление организма к среде обитания" },
+      { word: "ОТБОР", clue: "Процесс выживания наиболее приспособленных" },
+      { word: "БОРЬБА", clue: "Конкуренция за существование" },
+      { word: "ПОПУЛЯЦИЯ", clue: "Группа особей одного вида на определенной территории" },
+      { word: "ВИД", clue: "Основная единица систематики живых организмов" }
     ]
   },
   {
@@ -163,12 +160,12 @@ const crosswordsData = [
     difficulty: "easy",
     size: { rows: 10, cols: 10 },
     words: [
-      { word: "КИСЛОТА", clue: "Вещество, отдающее протоны", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "ИНДИКАТОР", clue: "Вещество, изменяющее цвет в кислой или щелочной среде", direction: "down", row: 0, col: 1, number: 2 },
-      { word: "СОЛЬ", clue: "Продукт реакции кислоты и основания", direction: "across", row: 4, col: 2, number: 3 },
-      { word: "ЩЕЛОЧЬ", clue: "Растворимое в воде основание", direction: "down", row: 4, col: 4, number: 4 },
-      { word: "ЛАКМУС", clue: "Индикатор, краснеющий в кислоте", direction: "across", row: 7, col: 0, number: 5 },
-      { word: "РЕАКЦИЯ", clue: "Процесс взаимодействия веществ", direction: "down", row: 0, col: 6, number: 6 }
+      { word: "КИСЛОТА", clue: "Вещество, отдающее протоны" },
+      { word: "ИНДИКАТОР", clue: "Вещество, изменяющее цвет в кислой или щелочной среде" },
+      { word: "СОЛЬ", clue: "Продукт реакции кислоты и основания" },
+      { word: "ЩЕЛОЧЬ", clue: "Растворимое в воде основание" },
+      { word: "ЛАКМУС", clue: "Индикатор, краснеющий в кислоте" },
+      { word: "РЕАКЦИЯ", clue: "Процесс взаимодействия веществ" }
     ]
   },
   {
@@ -180,12 +177,12 @@ const crosswordsData = [
     difficulty: "easy",
     size: { rows: 16, cols: 9 },
     words: [
-      { word: "ЛЕГКИЕ", clue: "Органы, где происходит газообмен", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "КИСЛОРОД", clue: "Газ, необходимый для дыхания", direction: "down", row: 0, col: 2, number: 2 },
-      { word: "ТРАХЕЯ", clue: "Дыхательная трубка", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "АЛЬВЕОЛА", clue: "Пузырек в легких, где происходит газообмен", direction: "down", row: 5, col: 3, number: 4 },
-      { word: "БРОНХИ", clue: "Ветви дыхательного горла", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "ДИАФРАГМА", clue: "Мышца, участвующая в дыхании", direction: "down", row: 0, col: 7, number: 6 }
+      { word: "ЛЕГКИЕ", clue: "Органы, где происходит газообмен" },
+      { word: "КИСЛОРОД", clue: "Газ, необходимый для дыхания" },
+      { word: "ТРАХЕЯ", clue: "Дыхательная трубка" },
+      { word: "АЛЬВЕОЛА", clue: "Пузырек в легких, где происходит газообмен" },
+      { word: "БРОНХИ", clue: "Ветви дыхательного горла" },
+      { word: "ДИАФРАГМА", clue: "Мышца, участвующая в дыхании" }
     ]
   },
   {
@@ -197,12 +194,12 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 15, cols: 15 },
     words: [
-      { word: "РАСТВОР", clue: "Однородная смесь веществ", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "РАСТВОРИТЕЛЬ", clue: "Вещество, в котором растворяют", direction: "down", row: 0, col: 2, number: 2 },
-      { word: "СОЛЬ", clue: "Вещество, которое можно растворить", direction: "across", row: 6, col: 0, number: 3 },
-      { word: "КОНЦЕНТРАЦИЯ", clue: "Содержание вещества в растворе", direction: "down", row: 0, col: 7, number: 4 },
-      { word: "ОСАДОК", clue: "Нерастворимое вещество, выпавшее на дно", direction: "across", row: 4, col: 4, number: 5 },
-      { word: "ФИЛЬТР", clue: "Устройство для очистки раствора", direction: "down", row: 6, col: 4, number: 6 }
+      { word: "РАСТВОР", clue: "Однородная смесь веществ" },
+      { word: "РАСТВОРИТЕЛЬ", clue: "Вещество, в котором растворяют" },
+      { word: "СОЛЬ", clue: "Вещество, которое можно растворить" },
+      { word: "КОНЦЕНТРАЦИЯ", clue: "Содержание вещества в растворе" },
+      { word: "ОСАДОК", clue: "Нерастворимое вещество, выпавшее на дно" },
+      { word: "ФИЛЬТР", clue: "Устройство для очистки раствора" }
     ]
   },
   {
@@ -214,12 +211,12 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 15, cols: 15 },
     words: [
-      { word: "СЕРДЦЕ", clue: "Орган, перекачивающий кровь", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "АРТЕРИЯ", clue: "Сосуд, несущий кровь от сердца", direction: "down", row: 0, col: 4, number: 2 },
-      { word: "ВЕНА", clue: "Сосуд, несущий кровь к сердцу", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "КАПИЛЛЯР", clue: "Мельчайший кровеносный сосуд", direction: "down", row: 0, col: 8, number: 4 },
-      { word: "ПУЛЬС", clue: "Ритмичное колебание стенок артерий", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "ЭРИТРОЦИТ", clue: "Красная кровяная клетка", direction: "down", row: 5, col: 2, number: 6 }
+      { word: "СЕРДЦЕ", clue: "Орган, перекачивающий кровь" },
+      { word: "АРТЕРИЯ", clue: "Сосуд, несущий кровь от сердца" },
+      { word: "ВЕНА", clue: "Сосуд, несущий кровь к сердцу" },
+      { word: "КАПИЛЛЯР", clue: "Мельчайший кровеносный сосуд" },
+      { word: "ПУЛЬС", clue: "Ритмичное колебание стенок артерий" },
+      { word: "ЭРИТРОЦИТ", clue: "Красная кровяная клетка" }
     ]
   },
   {
@@ -231,12 +228,12 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 15, cols: 15 },
     words: [
-      { word: "ПОЛИМЕР", clue: "Высокомолекулярное соединение", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "МОНОМЕР", clue: "Молекула, из которой образуется полимер", direction: "down", row: 0, col: 4, number: 2 },
-      { word: "ПЛАСТИК", clue: "Синтетический полимерный материал", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "КАУЧУК", clue: "Эластичный полимер", direction: "down", row: 5, col: 3, number: 4 },
-      { word: "ЦЕЛЛЮЛОЗА", clue: "Природный полимер в растениях", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "БЕЛОК", clue: "Природный полимер из аминокислот", direction: "down", row: 0, col: 9, number: 6 }
+      { word: "ПОЛИМЕР", clue: "Высокомолекулярное соединение" },
+      { word: "МОНОМЕР", clue: "Молекула, из которой образуется полимер" },
+      { word: "ПЛАСТИК", clue: "Синтетический полимерный материал" },
+      { word: "КАУЧУК", clue: "Эластичный полимер" },
+      { word: "ЦЕЛЛЮЛОЗА", clue: "Природный полимер в растениях" },
+      { word: "БЕЛОК", clue: "Природный полимер из аминокислот" }
     ]
   },
   {
@@ -248,12 +245,12 @@ const crosswordsData = [
     difficulty: "medium",
     size: { rows: 15, cols: 15 },
     words: [
-      { word: "ИММУНИТЕТ", clue: "Способность организма защищаться от болезней", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "АНТИТЕЛО", clue: "Белок, борющийся с инфекцией", direction: "down", row: 0, col: 5, number: 2 },
-      { word: "ВАКЦИНА", clue: "Препарат для создания иммунитета", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "ЛИМФОЦИТ", clue: "Клетка иммунной системы", direction: "down", row: 5, col: 3, number: 4 },
-      { word: "ИНФЕКЦИЯ", clue: "Заражение организма микробами", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "ФАГОЦИТ", clue: "Клетка, поглощающая бактерии", direction: "down", row: 0, col: 9, number: 6 }
+      { word: "ИММУНИТЕТ", clue: "Способность организма защищаться от болезней" },
+      { word: "АНТИТЕЛО", clue: "Белок, борющийся с инфекцией" },
+      { word: "ВАКЦИНА", clue: "Препарат для создания иммунитета" },
+      { word: "ЛИМФОЦИТ", clue: "Клетка иммунной системы" },
+      { word: "ИНФЕКЦИЯ", clue: "Заражение организма микробами" },
+      { word: "ФАГОЦИТ", clue: "Клетка, поглощающая бактерии" }
     ]
   },
   {
@@ -265,12 +262,12 @@ const crosswordsData = [
     difficulty: "hard",
     size: { rows: 18, cols: 18 },
     words: [
-      { word: "ЭНТАЛЬПИЯ", clue: "Тепловая энергия системы", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "ЭНТРОПИЯ", clue: "Мера беспорядка в системе", direction: "down", row: 0, col: 2, number: 2 },
-      { word: "ТЕПЛОТА", clue: "Форма передачи энергии", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "ЭКЗОТЕРМИЧЕСКИЙ", clue: "Процесс с выделением тепла", direction: "down", row: 0, col: 8, number: 4 },
-      { word: "РАБОТА", clue: "Форма передачи энергии", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "СИСТЕМА", clue: "Часть пространства, изучаемая в термодинамике", direction: "down", row: 5, col: 4, number: 6 }
+      { word: "ЭНТАЛЬПИЯ", clue: "Тепловая энергия системы" },
+      { word: "ЭНТРОПИЯ", clue: "Мера беспорядка в системе" },
+      { word: "ТЕПЛОТА", clue: "Форма передачи энергии" },
+      { word: "ЭКЗОТЕРМИЧЕСКИЙ", clue: "Процесс с выделением тепла" },
+      { word: "РАБОТА", clue: "Форма передачи энергии" },
+      { word: "СИСТЕМА", clue: "Часть пространства, изучаемая в термодинамике" }
     ]
   },
   {
@@ -282,12 +279,12 @@ const crosswordsData = [
     difficulty: "hard",
     size: { rows: 15, cols: 15 },
     words: [
-      { word: "ЭКОСИСТЕМА", clue: "Сообщество организмов и среда их обитания", direction: "across", row: 0, col: 0, number: 1 },
-      { word: "БИОЦЕНОЗ", clue: "Совокупность живых организмов", direction: "down", row: 0, col: 5, number: 2 },
-      { word: "ПРОДУЦЕНТ", clue: "Организм, создающий органические вещества", direction: "across", row: 5, col: 0, number: 3 },
-      { word: "КОНСУМЕНТ", clue: "Организм, потребляющий готовые органические вещества", direction: "down", row: 5, col: 4, number: 4 },
-      { word: "РЕДУЦЕНТ", clue: "Организм, разлагающий органические вещества", direction: "across", row: 8, col: 1, number: 5 },
-      { word: "БИОТОП", clue: "Место обитания биоценоза", direction: "down", row: 0, col: 9, number: 6 }
+      { word: "ЭКОСИСТЕМА", clue: "Сообщество организмов и среда их обитания" },
+      { word: "БИОЦЕНОЗ", clue: "Совокупность живых организмов" },
+      { word: "ПРОДУЦЕНТ", clue: "Организм, создающий органические вещества" },
+      { word: "КОНСУМЕНТ", clue: "Организм, потребляющий готовые органические вещества" },
+      { word: "РЕДУЦЕНТ", clue: "Организм, разлагающий органические вещества" },
+      { word: "БИОТОП", clue: "Место обитания биоценоза" }
     ]
   }
 ];

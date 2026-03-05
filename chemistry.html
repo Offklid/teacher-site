@@ -1,29 +1,714 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Химия — Учитель химии и биологии</title>
+  <meta name="description"
+    content="Учебные материалы по химии: конспекты, презентации, тесты, ОГЭ/ЕГЭ. Интерактивная таблица элементов для 8–11 классов.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/modern.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/search.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ---- Chem-page-specific styles ---- */
+
+    .chem-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 1.5rem 4rem;
+      background: transparent;
+      color: white;
+      text-align: center;
+      z-index: 2;
+      min-height: auto;
+    }
+
+    .chem-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #fff 0%, #4facfe 40%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .chem-hero .hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 560px;
+      margin: 0 auto 1.75rem;
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .breadcrumb {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 1.25rem;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .breadcrumb a:hover {
+      color: #fff;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .4rem 1rem;
+      background: rgba(79, 172, 254, .12);
+      border: 1px solid rgba(79, 172, 254, .3);
+      border-radius: 20px;
+      font-size: .82rem;
+      color: #4facfe;
+      font-weight: 600;
+    }
+
+    .hero-badge.purple {
+      background: rgba(167, 139, 250, .12);
+      border-color: rgba(167, 139, 250, .3);
+      color: #a78bfa;
+    }
+
+    .hero-badge.green {
+      background: rgba(107, 196, 145, .12);
+      border-color: rgba(107, 196, 145, .3);
+      color: #6bc491;
+    }
+
+    /* ---- Stats bar ---- */
+    .chem-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .chem-stat-card {
+      background: rgba(22, 33, 62, .7);
+      border: 1px solid rgba(102, 126, 234, .2);
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: transform .3s ease, border-color .3s ease;
+    }
+
+    .chem-stat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79, 172, 254, .5);
+    }
+
+    .chem-stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4facfe, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+
+    .chem-stat-label {
+      font-size: .82rem;
+      color: rgba(160, 174, 192, .8);
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .chem-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ---- Topics grid ---- */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .topic-card {
+      background: rgba(22, 33, 62, .7);
+      border: 1px solid rgba(102, 126, 234, .15);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      transition: all .3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topic-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79, 172, 254, .4);
+    }
+
+    .topic-card:hover::before {
+      opacity: 1;
+    }
+
+    .topic-card.blue::before {
+      background: linear-gradient(90deg, #4facfe, #667eea);
+    }
+
+    .topic-card.purple::before {
+      background: linear-gradient(90deg, #a78bfa, #667eea);
+    }
+
+    .topic-card.green::before {
+      background: linear-gradient(90deg, #6bc491, #4facfe);
+    }
+
+    .topic-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .topic-icon.blue {
+      background: rgba(79, 172, 254, .15);
+      color: #4facfe;
+    }
+
+    .topic-icon.purple {
+      background: rgba(167, 139, 250, .15);
+      color: #a78bfa;
+    }
+
+    .topic-icon.green {
+      background: rgba(107, 196, 145, .15);
+      color: #6bc491;
+    }
+
+    .topic-icon.orange {
+      background: rgba(251, 146, 60, .15);
+      color: #fb923c;
+    }
+
+    .topic-icon.red {
+      background: rgba(239, 68, 68, .15);
+      color: #f87171;
+    }
+
+    .topic-icon.teal {
+      background: rgba(45, 212, 191, .15);
+      color: #2dd4bf;
+    }
+
+    .topic-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #e0e7ff;
+      margin: 0;
+    }
+
+    .topic-card p {
+      font-size: .85rem;
+      color: rgba(160, 174, 192, .75);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .topic-tag {
+      display: inline-block;
+      font-size: .72rem;
+      padding: .15rem .55rem;
+      border-radius: 6px;
+      font-weight: 600;
+      background: rgba(102, 126, 234, .12);
+      color: #818cf8;
+    }
+
+    /* ---- Periodic table spotlight ---- */
+    .periodic-table-wrapper {
+      max-width: 100%;
+      margin: 2rem auto;
+      overflow: visible;
+    }
+
+    .table-header {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.7rem;
+      color: rgba(160, 174, 192, .7);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .elements-grid {
+      display: grid;
+      grid-template-columns: 35px repeat(8, 1fr);
+      grid-template-rows: auto repeat(11, minmax(55px, auto)) 10px repeat(4, minmax(55px, auto));
+      gap: 2px;
+      margin-top: 0.5rem;
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .period-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: rgba(160, 174, 192, .6);
+      font-weight: 600;
+      background: rgba(22, 33, 62, .5);
+      border-radius: 3px;
+      padding: 2px;
+    }
+
+    .group-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: rgba(160, 174, 192, .6);
+      font-weight: 600;
+      padding: 4px 2px;
+      background: rgba(22, 33, 62, .5);
+      border-radius: 3px;
+      text-align: center;
+      line-height: 1.1;
+      min-height: 25px;
+    }
+
+    .element-card {
+      background: rgba(22, 33, 62, .8);
+      border: 1px solid rgba(102, 126, 234, .2);
+      border-radius: 4px;
+      padding: 4px 3px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .25s ease;
+      position: relative;
+      overflow: visible;
+      min-height: 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+    
+    /* Для элементов группы VIII которые накладываются */
+    .element-card[style*="col:8"],
+    .element-card[style*="col: 8"] {
+      position: relative;
+      z-index: 1;
+    }
+
+    .element-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .element-card:hover {
+      transform: scale(1.15);
+      border-color: transparent;
+      box-shadow: 0 6px 20px rgba(79, 172, 254, .3);
+      z-index: 10;
+    }
+
+    .element-card:hover::before {
+      opacity: 1;
+    }
+
+    .element-card.type-metal::before {
+      background: linear-gradient(135deg, rgba(251, 146, 60, .15), rgba(239, 68, 68, .1));
+    }
+
+    .element-card.type-nonmetal::before {
+      background: linear-gradient(135deg, rgba(79, 172, 254, .15), rgba(167, 139, 250, .1));
+    }
+
+    .element-card.type-noble::before {
+      background: linear-gradient(135deg, rgba(167, 139, 250, .2), rgba(236, 72, 153, .1));
+    }
+
+    .element-card.type-semi::before {
+      background: linear-gradient(135deg, rgba(45, 212, 191, .15), rgba(79, 172, 254, .1));
+    }
+
+    .element-number {
+      font-size: .55rem;
+      color: rgba(160, 174, 192, .5);
+      margin-bottom: 1px;
+      line-height: 1;
+      position: absolute;
+      top: 3px;
+      left: 4px;
+    }
+
+    .element-symbol {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .element-card.type-metal .element-symbol {
+      color: #fb923c;
+    }
+
+    .element-card.type-nonmetal .element-symbol {
+      color: #60a5fa;
+    }
+
+    .element-card.type-noble .element-symbol {
+      color: #c084fc;
+    }
+
+    .element-card.type-semi .element-symbol {
+      color: #2dd4bf;
+    }
+
+    .element-name {
+      font-size: .52rem;
+      color: rgba(160, 174, 192, .7);
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    .element-mass {
+      font-size: .48rem;
+      color: rgba(160, 174, 192, .4);
+      margin-top: 1px;
+      line-height: 1;
+    }
+    
+    /* Разделитель для лантаноидов и актиноидов */
+    .lanthanides-separator {
+      grid-column: 1 / -1;
+      height: 10px;
+    }
+
+    .lanthanide-label,
+    .actinide-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: rgba(160, 174, 192, .6);
+      font-weight: 600;
+      background: rgba(22, 33, 62, .5);
+      border-radius: 3px;
+      padding: 4px 2px;
+      text-align: center;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .element-tooltip {
+      position: fixed;
+      z-index: 999;
+      background: rgba(15, 20, 40, .97);
+      border: 1px solid rgba(79, 172, 254, .3);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      max-width: 260px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .2s, transform .2s;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .5);
+    }
+
+    .element-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .element-tooltip h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #e0e7ff;
+      margin: 0 0 .5rem;
+    }
+
+    .element-tooltip p {
+      font-size: .82rem;
+      color: rgba(160, 174, 192, .85);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .elements-legend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .8rem;
+      color: rgba(160, 174, 192, .7);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    .legend-dot.metal {
+      background: #fb923c;
+    }
+
+    .legend-dot.nonmetal {
+      background: #60a5fa;
+    }
+
+    .legend-dot.noble {
+      background: #c084fc;
+    }
+
+    .legend-dot.semi {
+      background: #2dd4bf;
+    }
+
+    /* ---- Fun facts ---- */
+    .chem-facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .chem-fact-card {
+      background: rgba(22, 33, 62, .7);
+      border: 1px solid rgba(102, 126, 234, .15);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: all .3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .chem-fact-card:hover {
+      transform: translateX(4px);
+      border-color: rgba(79, 172, 254, .4);
+      box-shadow: 0 8px 28px rgba(79, 172, 254, .08);
+    }
+
+    .chem-fact-emoji {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .chem-fact-card p {
+      font-size: .9rem;
+      color: rgba(160, 174, 192, .85);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .chem-fact-card strong {
+      color: #60a5fa;
+    }
+
+    /* ---- Materials section ---- */
+    .materials-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .grade-filters {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .grade-filter-btn {
+      padding: .45rem 1.1rem;
+      background: rgba(102, 126, 234, .08);
+      border: 1px solid rgba(102, 126, 234, .22);
+      border-radius: 8px;
+      color: #c7d2fe;
+      font-size: .875rem;
+      cursor: pointer;
+      transition: all .2s ease;
+      font-family: inherit;
+      font-weight: 500;
+    }
+
+    .grade-filter-btn:hover {
+      background: rgba(102, 126, 234, .18);
+      border-color: rgba(102, 126, 234, .45);
+    }
+
+    .grade-filter-btn.active {
+      background: linear-gradient(135deg, #4facfe, #a78bfa);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(79, 172, 254, .35);
+    }
+
+    .no-materials {
+      text-align: center;
+      padding: 3rem;
+      color: rgba(160, 174, 192, .6);
+      background: rgba(22, 33, 62, .4);
+      border-radius: 16px;
+      border: 1px dashed rgba(102, 126, 234, .25);
+    }
+
+    .no-materials p {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .loading-materials {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 3rem;
+      color: rgba(160, 174, 192, .7);
+    }
+
+    .loading-spinner {
+      width: 44px;
+      height: 44px;
+      border: 3px solid rgba(102, 126, 234, .15);
+      border-top-color: #4facfe;
+      border-radius: 50%;
+      animation: chem-spin 0.8s linear infinite;
+    }
+
+    @keyframes chem-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ---- Quick links ---- */
+    .chem-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .chem-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .65rem 1.5rem;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .25s ease;
+      cursor: pointer;
+    }
+
+    .chem-link.primary {
+      background: linear-gradient(135deg, #4facfe, #a78bfa);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(79, 172, 254, .35);
+    }
+
+    .chem-link.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79, 172, 254, .45);
+    }
+
+    .chem-link.secondary {
+      background: rgba(102, 126, 234, .1);
+      border: 1px solid rgba(102, 126, 234, .3);
+      color: #c7d2fe;
+    }
+
+    .chem-link.secondary:hover {
+      background: rgba(102, 126, 234, .18);
+      border-color: rgba(102, 126, 234, .5);
+    }
+  </style>
 </head>
+
 <body>
   <div id="particles-js"></div>
+
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="logo">Химия и биология</a>
-      
-      <!-- Бургер-меню -->
+
       <button class="burger-menu" aria-label="Открыть меню" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-      
+
       <ul class="nav-list">
         <li><a href="index.html#about">Об учителе</a></li>
         <li><a href="index.html#materials">Материалы</a></li>
@@ -35,150 +720,544 @@
   </header>
 
   <main>
-    <!-- Hero-секция с декорациями -->
-    <section class="hero">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="chem-hero">
       <div class="hero-decor">
         <svg class="decor-atom" viewBox="0 0 80 80" width="80" height="80">
-          <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
-          <circle cx="40" cy="20" r="8" fill="rgba(255,255,255,0.14)"/>
-          <circle cx="20" cy="55" r="8" fill="rgba(255,255,255,0.14)"/>
-          <circle cx="60" cy="55" r="8" fill="rgba(255,255,255,0.14)"/>
-          <line x1="40" y1="20" x2="20" y2="55" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
-          <line x1="40" y1="20" x2="60" y2="55" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
-        </svg>
-
-        <svg class="decor-dna" viewBox="0 0 100 100" width="80" height="80">
-          <defs>
-            <linearGradient id="dnaGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.8" />
-              <stop offset="100%" style="stop-color:#f093fb;stop-opacity:0.8" />
-            </linearGradient>
-          </defs>
-          <g class="dna-strand">
-            <circle cx="30" cy="20" r="6" fill="url(#dnaGradient2)"/>
-            <circle cx="70" cy="20" r="6" fill="url(#dnaGradient2)"/>
-            <line x1="30" y1="20" x2="70" y2="20" stroke="url(#dnaGradient2)" stroke-width="2"/>
-            <circle cx="35" cy="40" r="6" fill="url(#dnaGradient2)"/>
-            <circle cx="65" cy="40" r="6" fill="url(#dnaGradient2)"/>
-            <line x1="35" y1="40" x2="65" y2="40" stroke="url(#dnaGradient2)" stroke-width="2"/>
-            <circle cx="30" cy="60" r="6" fill="url(#dnaGradient2)"/>
-            <circle cx="70" cy="60" r="6" fill="url(#dnaGradient2)"/>
-            <line x1="30" y1="60" x2="70" y2="60" stroke="url(#dnaGradient2)" stroke-width="2"/>
-            <circle cx="35" cy="80" r="6" fill="url(#dnaGradient2)"/>
-            <circle cx="65" cy="80" r="6" fill="url(#dnaGradient2)"/>
-            <line x1="35" y1="80" x2="65" y2="80" stroke="url(#dnaGradient2)" stroke-width="2"/>
-          </g>
+          <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(79,172,254,0.25)" stroke-width="2" />
+          <circle cx="40" cy="20" r="8" fill="rgba(79,172,254,0.18)" />
+          <circle cx="20" cy="55" r="8" fill="rgba(79,172,254,0.18)" />
+          <circle cx="60" cy="55" r="8" fill="rgba(79,172,254,0.18)" />
+          <line x1="40" y1="20" x2="20" y2="55" stroke="rgba(79,172,254,0.2)" stroke-width="1.5" />
+          <line x1="40" y1="20" x2="60" y2="55" stroke="rgba(79,172,254,0.2)" stroke-width="1.5" />
         </svg>
         <svg class="decor-flask" viewBox="0 0 100 100" width="75" height="75">
           <defs>
-            <linearGradient id="flaskGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.8" />
-              <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.8" />
+            <linearGradient id="flaskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#4facfe;stop-opacity:.8" />
+              <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:.8" />
             </linearGradient>
           </defs>
-          <path d="M35 10 L35 30 L25 60 Q25 80 50 80 Q75 80 75 60 L65 30 L65 10 Z" 
-                fill="url(#flaskGradient2)" stroke="#fff" stroke-width="2" opacity="0.7"/>
-          <rect x="30" y="5" width="40" height="8" fill="#fff" opacity="0.5" rx="2"/>
-          <ellipse cx="50" cy="65" rx="15" ry="8" fill="#fff" opacity="0.3" class="flask-bubble"/>
+          <path d="M35 10 L35 30 L25 60 Q25 80 50 80 Q75 80 75 60 L65 30 L65 10 Z" fill="url(#flaskGrad)" stroke="#fff"
+            stroke-width="2" opacity="0.7" />
+          <rect x="30" y="5" width="40" height="8" fill="#fff" opacity="0.5" rx="2" />
+          <ellipse cx="50" cy="65" rx="15" ry="8" fill="#fff" opacity="0.3" class="flask-bubble" />
         </svg>
-        <svg class="decor-leaf" viewBox="0 0 100 100" width="70" height="70">
+        <svg class="decor-molecule" viewBox="0 0 100 100" width="70" height="70">
           <defs>
-            <linearGradient id="leafGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#6bc491;stop-opacity:0.9" />
-              <stop offset="100%" style="stop-color:#4a9c6d;stop-opacity:0.9" />
-            </linearGradient>
-          </defs>
-          <path d="M50 10 Q70 30 70 50 Q70 70 50 90 Q30 70 30 50 Q30 30 50 10 Z" 
-                fill="url(#leafGradient2)" stroke="#fff" stroke-width="2" opacity="0.7"/>
-          <path d="M50 10 L50 90" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
-          <path d="M50 30 Q60 40 50 50" stroke="#fff" stroke-width="1" opacity="0.4" fill="none"/>
-          <path d="M50 50 Q40 60 50 70" stroke="#fff" stroke-width="1" opacity="0.4" fill="none"/>
-        </svg>
-        <svg class="decor-molecule" viewBox="0 0 100 100" width="80" height="80">
-          <defs>
-            <radialGradient id="moleculeGradient2">
-              <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.8" />
+            <radialGradient id="molChem">
+              <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#4facfe;stop-opacity:.8" />
             </radialGradient>
           </defs>
           <g class="molecule-atoms">
-            <circle cx="50" cy="50" r="12" fill="url(#moleculeGradient2)" opacity="0.9"/>
-            <circle cx="25" cy="30" r="8" fill="url(#moleculeGradient2)" opacity="0.8"/>
-            <circle cx="75" cy="30" r="8" fill="url(#moleculeGradient2)" opacity="0.8"/>
-            <circle cx="30" cy="75" r="8" fill="url(#moleculeGradient2)" opacity="0.8"/>
-            <circle cx="70" cy="75" r="8" fill="url(#moleculeGradient2)" opacity="0.8"/>
-            <line x1="50" y1="50" x2="25" y2="30" stroke="#fff" stroke-width="2" opacity="0.5"/>
-            <line x1="50" y1="50" x2="75" y2="30" stroke="#fff" stroke-width="2" opacity="0.5"/>
-            <line x1="50" y1="50" x2="30" y2="75" stroke="#fff" stroke-width="2" opacity="0.5"/>
-            <line x1="50" y1="50" x2="70" y2="75" stroke="#fff" stroke-width="2" opacity="0.5"/>
+            <circle cx="50" cy="50" r="12" fill="url(#molChem)" opacity=".9" />
+            <circle cx="25" cy="30" r="8" fill="url(#molChem)" opacity=".8" />
+            <circle cx="75" cy="30" r="8" fill="url(#molChem)" opacity=".8" />
+            <circle cx="30" cy="75" r="8" fill="url(#molChem)" opacity=".8" />
+            <circle cx="70" cy="75" r="8" fill="url(#molChem)" opacity=".8" />
+            <line x1="50" y1="50" x2="25" y2="30" stroke="#fff" stroke-width="2" opacity=".5" />
+            <line x1="50" y1="50" x2="75" y2="30" stroke="#fff" stroke-width="2" opacity=".5" />
+            <line x1="50" y1="50" x2="30" y2="75" stroke="#fff" stroke-width="2" opacity=".5" />
+            <line x1="50" y1="50" x2="70" y2="75" stroke="#fff" stroke-width="2" opacity=".5" />
           </g>
         </svg>
       </div>
-      <p class="breadcrumb"><a href="index.html">Главная</a> → Материалы → Химия</p>
+
+      <p class="breadcrumb"><a href="index.html">Главная</a> → <a href="index.html#materials">Материалы</a> → Химия</p>
       <h1>Химия</h1>
-      
+      <p class="hero-subtitle">Познаём вещество: от атома до реакции. Интерактивные материалы, таблица элементов и
+        подготовка к экзаменам</p>
+
+      <div class="hero-badges">
+        <span class="hero-badge">⚗️ 8–11 класс</span>
+        <span class="hero-badge purple">🔬 Таблица Менделеева</span>
+        <span class="hero-badge green">📊 ОГЭ / ЕГЭ</span>
+      </div>
     </section>
 
-    <section class="section">
-      <p class="section-subtitle">Презентации, конспекты, тесты и дополнительные материалы</p>
-      
-      <!-- Фильтры по классам -->
-      <div class="grade-filters">
-        <button class="grade-filter-btn active" onclick="filterByGrade('chemistry', 8)">8 класс</button>
-        <button class="grade-filter-btn" onclick="filterByGrade('chemistry', 9)">9 класс</button>
-        <button class="grade-filter-btn" onclick="filterByGrade('chemistry', 10)">10 класс</button>
-        <button class="grade-filter-btn" onclick="filterByGrade('chemistry', 11)">11 класс</button>
+    <!-- ===================== STATS ===================== -->
+    <div class="chem-stats" data-aos="fade-up">
+      <div class="chem-stat-card">
+        <div class="chem-stat-number">118</div>
+        <div class="chem-stat-label">элементов в таблице Менделеева</div>
       </div>
-      
-      <!-- Контейнер для материалов -->
+      <div class="chem-stat-card">
+        <div class="chem-stat-number">10²³</div>
+        <div class="chem-stat-label">молекул в 18 г воды (моль Авогадро)</div>
+      </div>
+      <div class="chem-stat-card">
+        <div class="chem-stat-number">−273°C</div>
+        <div class="chem-stat-label">абсолютный ноль — предел охлаждения</div>
+      </div>
+      <div class="chem-stat-card">
+        <div class="chem-stat-number">1869</div>
+        <div class="chem-stat-label">год открытия периодического закона</div>
+      </div>
+    </div>
+
+    <!-- ===================== TOPICS ===================== -->
+    <section class="section" data-aos="fade-up">
+      <h2 class="section-title">Темы курса химии</h2>
+      <p class="section-subtitle">Ключевые разделы программы 8–11 классов</p>
+
+      <div class="topics-grid">
+
+        <div class="topic-card blue" data-aos="fade-up" data-aos-delay="50">
+          <div class="topic-icon blue">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="12" cy="12" r="7" opacity=".4" />
+              <line x1="12" y1="2" x2="12" y2="5" />
+              <line x1="12" y1="19" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="5" y2="12" />
+              <line x1="19" y1="12" x2="22" y2="12" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">8 класс</span>
+            <h4>Строение атома</h4>
+            <p>Протоны, нейтроны, электроны. Электронные оболочки, валентность и периодический закон Менделеева.</p>
+          </div>
+        </div>
+
+        <div class="topic-card purple" data-aos="fade-up" data-aos-delay="100">
+          <div class="topic-icon purple">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">8 класс</span>
+            <h4>Химическая связь</h4>
+            <p>Ковалентная, ионная, металлическая и водородная связи. Как атомы объединяются в молекулы.</p>
+          </div>
+        </div>
+
+        <div class="topic-card green" data-aos="fade-up" data-aos-delay="150">
+          <div class="topic-icon orange">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">8–9 класс</span>
+            <h4>Классы неорганических веществ</h4>
+            <p>Оксиды, кислоты, основания, соли. Номенклатура и характерные химические свойства.</p>
+          </div>
+        </div>
+
+        <div class="topic-card blue" data-aos="fade-up" data-aos-delay="200">
+          <div class="topic-icon teal">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">9 класс</span>
+            <h4>Химические реакции</h4>
+            <p>Типы реакций: соединение, разложение, замещение, обмен. Окислительно-восстановительные реакции.</p>
+          </div>
+        </div>
+
+        <div class="topic-card purple" data-aos="fade-up" data-aos-delay="250">
+          <div class="topic-icon red">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4l3 3" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">9 класс</span>
+            <h4>Растворы и электролиз</h4>
+            <p>Растворимость, ионные уравнения, рН среды, электролиты и неэлектролиты, электролиз расплавов.</p>
+          </div>
+        </div>
+
+        <div class="topic-card green" data-aos="fade-up" data-aos-delay="300">
+          <div class="topic-icon green">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 3h18v18H3z" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">10 класс</span>
+            <h4>Органическая химия</h4>
+            <p>Углеводороды, спирты, карбоновые кислоты. Изомерия, гомологические ряды и реакции органических веществ.
+            </p>
+          </div>
+        </div>
+
+        <div class="topic-card blue" data-aos="fade-up" data-aos-delay="350">
+          <div class="topic-icon blue">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">10–11 класс</span>
+            <h4>Химия и жизнь</h4>
+            <p>Полимеры, белки, жиры, углеводы. Роль химии в медицине, агрономии и промышленности.</p>
+          </div>
+        </div>
+
+        <div class="topic-card purple" data-aos="fade-up" data-aos-delay="400">
+          <div class="topic-icon purple">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+          </div>
+          <div>
+            <span class="topic-tag">11 класс</span>
+            <h4>Химическая термодинамика</h4>
+            <p>Тепловые эффекты, закон Гесса, энтропия и энергия Гиббса. Направление химических процессов.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== PERIODIC TABLE SPOTLIGHT ===================== -->
+    <section class="section" data-aos="fade-up" id="elements">
+      <h2 class="section-title">Периодическая таблица Менделеева</h2>
+      <p class="section-subtitle">Наведите на элемент, чтобы узнать интересный факт</p>
+
+      <div class="periodic-table-wrapper">
+        <div class="table-header">ГРУППЫ ЭЛЕМЕНТОВ</div>
+        <div class="elements-grid" id="elementsGrid"></div>
+      </div>
+
+      <div class="elements-legend">
+        <div class="legend-item"><span class="legend-dot metal"></span>Металлы</div>
+        <div class="legend-item"><span class="legend-dot nonmetal"></span>Неметаллы</div>
+        <div class="legend-item"><span class="legend-dot noble"></span>Благородные газы</div>
+        <div class="legend-item"><span class="legend-dot semi"></span>Металлоиды</div>
+      </div>
+    </section>
+
+    <!-- tooltip -->
+    <div class="element-tooltip" id="elementTooltip">
+      <h4 id="tooltipName"></h4>
+      <p id="tooltipFact"></p>
+    </div>
+
+    <!-- ===================== FUN FACTS ===================== -->
+    <section class="section" data-aos="fade-up">
+      <h2 class="section-title">Интересные факты о химии</h2>
+      <p class="section-subtitle">Удивительные открытия, которые делают химию захватывающей</p>
+
+      <div class="chem-facts-grid">
+        <div class="chem-fact-card" data-aos="fade-up" data-aos-delay="50">
+          <span class="chem-fact-emoji">⚗️</span>
+          <p>Вода — единственное вещество на Земле, которое в природе встречается в <strong>трёх агрегатных
+              состояниях</strong> одновременно.</p>
+        </div>
+        <div class="chem-fact-card" data-aos="fade-up" data-aos-delay="100">
+          <span class="chem-fact-emoji">💎</span>
+          <p>Алмаз и графит состоят из <strong>одного и того же элемента — углерода</strong>, но отличаются строением
+            кристаллической решётки.</p>
+        </div>
+        <div class="chem-fact-card" data-aos="fade-up" data-aos-delay="150">
+          <span class="chem-fact-emoji">🔥</span>
+          <p>Температура горения ацетилена достигает <strong>3 100°C</strong> — это позволяет резать металлы
+            газосварочными горелками.</p>
+        </div>
+        <div class="chem-fact-card" data-aos="fade-up" data-aos-delay="200">
+          <span class="chem-fact-emoji">🌬️</span>
+          <p>Воздух, которым мы дышим, содержит <strong>~78% азота</strong> — инертного газа, который делает атмосферу
+            «безопасной» для жизни.</p>
+        </div>
+        <div class="chem-fact-card" data-aos="fade-up" data-aos-delay="250">
+          <span class="chem-fact-emoji">⚡</span>
+          <p>Галлий плавится <strong>прямо в руке</strong> при температуре 29,76°C — чуть выше комнатной.</p>
+        </div>
+        <div class="chem-fact-card" data-aos="fade-up" data-aos-delay="300">
+          <span class="chem-fact-emoji">🧪</span>
+          <p>Число Авогадро (6,022 × 10²³) настолько велико, что если заполнить им секунды — это <strong>в 130 000 раз
+              превысит возраст Вселенной</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MATERIALS ===================== -->
+    <section class="section" id="materials" data-aos="fade-up">
+      <div class="materials-header">
+        <div>
+          <h2 class="section-title">Материалы</h2>
+          <p class="section-subtitle" style="margin-bottom: 0;">Презентации, конспекты, тесты и задания</p>
+        </div>
+        <div class="grade-filters">
+          <button class="grade-filter-btn active" id="btn-grade-8" onclick="filterByGrade('chemistry', 8)">8
+            класс</button>
+          <button class="grade-filter-btn" id="btn-grade-9" onclick="filterByGrade('chemistry', 9)">9 класс</button>
+          <button class="grade-filter-btn" id="btn-grade-10" onclick="filterByGrade('chemistry', 10)">10 класс</button>
+          <button class="grade-filter-btn" id="btn-grade-11" onclick="filterByGrade('chemistry', 11)">11 класс</button>
+        </div>
+      </div>
+
       <div class="materials-grid" id="chemistry-materials">
-        <!-- Материалы будут загружены из materials.js -->
+        <!-- Материалы загружаются из Google Drive -->
       </div>
-      
-      <div class="quick-links" style="margin-top: 2rem;">
-        <a href="exam.html" class="quick-link">
-          <svg class="quick-link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+
+      <div class="chem-links" style="margin-top: 2.5rem;">
+        <a href="exam.html" class="chem-link primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
           </svg>
           ОГЭ / ЕГЭ по химии
         </a>
-        <a href="index.html#materials" class="quick-link">← К материалам</a>
+        <a href="crosswords.html" class="chem-link secondary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+          </svg>
+          Кроссворды по химии
+        </a>
+        <a href="index.html#materials" class="chem-link secondary">← Все материалы</a>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
     <p>© Сайт учителя химии и биологии. Сделано с заботой об учёбе.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="js/main.js"></script>
+  <script src="js/skeleton.js"></script>
   <script src="js/drive-parser.js"></script>
+  <script src="js/elements-positions.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+  <script src="js/search.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
   <script>
-    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+    // AOS
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
+
+    // Particles
     particlesJS('particles-js', {
-      particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } }, size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } }, line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' } },
-      interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } }, modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } } },
+      particles: {
+        number: { value: 55, density: { enable: true, value_area: 900 } },
+        color: { value: ['#4facfe', '#a78bfa', '#667eea', '#60a5fa'] },
+        shape: { type: 'circle' },
+        opacity: { value: 0.35, random: true, anim: { enable: true, speed: 1, opacity_min: 0.05 } },
+        size: { value: 2.5, random: true },
+        line_linked: { enable: true, distance: 140, color: '#4facfe', opacity: 0.12, width: 1 },
+        move: { enable: true, speed: 1.2, direction: 'none', out_mode: 'out' }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+        modes: { grab: { distance: 130, line_linked: { opacity: 0.35 } }, push: { particles_nb: 3 } }
+      },
       retina_detect: true
     });
+
+    // ---- Periodic table spotlight ----
+    const elements = allElements;
+
+    const grid = document.getElementById('elementsGrid');
+    const tooltip = document.getElementById('elementTooltip');
+    const tooltipName = document.getElementById('tooltipName');
+    const tooltipFact = document.getElementById('tooltipFact');
+
+    // Добавляем заголовки групп (римские цифры I-VIII)
+    const groupLabels = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+    const groupLabel0 = document.createElement('div');
+    groupLabel0.className = 'group-label';
+    groupLabel0.style.gridRow = '1';
+    groupLabel0.style.gridColumn = '1';
+    groupLabel0.textContent = 'Период';
+    grid.appendChild(groupLabel0);
+
+    for (let i = 0; i < 8; i++) {
+      const label = document.createElement('div');
+      label.className = 'group-label';
+      label.style.gridRow = '1';
+      label.style.gridColumn = i + 2;
+      label.textContent = groupLabels[i];
+      grid.appendChild(label);
+    }
+
+    // Добавляем метки периодов с учетом многострочности
+    const periodLabels = [
+      { period: 1, startRow: 1, rows: 1 },   // ряд 1
+      { period: 2, startRow: 2, rows: 1 },   // ряд 2
+      { period: 3, startRow: 3, rows: 1 },   // ряд 3
+      { period: 4, startRow: 4, rows: 2 },   // ряды 4-5
+      { period: 5, startRow: 6, rows: 2 },   // ряды 6-7
+      { period: 6, startRow: 8, rows: 2 },   // ряды 8-9
+      { period: 7, startRow: 10, rows: 2 }   // ряды 10-11
+    ];
     
-    // Автоматическая загрузка материалов из Google Drive для 8 класса (по умолчанию)
+    periodLabels.forEach(({ period, startRow, rows }) => {
+      const label = document.createElement('div');
+      label.className = 'period-label';
+      if (rows > 1) {
+        label.style.gridRow = `${startRow + 1} / span ${rows}`; // +1 для заголовка
+      } else {
+        label.style.gridRow = startRow + 1;
+      }
+      label.style.gridColumn = '1';
+      label.textContent = period;
+      grid.appendChild(label);
+    });
+
+    // Добавляем элементы - просто используем row и col из данных
+    // Группируем элементы группы VIII (col=8) по рядам
+    const group8Elements = {};
+    elements.forEach(el => {
+      if (el.col === 8 && el.row <= 11) {
+        if (!group8Elements[el.row]) group8Elements[el.row] = [];
+        group8Elements[el.row].push(el);
+      }
+    });
+
+    elements.forEach(el => {
+      const card = document.createElement('div');
+      card.className = `element-card type-${el.type}`;
+      
+      // Пропускаем элементы группы VIII - обработаем их отдельно
+      if (el.col === 8 && el.row <= 11 && group8Elements[el.row] && group8Elements[el.row].length > 1) {
+        return;
+      }
+      
+      if (el.row <= 11) {
+        // Основная таблица: +1 для заголовка, +1 для колонки периода
+        card.style.gridRow = el.row + 1;
+        card.style.gridColumn = el.col + 1;
+      } else if (el.row >= 12 && el.row <= 13) {
+        // Лантаноиды - ряды 14-15
+        card.style.gridRow = el.row + 2;
+        card.style.gridColumn = el.col + 1;
+      } else if (el.row >= 14 && el.row <= 15) {
+        // Актиноиды - ряды 16-17
+        card.style.gridRow = el.row + 2;
+        card.style.gridColumn = el.col + 1;
+      }
+      
+      card.innerHTML = `
+        <div class="element-number">${el.n}</div>
+        <div class="element-symbol">${el.sym}</div>
+        <div class="element-name">${el.name}</div>
+        <div class="element-mass">${el.mass}</div>
+      `;
+
+      card.addEventListener('mouseenter', (e) => {
+        tooltipName.textContent = `${el.sym} — ${el.name}`;
+        tooltipFact.textContent = el.fact;
+        tooltip.classList.add('visible');
+        moveTooltip(e);
+      });
+      card.addEventListener('mousemove', moveTooltip);
+      card.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('visible');
+      });
+
+      grid.appendChild(card);
+    });
+
+    // Добавляем группированные элементы группы VIII
+    Object.keys(group8Elements).forEach(row => {
+      const els = group8Elements[row];
+      if (els.length > 1) {
+        const container = document.createElement('div');
+        container.style.gridRow = parseInt(row) + 1;
+        container.style.gridColumn = '9'; // col 8 + 1
+        container.style.display = 'flex';
+        container.style.gap = '1px';
+        
+        els.forEach(el => {
+          const card = document.createElement('div');
+          card.className = `element-card type-${el.type}`;
+          card.style.flex = '1';
+          card.style.minWidth = '0';
+          
+          card.innerHTML = `
+            <div class="element-number">${el.n}</div>
+            <div class="element-symbol">${el.sym}</div>
+            <div class="element-name">${el.name}</div>
+            <div class="element-mass">${el.mass}</div>
+          `;
+
+          card.addEventListener('mouseenter', (e) => {
+            tooltipName.textContent = `${el.sym} — ${el.name}`;
+            tooltipFact.textContent = el.fact;
+            tooltip.classList.add('visible');
+            moveTooltip(e);
+          });
+          card.addEventListener('mousemove', moveTooltip);
+          card.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('visible');
+          });
+
+          container.appendChild(card);
+        });
+        
+        grid.appendChild(container);
+      }
+    });
+
+    // Добавляем разделитель перед лантаноидами
+    const separator = document.createElement('div');
+    separator.className = 'lanthanides-separator';
+    separator.style.gridRow = '13';
+    separator.style.gridColumn = '1 / -1';
+    grid.appendChild(separator);
+
+    // Добавляем метки для лантаноидов и актиноидов (растягиваем на 2 ряда)
+    const lanthanideLabel = document.createElement('div');
+    lanthanideLabel.className = 'lanthanide-label';
+    lanthanideLabel.style.gridRow = '14 / span 2'; // ряды 14-15
+    lanthanideLabel.style.gridColumn = '1';
+    lanthanideLabel.textContent = 'Лантаноиды';
+    grid.appendChild(lanthanideLabel);
+
+    const actinideLabel = document.createElement('div');
+    actinideLabel.className = 'actinide-label';
+    actinideLabel.style.gridRow = '16 / span 2'; // ряды 16-17
+    actinideLabel.style.gridColumn = '1';
+    actinideLabel.textContent = 'Актиноиды';
+    grid.appendChild(actinideLabel);
+
+    function moveTooltip(e) {
+      const tw = tooltip.offsetWidth || 260;
+      const th = tooltip.offsetHeight || 100;
+      let x = e.clientX + 16;
+      let y = e.clientY + 16;
+      if (x + tw > window.innerWidth - 10) x = e.clientX - tw - 10;
+      if (y + th > window.innerHeight - 10) y = e.clientY - th - 10;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+    }
+
+    // ---- Materials ----
     let currentGrade = 8;
-    displayMaterialsFromDrive('chemistry', currentGrade, 'chemistry-materials');
-    
-    // Функция для фильтрации по классам
+
     function filterByGrade(subject, grade) {
       currentGrade = grade;
       displayMaterialsFromDrive(subject, grade, 'chemistry-materials');
-      
-      // Обновляем активную кнопку
-      document.querySelectorAll('.grade-filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
+      document.querySelectorAll('.grade-filter-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('btn-grade-' + grade);
+      if (activeBtn) activeBtn.classList.add('active');
     }
+
+    // Загружаем материалы 8 класса по умолчанию
+    displayMaterialsFromDrive('chemistry', 8, 'chemistry-materials');
   </script>
 </body>
+
 </html>
