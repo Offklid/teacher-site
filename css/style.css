@@ -1711,3 +1711,94 @@ body.menu-open {
     grid-template-columns: 1fr;
   }
 }
+
+/* ========== Дополнительные мобильные оптимизации ========== */
+@media (max-width: 480px) {
+  .hero {
+    padding: 6rem 1rem 4rem;
+    min-height: 70vh;
+  }
+  
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .section {
+    padding: 2rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .quick-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .quick-link {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .content-grid,
+  .announcements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Оптимизация производительности */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Оптимизация для touch устройств */
+@media (hover: none) and (pointer: coarse) {
+  .subject-card:hover,
+  .content-card:hover,
+  .announcement-card:hover {
+    transform: none;
+  }
+  
+  .subject-card:active,
+  .content-card:active,
+  .announcement-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Улучшение читаемости на маленьких экранах */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: 1.1rem; }
+  
+  /* Увеличиваем кликабельные области */
+  button,
+  a,
+  .quick-link,
+  .subject-card,
+  .content-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

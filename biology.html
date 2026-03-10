@@ -152,6 +152,41 @@
       .bio-stats { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* Оптимизация 3D модели для мобильных */
+    @media (max-width: 768px) {
+      .anatomy-viewer {
+        grid-template-columns: 1fr;
+      }
+      
+      .anatomy-3d-container {
+        height: 400px;
+        order: -1;
+      }
+      
+      .bio-hero {
+        padding: 3rem 1rem 2rem;
+      }
+      
+      .topics-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .bio-facts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .anatomy-3d-container {
+        height: 300px;
+      }
+      
+      .hero-badges {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
     /* ---- Topics grid ---- */
     .topics-grid {
       display: grid;
@@ -399,6 +434,74 @@
     .anatomy-section .section-subtitle {
       text-align: center;
     }
+
+    /* Убираем лишние отступы под 3D моделью */
+    .anatomy-container {
+      margin-bottom: 0;
+    }
+
+    .anatomy-viewer {
+      margin-bottom: 1.5rem;
+    }
+
+    .anatomy-canvas {
+      margin-bottom: 0;
+    }
+
+    /* Блок с информацией под 3D моделью */
+    .anatomy-details {
+      background: rgba(22, 33, 62, .8);
+      border: 1px solid rgba(102, 126, 234, .25);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 0;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .anatomy-details h4 {
+      color: #6bc491;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .anatomy-details p {
+      color: rgba(160, 174, 192, .9);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .anatomy-details ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .anatomy-details li {
+      padding: 0.75rem 1rem;
+      color: rgba(160, 174, 192, .85);
+      background: rgba(102, 126, 234, .08);
+      border-radius: 8px;
+      border: 1px solid rgba(102, 126, 234, .15);
+      transition: all 0.3s ease;
+    }
+
+    .anatomy-details li:hover {
+      background: rgba(102, 126, 234, .15);
+      border-color: rgba(102, 126, 234, .3);
+      transform: translateY(-2px);
+    }
+
+    .anatomy-details strong {
+      color: #6bc491;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -643,7 +746,7 @@
                 <circle cx="12" cy="8" r="4"/>
                 <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
               </svg>
-              <p>Нажмите на систему органов слева для изучения</p>
+              <p>Нажмите на систему органов справа для изучения</p>
             </div>
           </div>
 
@@ -707,18 +810,19 @@
               </button>
 
             </div>
-
-            <div class="anatomy-details" id="anatomyDetails">
-              <h4>Скелетная система</h4>
-              <p>Скелет взрослого человека состоит из <strong>206 костей</strong>. Он выполняет опорную, защитную и двигательную функции. Самая длинная кость — бедренная, самая маленькая — стремечко (3 мм).</p>
-              <ul>
-                <li>Череп: 22 кости</li>
-                <li>Позвоночник: 33–34 позвонка</li>
-                <li>Грудная клетка: 25 костей</li>
-                <li>Конечности: 126 костей</li>
-              </ul>
-            </div>
           </div>
+        </div>
+
+        <!-- Информация о системе под 3D моделью -->
+        <div class="anatomy-details" id="anatomyDetails">
+          <h4>Скелетная система</h4>
+          <p>Скелет взрослого человека состоит из <strong>206 костей</strong>. Он выполняет опорную, защитную и двигательную функции. Самая длинная кость — бедренная (46 см), самая маленькая — стремечко в ухе (2.5 мм).</p>
+          <ul>
+            <li>Череп: 22 кости</li>
+            <li>Позвоночник: 33–34 позвонка</li>
+            <li>Грудная клетка: 25 костей</li>
+            <li>Конечности: 126 костей</li>
+          </ul>
         </div>
       </div>
 
