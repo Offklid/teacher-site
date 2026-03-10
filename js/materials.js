@@ -153,10 +153,10 @@ function displayMaterials(subject, grade, containerId) {
           <p class="material-description">${material.description}</p>
           <p class="material-date">${formatDate(material.date)}</p>
           <div class="material-actions">
-            <a href="${viewLink}" target="_blank" class="material-btn material-btn-view">
+            <a href="${viewLink}" target="_blank" rel="noopener noreferrer" class="material-btn material-btn-view">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
               </svg>
               Просмотр
             </a>
