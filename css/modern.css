@@ -723,13 +723,191 @@
 }
 
 
-/* ========== Materials Cards (Google Drive) ========== */
+/* ========== Materials Grid ========== */
 .materials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
+
+.materials-grid--nested {
+  margin: 0;
+  padding: 1.25rem 1.25rem 0.25rem;
+}
+
+/* ========== Folder ========== */
+.material-folder {
+  grid-column: 1 / -1;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(15, 20, 45, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(79, 172, 254, 0.18);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Accent gradient bar on top */
+.material-folder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4facfe 0%, #a78bfa 60%, #4facfe 100%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: folder-shimmer 3s linear infinite paused;
+}
+
+.material-folder:hover {
+  border-color: rgba(79, 172, 254, 0.45);
+  box-shadow: 0 8px 40px rgba(79, 172, 254, 0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* Когда папка раскрыта */
+.material-folder.is-open {
+  border-color: rgba(79, 172, 254, 0.4);
+  box-shadow: 0 8px 40px rgba(79, 172, 254, 0.12), inset 0 1px 0 rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+
+.material-folder.is-open::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.material-folder:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes folder-shimmer {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ── Header ── */
+.material-folder-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.25s;
+  user-select: none;
+  min-height: 64px;
+}
+
+.material-folder-header:hover {
+  background: rgba(79, 172, 254, 0.06);
+}
+
+/* Icon square */
+.folder-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(79, 172, 254, 0.12);
+  border: 1px solid rgba(79, 172, 254, 0.25);
+  color: #4facfe;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.material-folder-header:hover .folder-icon-wrap {
+  background: rgba(79, 172, 254, 0.2);
+  transform: scale(1.08);
+}
+
+/* Text group */
+.folder-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.folder-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e0e7ff;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.folder-meta {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(160, 174, 192, 0.6);
+  margin-top: 2px;
+}
+
+/* Badge: кол-во файлов */
+.folder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(102, 126, 234, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(102, 126, 234, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+
+.material-folder-header:hover .folder-badge {
+  background: rgba(102, 126, 234, 0.25);
+}
+
+/* Chevron */
+.folder-chevron {
+  flex-shrink: 0;
+  color: rgba(160, 174, 192, 0.5);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s;
+}
+
+.material-folder-header:hover .folder-chevron {
+  color: rgba(160, 174, 192, 0.9);
+}
+
+/* ── Content ── */
+.material-folder-content {
+  border-top: 1px solid rgba(79, 172, 254, 0.1);
+  background: rgba(0, 0, 0, 0.15);
+  /* JS toggles display; CSS handles the visual */
+}
+
+/* Nested grid inside folder */
+.material-folder .materials-grid--nested {
+  gap: 1.25rem;
+}
+
+/* Empty state inside folder */
+.folder-empty {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem 1.25rem;
+  color: rgba(148, 163, 184, 0.6);
+  font-size: 0.88rem;
+}
+
 
 .material-card {
   background: rgba(22, 33, 62, 0.7);
@@ -948,3 +1126,137 @@
   color: #94a3b8;
   font-size: 1.1rem;
 }
+
+
+/* ========== FAQ (Родителям) ========== */
+.faq-block {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.faq-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #c7d2fe;
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+.faq-heading svg {
+  color: #a78bfa;
+  flex-shrink: 0;
+}
+
+/* ── Один вопрос ── */
+.faq-item {
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.18);
+  background: rgba(15, 20, 45, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(102, 126, 234, 0.38);
+}
+
+.faq-item[open] {
+  border-color: rgba(79, 172, 254, 0.4);
+  box-shadow: 0 4px 24px rgba(79, 172, 254, 0.08);
+}
+
+/* ── Summary (заголовок) ── */
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e0e7ff;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Убираем стандартный маркер во всех браузерах */
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::marker               { display: none; }
+
+.faq-question:hover {
+  background: rgba(102, 126, 234, 0.07);
+  color: #fff;
+}
+
+.faq-item[open] .faq-question {
+  background: rgba(79, 172, 254, 0.06);
+  color: #fff;
+  border-bottom: 1px solid rgba(79, 172, 254, 0.12);
+}
+
+/* Стрелка */
+.faq-icon {
+  flex-shrink: 0;
+  color: rgba(160, 174, 192, 0.55);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(180deg);
+  color: #4facfe;
+}
+
+/* ── Ответ ── */
+.faq-answer {
+  padding: 1rem 1.25rem 1.15rem;
+  animation: faq-slide-in 0.25s ease;
+}
+
+@keyframes faq-slide-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.faq-answer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(160, 174, 192, 0.85);
+  line-height: 1.7;
+}
+
+.faq-answer a {
+  color: #4facfe;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(79, 172, 254, 0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.faq-answer a:hover {
+  color: #a78bfa;
+  border-bottom-color: rgba(167, 139, 250, 0.5);
+}
+
+.faq-answer strong {
+  color: #c7d2fe;
+}
+
+@media (max-width: 640px) {
+  .faq-question {
+    font-size: 0.88rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .faq-answer {
+    padding: 0.875rem 1rem;
+  }
+}
+

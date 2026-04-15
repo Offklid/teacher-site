@@ -166,24 +166,24 @@
         max-width: 100%;
         font-size: 0.7rem;
       }
-      
+
       .element-card {
         min-height: 45px;
         padding: 2px 1px;
       }
-      
+
       .element-symbol {
         font-size: 0.85rem;
       }
-      
+
       .element-name {
         font-size: 0.45rem;
       }
-      
+
       .element-mass {
         font-size: 0.4rem;
       }
-      
+
       .element-number {
         font-size: 0.45rem;
       }
@@ -195,48 +195,48 @@
         overflow-y: visible;
         -webkit-overflow-scrolling: touch;
       }
-      
+
       .elements-grid {
         min-width: 700px;
         gap: 1px;
       }
-      
+
       .element-card {
         min-height: 40px;
         padding: 2px 1px;
       }
-      
+
       .element-symbol {
         font-size: 0.75rem;
       }
-      
+
       .element-name {
         font-size: 0.4rem;
       }
-      
+
       .element-mass {
         font-size: 0.35rem;
       }
-      
+
       .group-label,
       .period-label {
         font-size: 0.55rem;
         padding: 1px;
       }
-      
+
       .lanthanide-label,
       .actinide-label {
         font-size: 0.5rem;
       }
-      
+
       .chem-hero {
         padding: 3rem 1rem 2rem;
       }
-      
+
       .topics-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .chem-facts-grid {
         grid-template-columns: 1fr;
       }
@@ -246,27 +246,27 @@
       .elements-grid {
         min-width: 600px;
       }
-      
+
       .element-card {
         min-height: 35px;
       }
-      
+
       .element-symbol {
         font-size: 0.7rem;
       }
-      
+
       .element-name {
         font-size: 0.38rem;
       }
-      
+
       .element-mass {
         font-size: 0.32rem;
       }
-      
+
       .element-number {
         font-size: 0.4rem;
       }
-      
+
       .hero-badges {
         flex-direction: column;
         align-items: center;
@@ -461,7 +461,7 @@
       justify-content: center;
       font-size: 0.75rem;
     }
-    
+
     /* Для элементов группы VIII которые накладываются */
     .element-card[style*="col:8"],
     .element-card[style*="col: 8"] {
@@ -551,7 +551,7 @@
       margin-top: 1px;
       line-height: 1;
     }
-    
+
     /* Разделитель для лантаноидов и актиноидов */
     .lanthanides-separator {
       grid-column: 1 / -1;
@@ -828,7 +828,7 @@
         <li><a href="index.html#materials">Материалы</a></li>
         <li><a href="index.html#students">Ученикам</a></li>
         <li><a href="index.html#parents">Родителям</a></li>
-        <li><a href="reviews.html">Отзывы</a></li>
+        <!-- <li><a href="reviews.html">Отзывы</a></li> -->
       </ul>
     </nav>
   </header>
@@ -1216,7 +1216,7 @@
       { period: 6, startRow: 8, rows: 2 },   // ряды 8-9
       { period: 7, startRow: 10, rows: 2 }   // ряды 10-11
     ];
-    
+
     periodLabels.forEach(({ period, startRow, rows }) => {
       const label = document.createElement('div');
       label.className = 'period-label';
@@ -1243,12 +1243,12 @@
     elements.forEach(el => {
       const card = document.createElement('div');
       card.className = `element-card type-${el.type}`;
-      
+
       // Пропускаем элементы группы VIII - обработаем их отдельно
       if (el.col === 8 && el.row <= 11 && group8Elements[el.row] && group8Elements[el.row].length > 1) {
         return;
       }
-      
+
       if (el.row <= 11) {
         // Основная таблица: +1 для заголовка, +1 для колонки периода
         card.style.gridRow = el.row + 1;
@@ -1262,7 +1262,7 @@
         card.style.gridRow = el.row + 2;
         card.style.gridColumn = el.col + 1;
       }
-      
+
       card.innerHTML = `
         <div class="element-number">${el.n}</div>
         <div class="element-symbol">${el.sym}</div>
@@ -1293,13 +1293,13 @@
         container.style.gridColumn = '9'; // col 8 + 1
         container.style.display = 'flex';
         container.style.gap = '1px';
-        
+
         els.forEach(el => {
           const card = document.createElement('div');
           card.className = `element-card type-${el.type}`;
           card.style.flex = '1';
           card.style.minWidth = '0';
-          
+
           card.innerHTML = `
             <div class="element-number">${el.n}</div>
             <div class="element-symbol">${el.sym}</div>
@@ -1320,7 +1320,7 @@
 
           container.appendChild(card);
         });
-        
+
         grid.appendChild(container);
       }
     });

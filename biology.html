@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f0f23">
   <title>Биология — Учитель химии и биологии</title>
-  <meta name="description" content="Учебные материалы по биологии: конспекты, презентации, тесты, ОГЭ/ЕГЭ. Интерактивная анатомия человека для 8–11 классов.">
+  <meta name="description"
+    content="Учебные материалы по биологии: конспекты, презентации, тесты, ОГЭ/ЕГЭ. Интерактивная анатомия человека для 8–11 классов.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/modern.css">
   <link rel="stylesheet" href="css/skeleton.css">
@@ -13,7 +15,9 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
 
   <style>
     /* ---- Bio-page-specific styles ---- */
@@ -46,7 +50,7 @@
 
     .bio-hero .hero-subtitle {
       font-size: 1.15rem;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255, 255, 255, 0.75);
       max-width: 560px;
       margin: 0 auto 1.75rem;
       line-height: 1.7;
@@ -59,15 +63,18 @@
       z-index: 2;
       margin-bottom: 1.25rem;
       font-size: 0.88rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .breadcrumb a {
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       text-decoration: none;
       transition: color .2s;
     }
-    .breadcrumb a:hover { color: #fff; }
+
+    .breadcrumb a:hover {
+      color: #fff;
+    }
 
     /* Hero badges */
     .hero-badges {
@@ -84,8 +91,8 @@
       align-items: center;
       gap: .4rem;
       padding: .4rem 1rem;
-      background: rgba(107,196,145,.12);
-      border: 1px solid rgba(107,196,145,.3);
+      background: rgba(107, 196, 145, .12);
+      border: 1px solid rgba(107, 196, 145, .3);
       border-radius: 20px;
       font-size: .82rem;
       color: #6bc491;
@@ -93,14 +100,14 @@
     }
 
     .hero-badge.blue {
-      background: rgba(79,172,254,.12);
-      border-color: rgba(79,172,254,.3);
+      background: rgba(79, 172, 254, .12);
+      border-color: rgba(79, 172, 254, .3);
       color: #4facfe;
     }
 
     .hero-badge.purple {
-      background: rgba(164,100,255,.12);
-      border-color: rgba(164,100,255,.3);
+      background: rgba(164, 100, 255, .12);
+      border-color: rgba(164, 100, 255, .3);
       color: #c084fc;
     }
 
@@ -117,8 +124,8 @@
     }
 
     .bio-stat-card {
-      background: rgba(22,33,62,.7);
-      border: 1px solid rgba(102,126,234,.2);
+      background: rgba(22, 33, 62, .7);
+      border: 1px solid rgba(102, 126, 234, .2);
       border-radius: 16px;
       padding: 1.5rem 1rem;
       text-align: center;
@@ -128,7 +135,7 @@
 
     .bio-stat-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(107,196,145,.5);
+      border-color: rgba(107, 196, 145, .5);
     }
 
     .bio-stat-number {
@@ -145,12 +152,14 @@
 
     .bio-stat-label {
       font-size: .82rem;
-      color: rgba(160,174,192,.8);
+      color: rgba(160, 174, 192, .8);
       font-weight: 500;
     }
 
     @media (max-width: 640px) {
-      .bio-stats { grid-template-columns: repeat(2, 1fr); }
+      .bio-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     /* Оптимизация 3D модели для мобильных */
@@ -158,20 +167,20 @@
       .anatomy-viewer {
         grid-template-columns: 1fr;
       }
-      
+
       .anatomy-3d-container {
         height: 400px;
         order: -1;
       }
-      
+
       .bio-hero {
         padding: 3rem 1rem 2rem;
       }
-      
+
       .topics-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .bio-facts-grid {
         grid-template-columns: 1fr;
       }
@@ -181,7 +190,7 @@
       .anatomy-3d-container {
         height: 300px;
       }
-      
+
       .hero-badges {
         flex-direction: column;
         align-items: center;
@@ -196,8 +205,8 @@
     }
 
     .topic-card {
-      background: rgba(22,33,62,.7);
-      border: 1px solid rgba(102,126,234,.15);
+      background: rgba(22, 33, 62, .7);
+      border: 1px solid rgba(102, 126, 234, .15);
       border-radius: 16px;
       padding: 1.5rem;
       display: flex;
@@ -212,18 +221,34 @@
     .topic-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 3px;
       opacity: 0;
       transition: opacity .3s;
     }
 
-    .topic-card:hover { transform: translateY(-5px); border-color: rgba(107,196,145,.4); }
-    .topic-card:hover::before { opacity: 1; }
+    .topic-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(107, 196, 145, .4);
+    }
 
-    .topic-card.green::before { background: linear-gradient(90deg, #6bc491, #4facfe); }
-    .topic-card.blue::before  { background: linear-gradient(90deg, #4facfe, #667eea); }
-    .topic-card.purple::before{ background: linear-gradient(90deg, #c084fc, #667eea); }
+    .topic-card:hover::before {
+      opacity: 1;
+    }
+
+    .topic-card.green::before {
+      background: linear-gradient(90deg, #6bc491, #4facfe);
+    }
+
+    .topic-card.blue::before {
+      background: linear-gradient(90deg, #4facfe, #667eea);
+    }
+
+    .topic-card.purple::before {
+      background: linear-gradient(90deg, #c084fc, #667eea);
+    }
 
     .topic-icon {
       width: 48px;
@@ -235,12 +260,35 @@
       flex-shrink: 0;
     }
 
-    .topic-icon.green  { background: rgba(107,196,145,.15); color: #6bc491; }
-    .topic-icon.blue   { background: rgba(79,172,254,.15);  color: #4facfe; }
-    .topic-icon.purple { background: rgba(192,132,252,.15); color: #c084fc; }
-    .topic-icon.red    { background: rgba(239,68,68,.15);   color: #f87171; }
-    .topic-icon.yellow { background: rgba(251,191,36,.15);  color: #fbbf24; }
-    .topic-icon.teal   { background: rgba(45,212,191,.15);  color: #2dd4bf; }
+    .topic-icon.green {
+      background: rgba(107, 196, 145, .15);
+      color: #6bc491;
+    }
+
+    .topic-icon.blue {
+      background: rgba(79, 172, 254, .15);
+      color: #4facfe;
+    }
+
+    .topic-icon.purple {
+      background: rgba(192, 132, 252, .15);
+      color: #c084fc;
+    }
+
+    .topic-icon.red {
+      background: rgba(239, 68, 68, .15);
+      color: #f87171;
+    }
+
+    .topic-icon.yellow {
+      background: rgba(251, 191, 36, .15);
+      color: #fbbf24;
+    }
+
+    .topic-icon.teal {
+      background: rgba(45, 212, 191, .15);
+      color: #2dd4bf;
+    }
 
     .topic-card h4 {
       font-size: 1rem;
@@ -251,7 +299,7 @@
 
     .topic-card p {
       font-size: .85rem;
-      color: rgba(160,174,192,.75);
+      color: rgba(160, 174, 192, .75);
       margin: 0;
       line-height: 1.5;
     }
@@ -262,7 +310,7 @@
       padding: .15rem .55rem;
       border-radius: 6px;
       font-weight: 600;
-      background: rgba(102,126,234,.12);
+      background: rgba(102, 126, 234, .12);
       color: #818cf8;
     }
 
@@ -274,8 +322,8 @@
     }
 
     .bio-fact-card {
-      background: rgba(22,33,62,.7);
-      border: 1px solid rgba(102,126,234,.15);
+      background: rgba(22, 33, 62, .7);
+      border: 1px solid rgba(102, 126, 234, .15);
       border-radius: 16px;
       padding: 1.5rem;
       display: flex;
@@ -287,8 +335,8 @@
 
     .bio-fact-card:hover {
       transform: translateX(4px);
-      border-color: rgba(107,196,145,.4);
-      box-shadow: 0 8px 28px rgba(107,196,145,.08);
+      border-color: rgba(107, 196, 145, .4);
+      box-shadow: 0 8px 28px rgba(107, 196, 145, .08);
     }
 
     .bio-fact-emoji {
@@ -299,7 +347,7 @@
 
     .bio-fact-card p {
       font-size: .9rem;
-      color: rgba(160,174,192,.85);
+      color: rgba(160, 174, 192, .85);
       margin: 0;
       line-height: 1.6;
     }
@@ -326,8 +374,8 @@
 
     .grade-filter-btn {
       padding: .45rem 1.1rem;
-      background: rgba(102,126,234,.08);
-      border: 1px solid rgba(102,126,234,.22);
+      background: rgba(102, 126, 234, .08);
+      border: 1px solid rgba(102, 126, 234, .22);
       border-radius: 8px;
       color: #c7d2fe;
       font-size: .875rem;
@@ -338,25 +386,25 @@
     }
 
     .grade-filter-btn:hover {
-      background: rgba(102,126,234,.18);
-      border-color: rgba(102,126,234,.45);
+      background: rgba(102, 126, 234, .18);
+      border-color: rgba(102, 126, 234, .45);
     }
 
     .grade-filter-btn.active {
       background: linear-gradient(135deg, #6bc491, #4facfe);
       border-color: transparent;
       color: #fff;
-      box-shadow: 0 4px 14px rgba(107,196,145,.35);
+      box-shadow: 0 4px 14px rgba(107, 196, 145, .35);
     }
 
     /* No-materials state */
     .no-materials {
       text-align: center;
       padding: 3rem;
-      color: rgba(160,174,192,.6);
-      background: rgba(22,33,62,.4);
+      color: rgba(160, 174, 192, .6);
+      background: rgba(22, 33, 62, .4);
       border-radius: 16px;
-      border: 1px dashed rgba(102,126,234,.25);
+      border: 1px dashed rgba(102, 126, 234, .25);
     }
 
     .no-materials p {
@@ -371,20 +419,22 @@
       align-items: center;
       gap: 1rem;
       padding: 3rem;
-      color: rgba(160,174,192,.7);
+      color: rgba(160, 174, 192, .7);
     }
 
     .loading-spinner {
       width: 44px;
       height: 44px;
-      border: 3px solid rgba(102,126,234,.15);
+      border: 3px solid rgba(102, 126, 234, .15);
       border-top-color: #6bc491;
       border-radius: 50%;
       animation: bio-spin 0.8s linear infinite;
     }
 
     @keyframes bio-spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* ---- Useful links strip ---- */
@@ -411,23 +461,23 @@
     .bio-link.primary {
       background: linear-gradient(135deg, #6bc491, #4facfe);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(107,196,145,.35);
+      box-shadow: 0 4px 14px rgba(107, 196, 145, .35);
     }
 
     .bio-link.primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(107,196,145,.45);
+      box-shadow: 0 8px 24px rgba(107, 196, 145, .45);
     }
 
     .bio-link.secondary {
-      background: rgba(102,126,234,.1);
-      border: 1px solid rgba(102,126,234,.3);
+      background: rgba(102, 126, 234, .1);
+      border: 1px solid rgba(102, 126, 234, .3);
       color: #c7d2fe;
     }
 
     .bio-link.secondary:hover {
-      background: rgba(102,126,234,.18);
-      border-color: rgba(102,126,234,.5);
+      background: rgba(102, 126, 234, .18);
+      border-color: rgba(102, 126, 234, .5);
     }
 
     /* ---- Anatomy section title ---- */
@@ -505,6 +555,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="particles-js"></div>
 
@@ -521,7 +572,7 @@
         <li><a href="index.html#materials">Материалы</a></li>
         <li><a href="index.html#students">Ученикам</a></li>
         <li><a href="index.html#parents">Родителям</a></li>
-        <li><a href="reviews.html">Отзывы</a></li>
+        <!-- <li><a href="reviews.html">Отзывы</a></li> -->
       </ul>
     </nav>
   </header>
@@ -534,57 +585,64 @@
         <svg class="decor-leaf" viewBox="0 0 100 100" width="80" height="80">
           <defs>
             <linearGradient id="leafBio" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#6bc491;stop-opacity:.9"/>
-              <stop offset="100%" style="stop-color:#4a9c6d;stop-opacity:.9"/>
+              <stop offset="0%" style="stop-color:#6bc491;stop-opacity:.9" />
+              <stop offset="100%" style="stop-color:#4a9c6d;stop-opacity:.9" />
             </linearGradient>
           </defs>
-          <path d="M50 10 Q70 30 70 50 Q70 70 50 90 Q30 70 30 50 Q30 30 50 10 Z" fill="url(#leafBio)" stroke="#fff" stroke-width="2" opacity=".7"/>
-          <path d="M50 10 L50 90" stroke="#fff" stroke-width="1.5" opacity=".5"/>
-          <path d="M50 30 Q60 40 50 50" stroke="#fff" stroke-width="1" opacity=".4" fill="none"/>
-          <path d="M50 50 Q40 60 50 70" stroke="#fff" stroke-width="1" opacity=".4" fill="none"/>
+          <path d="M50 10 Q70 30 70 50 Q70 70 50 90 Q30 70 30 50 Q30 30 50 10 Z" fill="url(#leafBio)" stroke="#fff"
+            stroke-width="2" opacity=".7" />
+          <path d="M50 10 L50 90" stroke="#fff" stroke-width="1.5" opacity=".5" />
+          <path d="M50 30 Q60 40 50 50" stroke="#fff" stroke-width="1" opacity=".4" fill="none" />
+          <path d="M50 50 Q40 60 50 70" stroke="#fff" stroke-width="1" opacity=".4" fill="none" />
         </svg>
         <svg class="decor-dna" viewBox="0 0 100 100" width="75" height="75">
           <defs>
             <linearGradient id="dnaBio" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#667eea;stop-opacity:.8"/>
-              <stop offset="100%" style="stop-color:#f093fb;stop-opacity:.8"/>
+              <stop offset="0%" style="stop-color:#667eea;stop-opacity:.8" />
+              <stop offset="100%" style="stop-color:#f093fb;stop-opacity:.8" />
             </linearGradient>
           </defs>
           <g class="dna-strand">
-            <circle cx="30" cy="20" r="6" fill="url(#dnaBio)"/><circle cx="70" cy="20" r="6" fill="url(#dnaBio)"/>
-            <line x1="30" y1="20" x2="70" y2="20" stroke="url(#dnaBio)" stroke-width="2"/>
-            <circle cx="35" cy="40" r="6" fill="url(#dnaBio)"/><circle cx="65" cy="40" r="6" fill="url(#dnaBio)"/>
-            <line x1="35" y1="40" x2="65" y2="40" stroke="url(#dnaBio)" stroke-width="2"/>
-            <circle cx="30" cy="60" r="6" fill="url(#dnaBio)"/><circle cx="70" cy="60" r="6" fill="url(#dnaBio)"/>
-            <line x1="30" y1="60" x2="70" y2="60" stroke="url(#dnaBio)" stroke-width="2"/>
-            <circle cx="35" cy="80" r="6" fill="url(#dnaBio)"/><circle cx="65" cy="80" r="6" fill="url(#dnaBio)"/>
-            <line x1="35" y1="80" x2="65" y2="80" stroke="url(#dnaBio)" stroke-width="2"/>
+            <circle cx="30" cy="20" r="6" fill="url(#dnaBio)" />
+            <circle cx="70" cy="20" r="6" fill="url(#dnaBio)" />
+            <line x1="30" y1="20" x2="70" y2="20" stroke="url(#dnaBio)" stroke-width="2" />
+            <circle cx="35" cy="40" r="6" fill="url(#dnaBio)" />
+            <circle cx="65" cy="40" r="6" fill="url(#dnaBio)" />
+            <line x1="35" y1="40" x2="65" y2="40" stroke="url(#dnaBio)" stroke-width="2" />
+            <circle cx="30" cy="60" r="6" fill="url(#dnaBio)" />
+            <circle cx="70" cy="60" r="6" fill="url(#dnaBio)" />
+            <line x1="30" y1="60" x2="70" y2="60" stroke="url(#dnaBio)" stroke-width="2" />
+            <circle cx="35" cy="80" r="6" fill="url(#dnaBio)" />
+            <circle cx="65" cy="80" r="6" fill="url(#dnaBio)" />
+            <line x1="35" y1="80" x2="65" y2="80" stroke="url(#dnaBio)" stroke-width="2" />
           </g>
         </svg>
         <svg class="decor-molecule" viewBox="0 0 100 100" width="70" height="70">
           <defs>
             <radialGradient id="molBio">
-              <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1"/>
-              <stop offset="100%" style="stop-color:#764ba2;stop-opacity:.8"/>
+              <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#764ba2;stop-opacity:.8" />
             </radialGradient>
           </defs>
           <g class="molecule-atoms">
-            <circle cx="50" cy="50" r="12" fill="url(#molBio)" opacity=".9"/>
-            <circle cx="25" cy="30" r="8" fill="url(#molBio)" opacity=".8"/>
-            <circle cx="75" cy="30" r="8" fill="url(#molBio)" opacity=".8"/>
-            <circle cx="30" cy="75" r="8" fill="url(#molBio)" opacity=".8"/>
-            <circle cx="70" cy="75" r="8" fill="url(#molBio)" opacity=".8"/>
-            <line x1="50" y1="50" x2="25" y2="30" stroke="#fff" stroke-width="2" opacity=".5"/>
-            <line x1="50" y1="50" x2="75" y2="30" stroke="#fff" stroke-width="2" opacity=".5"/>
-            <line x1="50" y1="50" x2="30" y2="75" stroke="#fff" stroke-width="2" opacity=".5"/>
-            <line x1="50" y1="50" x2="70" y2="75" stroke="#fff" stroke-width="2" opacity=".5"/>
+            <circle cx="50" cy="50" r="12" fill="url(#molBio)" opacity=".9" />
+            <circle cx="25" cy="30" r="8" fill="url(#molBio)" opacity=".8" />
+            <circle cx="75" cy="30" r="8" fill="url(#molBio)" opacity=".8" />
+            <circle cx="30" cy="75" r="8" fill="url(#molBio)" opacity=".8" />
+            <circle cx="70" cy="75" r="8" fill="url(#molBio)" opacity=".8" />
+            <line x1="50" y1="50" x2="25" y2="30" stroke="#fff" stroke-width="2" opacity=".5" />
+            <line x1="50" y1="50" x2="75" y2="30" stroke="#fff" stroke-width="2" opacity=".5" />
+            <line x1="50" y1="50" x2="30" y2="75" stroke="#fff" stroke-width="2" opacity=".5" />
+            <line x1="50" y1="50" x2="70" y2="75" stroke="#fff" stroke-width="2" opacity=".5" />
           </g>
         </svg>
       </div>
 
-      <p class="breadcrumb"><a href="index.html">Главная</a> → <a href="index.html#materials">Материалы</a> → Биология</p>
+      <p class="breadcrumb"><a href="index.html">Главная</a> → <a href="index.html#materials">Материалы</a> → Биология
+      </p>
       <h1>Биология</h1>
-      <p class="hero-subtitle">Изучаем живой мир: от клетки до биосферы. Интерактивные материалы, анатомия и подготовка к экзаменам</p>
+      <p class="hero-subtitle">Изучаем живой мир: от клетки до биосферы. Интерактивные материалы, анатомия и подготовка
+        к экзаменам</p>
 
       <div class="hero-badges">
         <span class="hero-badge">🌿 8–11 класс</span>
@@ -623,9 +681,12 @@
         <div class="topic-card green" data-aos="fade-up" data-aos-delay="50">
           <div class="topic-icon green">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8" opacity=".4"/>
-              <line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
-              <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="12" cy="12" r="8" opacity=".4" />
+              <line x1="12" y1="2" x2="12" y2="5" />
+              <line x1="12" y1="19" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="5" y2="12" />
+              <line x1="19" y1="12" x2="22" y2="12" />
             </svg>
           </div>
           <div>
@@ -638,7 +699,8 @@
         <div class="topic-card blue" data-aos="fade-up" data-aos-delay="100">
           <div class="topic-icon blue">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
           </div>
           <div>
@@ -651,7 +713,9 @@
         <div class="topic-card purple" data-aos="fade-up" data-aos-delay="150">
           <div class="topic-icon purple">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
             </svg>
           </div>
           <div>
@@ -664,9 +728,10 @@
         <div class="topic-card green" data-aos="fade-up" data-aos-delay="200">
           <div class="topic-icon teal">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
-              <path d="M12 2v20"/><path d="M12 7c-2.5 0-4.5 2-4.5 4.5S9.5 16 12 16"/>
-              <path d="M12 7c2.5 0 4.5 2 4.5 4.5S14.5 16 12 16"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
+              <path d="M12 2v20" />
+              <path d="M12 7c-2.5 0-4.5 2-4.5 4.5S9.5 16 12 16" />
+              <path d="M12 7c2.5 0 4.5 2 4.5 4.5S14.5 16 12 16" />
             </svg>
           </div>
           <div>
@@ -679,22 +744,24 @@
         <div class="topic-card blue" data-aos="fade-up" data-aos-delay="250">
           <div class="topic-icon yellow">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M12 1v6m0 6v10M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h10M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M12 1v6m0 6v10M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h10M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24" />
             </svg>
           </div>
           <div>
             <span class="topic-tag">9 класс</span>
             <h4>Нервная система</h4>
-            <p>Нейроны, рефлексы, головной и спинной мозг. 86 миллиардов нейронов и скорость нервного импульса 120 м/с.</p>
+            <p>Нейроны, рефлексы, головной и спинной мозг. 86 миллиардов нейронов и скорость нервного импульса 120 м/с.
+            </p>
           </div>
         </div>
 
         <div class="topic-card purple" data-aos="fade-up" data-aos-delay="300">
           <div class="topic-icon red">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
             </svg>
           </div>
           <div>
@@ -707,7 +774,8 @@
         <div class="topic-card green" data-aos="fade-up" data-aos-delay="350">
           <div class="topic-icon green">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 3h18v18H3z" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
+              <path d="M3 3h18v18H3z" rx="2" />
+              <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
             </svg>
           </div>
           <div>
@@ -720,14 +788,15 @@
         <div class="topic-card blue" data-aos="fade-up" data-aos-delay="400">
           <div class="topic-icon purple">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4l16 16M4 20L20 4"/>
-              <circle cx="12" cy="12" r="3"/>
+              <path d="M4 4l16 16M4 20L20 4" />
+              <circle cx="12" cy="12" r="3" />
             </svg>
           </div>
           <div>
             <span class="topic-tag">11 класс</span>
             <h4>Эволюция</h4>
-            <p>Теория Дарвина, естественный отбор, адаптации. От первых организмов до современного многообразия жизни.</p>
+            <p>Теория Дарвина, естественный отбор, адаптации. От первых организмов до современного многообразия жизни.
+            </p>
           </div>
         </div>
 
@@ -744,8 +813,8 @@
           <div class="anatomy-canvas" id="anatomyCanvas">
             <div class="anatomy-placeholder">
               <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                <circle cx="12" cy="8" r="4" />
+                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
               </svg>
               <p>Нажмите на систему органов справа для изучения</p>
             </div>
@@ -758,56 +827,79 @@
               <button class="anatomy-system-btn active" data-system="skeletal">
                 <div class="system-icon skeletal-icon">
                   <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                    <path
+                      d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
                   </svg>
                 </div>
-                <div class="system-info"><h4>Скелетная система</h4><p>206 костей</p></div>
+                <div class="system-info">
+                  <h4>Скелетная система</h4>
+                  <p>206 костей</p>
+                </div>
               </button>
 
               <button class="anatomy-system-btn" data-system="muscular">
                 <div class="system-icon muscular-icon">
                   <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
                   </svg>
                 </div>
-                <div class="system-info"><h4>Мышечная система</h4><p>~640 мышц</p></div>
+                <div class="system-info">
+                  <h4>Мышечная система</h4>
+                  <p>~640 мышц</p>
+                </div>
               </button>
 
               <button class="anatomy-system-btn" data-system="circulatory">
                 <div class="system-icon circulatory-icon">
                   <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    <path
+                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                   </svg>
                 </div>
-                <div class="system-info"><h4>Кровеносная система</h4><p>~100 000 км сосудов</p></div>
+                <div class="system-info">
+                  <h4>Кровеносная система</h4>
+                  <p>~100 000 км сосудов</p>
+                </div>
               </button>
 
               <button class="anatomy-system-btn" data-system="nervous">
                 <div class="system-icon nervous-icon">
                   <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M12 1v6m0 6v10M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h10M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                      d="M12 1v6m0 6v10M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h10M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24" />
                   </svg>
                 </div>
-                <div class="system-info"><h4>Нервная система</h4><p>86 млрд нейронов</p></div>
+                <div class="system-info">
+                  <h4>Нервная система</h4>
+                  <p>86 млрд нейронов</p>
+                </div>
               </button>
 
               <button class="anatomy-system-btn" data-system="digestive">
                 <div class="system-icon digestive-icon">
                   <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2v20M8 6h8M7 10h10M8 14h8M9 18h6"/>
+                    <path d="M12 2v20M8 6h8M7 10h10M8 14h8M9 18h6" />
                   </svg>
                 </div>
-                <div class="system-info"><h4>Пищеварительная</h4><p>~9 метров</p></div>
+                <div class="system-info">
+                  <h4>Пищеварительная</h4>
+                  <p>~9 метров</p>
+                </div>
               </button>
 
               <button class="anatomy-system-btn" data-system="respiratory">
                 <div class="system-icon respiratory-icon">
                   <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0M12 2v7m0 4v9"/>
+                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0M12 2v7m0 4v9" />
                   </svg>
                 </div>
-                <div class="system-info"><h4>Дыхательная</h4><p>~20 000 вдохов/день</p></div>
+                <div class="system-info">
+                  <h4>Дыхательная</h4>
+                  <p>~20 000 вдохов/день</p>
+                </div>
               </button>
 
             </div>
@@ -817,7 +909,9 @@
         <!-- Информация о системе под 3D моделью -->
         <div class="anatomy-details" id="anatomyDetails">
           <h4>Скелетная система</h4>
-          <p>Скелет взрослого человека состоит из <strong>206 костей</strong>. Он выполняет опорную, защитную и двигательную функции. Самая длинная кость — бедренная (46 см), самая маленькая — стремечко в ухе (2.5 мм).</p>
+          <p>Скелет взрослого человека состоит из <strong>206 костей</strong>. Он выполняет опорную, защитную и
+            двигательную функции. Самая длинная кость — бедренная (46 см), самая маленькая — стремечко в ухе (2.5 мм).
+          </p>
           <ul>
             <li>Череп: 22 кости</li>
             <li>Позвоночник: 33–34 позвонка</li>
@@ -829,9 +923,12 @@
 
       <div class="anatomy-note">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
         </svg>
-        <p>Для детального изучения используйте специализированные атласы анатомии и 3D-модели. Раздел постоянно обновляется новыми материалами.</p>
+        <p>Для детального изучения используйте специализированные атласы анатомии и 3D-модели. Раздел постоянно
+          обновляется новыми материалами.</p>
       </div>
     </section>
 
@@ -843,11 +940,13 @@
       <div class="bio-facts-grid">
         <div class="bio-fact-card" data-aos="fade-up" data-aos-delay="50">
           <span class="bio-fact-emoji">🧬</span>
-          <p>ДНК человека, вытянутая в одну нить, достигла бы расстояния от Земли до Солнца <strong>более 600 раз</strong>.</p>
+          <p>ДНК человека, вытянутая в одну нить, достигла бы расстояния от Земли до Солнца <strong>более 600
+              раз</strong>.</p>
         </div>
         <div class="bio-fact-card" data-aos="fade-up" data-aos-delay="100">
           <span class="bio-fact-emoji">❤️</span>
-          <p>Сердце взрослого человека <strong>бьётся ~100 000 раз в сутки</strong> и перекачивает около 7 600 литров крови.</p>
+          <p>Сердце взрослого человека <strong>бьётся ~100 000 раз в сутки</strong> и перекачивает около 7 600 литров
+            крови.</p>
         </div>
         <div class="bio-fact-card" data-aos="fade-up" data-aos-delay="150">
           <span class="bio-fact-emoji">🧠</span>
@@ -855,7 +954,8 @@
         </div>
         <div class="bio-fact-card" data-aos="fade-up" data-aos-delay="200">
           <span class="bio-fact-emoji">🌿</span>
-          <p>За счёт фотосинтеза растения ежегодно производят <strong>более 100 млрд тонн</strong> органического вещества.</p>
+          <p>За счёт фотосинтеза растения ежегодно производят <strong>более 100 млрд тонн</strong> органического
+            вещества.</p>
         </div>
         <div class="bio-fact-card" data-aos="fade-up" data-aos-delay="250">
           <span class="bio-fact-emoji">🦠</span>
@@ -863,7 +963,8 @@
         </div>
         <div class="bio-fact-card" data-aos="fade-up" data-aos-delay="300">
           <span class="bio-fact-emoji">🦴</span>
-          <p>Кость прочнее стали по весу. Граммовый кубик костной ткани выдерживает давление <strong>до 1,5 тонны</strong>.</p>
+          <p>Кость прочнее стали по весу. Граммовый кубик костной ткани выдерживает давление <strong>до 1,5
+              тонны</strong>.</p>
         </div>
       </div>
     </section>
@@ -876,8 +977,9 @@
           <p class="section-subtitle" style="margin-bottom: 0;">Презентации, конспекты, тесты и задания</p>
         </div>
         <div class="grade-filters">
-          <button class="grade-filter-btn active" id="btn-grade-8" onclick="filterByGrade('biology', 8)">8 класс</button>
-          <button class="grade-filter-btn" id="btn-grade-9"  onclick="filterByGrade('biology', 9)">9 класс</button>
+          <button class="grade-filter-btn active" id="btn-grade-8" onclick="filterByGrade('biology', 8)">8
+            класс</button>
+          <button class="grade-filter-btn" id="btn-grade-9" onclick="filterByGrade('biology', 9)">9 класс</button>
           <button class="grade-filter-btn" id="btn-grade-10" onclick="filterByGrade('biology', 10)">10 класс</button>
           <button class="grade-filter-btn" id="btn-grade-11" onclick="filterByGrade('biology', 11)">11 класс</button>
         </div>
@@ -890,14 +992,17 @@
       <div class="bio-links" style="margin-top: 2.5rem;">
         <a href="exam.html" class="bio-link primary">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
           </svg>
           ОГЭ / ЕГЭ по биологии
         </a>
         <a href="crosswords.html" class="bio-link secondary">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-            <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
           </svg>
           Кроссворды по биологии
         </a>
@@ -1016,5 +1121,5 @@
     displayMaterialsFromDrive('biology', 8, 'biology-materials');
   </script>
 </body>
-</html>
 
+</html>

@@ -1,18 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f0f23">
-  <meta name="description" content="Связаться — Учитель химии и биологии - материалы, расписание и полезная информация.">
+  <meta name="description"
+    content="Связаться — Учитель химии и биологии - материалы, расписание и полезная информация.">
   <title>Связаться — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/modern.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <div id="particles-js"></div>
   <header class="header">
@@ -37,46 +42,66 @@
     <section class="section">
       <p class="section-subtitle">Способы связи для вопросов и консультаций</p>
       <div class="content-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
-        <div class="content-card" style="cursor: default;">
+        
+        <!-- Email -->
+        <a href="mailto:kri1101@mail.ru" class="content-card" style="text-decoration: none;">
           <div class="content-card-image">
             <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
             </svg>
           </div>
           <div class="content-card-body">
             <h4>Email</h4>
-            <p><a href="mailto:email@example.com" style="color: var(--color-accent);">email@example.com</a></p>
+            <p style="color: var(--color-accent); font-weight: 500;">kri1101@mail.ru</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--color-text-muted);">Отвечаю в течение 1-2 рабочих дней.</p>
           </div>
-        </div>
-        <div class="content-card" style="cursor: default;">
+        </a>
+
+        <!-- Сайт школы -->
+        <a href="http://www.lsoh.ru/" target="_blank" rel="noopener noreferrer" class="content-card" style="text-decoration: none;">
           <div class="content-card-image">
             <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-              <line x1="12" y1="18" x2="12.01" y2="18"/>
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </div>
           <div class="content-card-body">
-            <h4>Мессенджер</h4>
-            <p>Telegram / WhatsApp — добавь ссылку</p>
+            <h4>Сайт школы</h4>
+            <p style="color: var(--color-accent); font-weight: 500;">www.lsoh.ru</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--color-text-muted);">Официальный сайт нашей школы.</p>
           </div>
-        </div>
-        <div class="content-card" style="cursor: default;">
+        </a>
+
+        <!-- Личные встречи -->
+        <a href="schedule.html" class="content-card" style="text-decoration: none;">
           <div class="content-card-image">
             <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
             </svg>
           </div>
           <div class="content-card-body">
-            <h4>Школа</h4>
-            <p>Консультации по расписанию</p>
+            <h4>Очные консультации</h4>
+            <p style="color: var(--color-accent); font-weight: 500;">Смотреть расписание</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--color-text-muted);">Приходите для личного разговора в свободное время.</p>
           </div>
-        </div>
+        </a>
+
       </div>
-      <p style="color: var(--color-text-muted); margin-top: 2rem;">Укажи свои контакты и удобное время для связи.</p>
-      <div class="quick-links" style="margin-top: 1.5rem;">
-        <a href="index.html#parents" class="quick-link">← Родителям</a>
+      
+      <div class="contact-info-block" style="margin-top: 3rem; background: rgba(22, 33, 62, 0.5); padding: 2rem; border-radius: 12px; border: 1px solid rgba(102, 126, 234, 0.2);">
+        <h3 style="margin-bottom: 1rem; color: #e0e7ff;">Полезная информация</h3>
+        <ul style="color: var(--color-text-muted); line-height: 1.6; padding-left: 1.2rem;">
+          <li style="margin-bottom: 0.5rem;">Всегда на связи по email. Если ваш вопрос срочный, укажите это в теме письма.</li>
+          <li style="margin-bottom: 0.5rem;">Личные консультации проходят в кабинете химии по предварительной договоренности.</li>
+          <li>В выходные и праздничные дни ответы могут задерживаться. Спасибо за понимание!</li>
+        </ul>
+      </div>
+
+      <div class="quick-links" style="margin-top: 2.5rem; justify-content: center;">
+        <a href="index.html#parents" class="quick-link">← Вернуться к разделу "Родителям"</a>
+        <a href="schedule.html" class="quick-link">Расписание занятий →</a>
       </div>
     </section>
   </main>
@@ -97,6 +122,5 @@
     });
   </script>
 </body>
+
 </html>
-
-

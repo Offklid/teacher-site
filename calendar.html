@@ -1,153 +1,714 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f0f23">
-  <meta name="description" content="Календарь событий — Учитель химии и биологии - материалы, расписание и полезная информация.">
+  <meta name="description" content="Календарь событий — Учитель химии и биологии. Праздники и памятные даты на каждый день.">
   <title>Календарь событий — Учитель химии и биологии</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/modern.css">
-  
-  <!-- AOS Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ──────────────── CALENDAR PAGE ────────────────────── */
+    .cal-page {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 1.25rem 5rem;
+    }
+
+    /* ─── Header ─── */
+    .cal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .cal-month-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      animation: shimmer 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes shimmer {
+      from { filter: brightness(1); }
+      to   { filter: brightness(1.2); }
+    }
+
+    .cal-nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .cal-btn {
+      background: rgba(102, 126, 234, 0.12);
+      border: 1px solid rgba(102, 126, 234, 0.28);
+      color: #c7d2fe;
+      border-radius: 10px;
+      padding: 0.55rem 1.15rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.18s, box-shadow 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .cal-btn:hover {
+      background: rgba(102, 126, 234, 0.28);
+      border-color: rgba(102, 126, 234, 0.55);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(102, 126, 234, 0.2);
+    }
+    .cal-btn.today-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-color: transparent;
+      color: #fff;
+    }
+    .cal-btn.today-btn:hover {
+      box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    /* ─── Weekday row ─── */
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+    .cal-wd {
+      text-align: center;
+      padding: 0.55rem 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #475569;
+    }
+    .cal-wd.weekend { color: #f472b6; }
+
+    /* ─── Grid ─── */
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+
+    /* ─── Day Cell ─── */
+    .cal-cell {
+      background: rgba(12, 17, 38, 0.7);
+      border: 1px solid rgba(102, 126, 234, 0.12);
+      border-radius: 14px;
+      min-height: 170px;
+      padding: 0.6rem 0.55rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      position: relative;
+      overflow: hidden;
+      /* entrance animation — set by JS */
+      opacity: 0;
+      transform: translateY(12px) scale(0.97);
+      transition:
+        border-color 0.25s,
+        background 0.25s,
+        transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.25s,
+        opacity 0.3s;
+    }
+
+    /* Top accent bar */
+    .cal-cell::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      border-radius: 14px 14px 0 0;
+      background: linear-gradient(90deg, #667eea, #f093fb);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .cal-cell.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .cal-cell.other-month { opacity: 0 !important; pointer-events: none; }
+
+    .cal-cell.is-today {
+      border-color: rgba(102, 126, 234, 0.55);
+      background: rgba(102, 126, 234, 0.1);
+      box-shadow: inset 0 0 0 1px rgba(102, 126, 234, 0.15);
+    }
+    .cal-cell.is-today::before { opacity: 1; }
+
+    .cal-cell.is-weekend .day-num { color: #f472b6; }
+
+    .cal-cell.has-ev {
+      cursor: pointer;
+    }
+    .cal-cell.has-ev:hover {
+      border-color: rgba(102, 126, 234, 0.45);
+      background: rgba(102, 126, 234, 0.09);
+      transform: translateY(-4px) scale(1.01) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(102,126,234,0.2);
+    }
+    .cal-cell.has-ev:hover::before { opacity: 0.7; }
+
+    /* Ripple on click */
+    .cal-cell .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(102, 126, 234, 0.3);
+      transform: scale(0);
+      animation: ripple-anim 0.5s linear;
+      pointer-events: none;
+    }
+    @keyframes ripple-anim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ─── Day Number ─── */
+    .day-num {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #c7d2fe;
+      font-family: 'Space Grotesk', sans-serif;
+      flex-shrink: 0;
+      margin-bottom: 4px;
+      transition: background 0.2s;
+    }
+    .cal-cell.is-today .day-num {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+    }
+
+    /* ─── Event inside cell ─── */
+    .cell-ev {
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      font-weight: 500;
+      padding: 1px 0;
+    }
+    .cell-ev-emoji { font-size: 1rem; flex-shrink: 0; line-height: 1.35; }
+    .cell-ev-text  { color: #94a3b8; transition: color 0.2s; word-break: break-word; }
+    .cal-cell.has-ev:hover .cell-ev-text { color: #c7d2fe; }
+
+    .cell-more {
+      font-size: 0.65rem;
+      color: #475569;
+      padding: 1px 4px;
+      margin-top: 1px;
+    }
+
+    /* ─── Legend ─── */
+    .cal-legend {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.5rem;
+      padding: 0.85rem 1.25rem;
+      background: rgba(12, 17, 38, 0.55);
+      border: 1px solid rgba(102, 126, 234, 0.12);
+      border-radius: 14px;
+    }
+    .leg-i {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.79rem;
+      color: #64748b;
+    }
+    .leg-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── Popup ─── */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+    .popup-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .popup-card {
+      background: rgba(10, 14, 32, 0.98);
+      border: 1px solid rgba(102, 126, 234, 0.35);
+      border-radius: 24px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .popup-overlay.open .popup-card {
+      transform: none;
+    }
+    /* Top gradient bar on popup */
+    .popup-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      border-radius: 24px 24px 0 0;
+      background: linear-gradient(90deg, #667eea, #f093fb);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 32px; height: 32px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      color: #64748b;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+    .popup-close:hover { background: rgba(255,255,255,0.14); color: #e0e7ff; }
+
+    .popup-meta    { font-size: 0.8rem; color: #475569; margin-bottom: 0.25rem; }
+    .popup-big-day {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #667eea, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .popup-ev-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    }
+    .popup-ev-row:last-child { border-bottom: none; }
+    .popup-emoji { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .popup-ev-name {
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: #e0e7ff;
+      line-height: 1.4;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 720px) {
+      .cal-cell { min-height: 88px; padding: 0.4rem; border-radius: 10px; }
+      .cell-ev  { font-size: 0.63rem; }
+    }
+    @media (max-width: 480px) {
+      .cal-cell { min-height: 60px; }
+      .cell-ev, .cell-more { display: none; }
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Particles Background -->
   <div id="particles-js"></div>
+
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="logo">Химия и биология</a>
-      
-      <!-- Бургер-меню -->
       <button class="burger-menu" aria-label="Открыть меню" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-      
       <ul class="nav-list">
         <li><a href="index.html#about">Об учителе</a></li>
         <li><a href="index.html#materials">Материалы</a></li>
         <li><a href="index.html#students">Ученикам</a></li>
         <li><a href="index.html#parents">Родителям</a></li>
-        <li><a href="reviews.html">Отзывы</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="page-hero">
-      <p class="breadcrumb"><a href="index.html">Главная</a> → Ученикам → Календарь событий</p>
+      <p class="breadcrumb">
+        <a href="index.html">Главная</a> →
+        <a href="index.html#students">Ученикам</a> →
+        Календарь событий
+      </p>
       <h1>Календарь событий</h1>
     </section>
 
-    <!-- Календарь событий -->
-    <section class="calendar-section fade-in-up">
-      <div class="calendar-header">
-        <div class="calendar-nav">
-          <button class="calendar-prev">← Назад</button>
-          <span class="calendar-current-month">Февраль 2025</span>
-          <button class="calendar-next">Вперед →</button>
-          <button class="calendar-today">Сегодня</button>
+    <div class="cal-page">
+
+      <!-- Controls -->
+      <div class="cal-top" data-aos="fade-up">
+        <div class="cal-month-label" id="calLabel"></div>
+        <div class="cal-nav">
+          <button class="cal-btn" id="btnPrev">← Назад</button>
+          <button class="cal-btn today-btn" id="btnToday">Сегодня</button>
+          <button class="cal-btn" id="btnNext">Вперёд →</button>
         </div>
       </div>
-      
-      <div class="calendar-grid">
-        <div class="calendar-weekdays">
-          <div class="calendar-weekday">Пн</div>
-          <div class="calendar-weekday">Вт</div>
-          <div class="calendar-weekday">Ср</div>
-          <div class="calendar-weekday">Чт</div>
-          <div class="calendar-weekday">Пт</div>
-          <div class="calendar-weekday">Сб</div>
-          <div class="calendar-weekday">Вс</div>
-        </div>
-        <div class="calendar-days">
-          <!-- Дни будут добавлены через JavaScript -->
-        </div>
+
+      <!-- Weekdays -->
+      <div class="cal-weekdays" data-aos="fade-up" data-aos-delay="60">
+        <div class="cal-wd">Пн</div>
+        <div class="cal-wd">Вт</div>
+        <div class="cal-wd">Ср</div>
+        <div class="cal-wd">Чт</div>
+        <div class="cal-wd">Пт</div>
+        <div class="cal-wd weekend">Сб</div>
+        <div class="cal-wd weekend">Вс</div>
       </div>
-      
-      <div class="calendar-legend">
-        <div class="calendar-legend-item">
-          <span class="calendar-legend-dot test"></span>
-          <span>Контрольная работа</span>
-        </div>
-        <div class="calendar-legend-item">
-          <span class="calendar-legend-dot olympiad"></span>
-          <span>Олимпиада</span>
-        </div>
-        <div class="calendar-legend-item">
-          <span class="calendar-legend-dot excursion"></span>
-          <span>Экскурсия</span>
-        </div>
-        <div class="calendar-legend-item">
-          <span class="calendar-legend-dot deadline"></span>
-          <span>Дедлайн</span>
-        </div>
+
+      <!-- Grid of days -->
+      <div class="cal-grid" id="calGrid"></div>
+
+      <!-- Legend -->
+      <div class="cal-legend" data-aos="fade-up">
+        <div class="leg-i"><span class="leg-dot" style="background:#a78bfa"></span>Праздник</div>
+        <div class="leg-i"><span class="leg-dot" style="background:#4facfe"></span>Наука и знания</div>
+        <div class="leg-i"><span class="leg-dot" style="background:#6bc491"></span>Природа / экология</div>
+        <div class="leg-i"><span class="leg-dot" style="background:#f87171"></span>Россия</div>
+        <div class="leg-i"><span class="leg-dot" style="background:#fcd34d"></span>Мировой праздник</div>
       </div>
-      
-      <div class="events-list">
-        <h3 class="events-list-title">События месяца</h3>
-        <div class="events-list-container">
-          <!-- События будут добавлены через JavaScript -->
-        </div>
-      </div>
-      
-      <div class="quick-links" style="margin-top: 2rem;">
+
+      <div class="quick-links" style="margin-top:2rem; justify-content:center;">
         <a href="index.html#students" class="quick-link">← Ученикам</a>
       </div>
-    </section>
+    </div>
   </main>
+
+  <!-- Popup -->
+  <div class="popup-overlay" id="popupOv">
+    <div class="popup-card">
+      <button class="popup-close" id="popupClose">✕</button>
+      <div class="popup-meta"   id="popMeta"></div>
+      <div class="popup-big-day" id="popDay"></div>
+      <div id="popEvents"></div>
+    </div>
+  </div>
 
   <footer class="footer">
     <p>© Сайт учителя химии и биологии. Сделано с заботой об учёбе.</p>
   </footer>
 
   <script src="js/main.js"></script>
-  
-  <!-- AOS Library -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
-  <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  
-  <!-- Initialize Libraries -->
+
   <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 100
-    });
-    
-    // Initialize Particles.js
+    AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true, offset: 70 });
+
     particlesJS('particles-js', {
       particles: {
-        number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: ['#667eea', '#764ba2', '#f093fb', '#4facfe'] },
+        number: { value: 55, density: { enable: true, value_area: 900 } },
+        color: { value: ['#667eea','#764ba2','#f093fb','#4facfe'] },
         shape: { type: 'circle' },
-        opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
-        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
-        line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.2, width: 1 },
-        move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' }
+        opacity: { value: 0.35, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.14, width: 1 },
+        move: { enable: true, speed: 1.2, out_mode: 'out' }
       },
       interactivity: {
         detect_on: 'canvas',
-        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
-        modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+        events: { onhover:{ enable:true, mode:'grab' }, onclick:{ enable:true, mode:'push' } },
+        modes: { grab:{ distance:140, line_linked:{ opacity:0.4 } }, push:{ particles_nb:3 } }
       },
       retina_detect: true
     });
   </script>
+
+  <script>
+    /* ================================================================
+       EVENTS  —  ключи в формате 'MM-DD' (повторяются каждый год!)
+       Добавляйте свои события в этот объект.
+    ================================================================ */
+    const EVENTS = {
+      /* ── ЯНВАРЬ ── */
+      '01-01': [{ e:'🎆', n:'Новый год' }],
+      '01-07': [{ e:'🎄', n:'Рождество Христово' }],
+      '01-11': [{ e:'🙏', n:'День заповедников и национальных парков' }],
+      '01-28': [{ e:'🐻‍❄️', n:'Международный день белого медведя' }],
+
+      /* ── ФЕВРАЛЬ ── */
+      '02-02': [{ e:'🌊', n:'Всемирный день водно-болотных угодий' }],
+      '02-08': [{ e:'🔬', n:'День российской науки' }],
+      '02-14': [{ e:'❤️', n:'День святого Валентина' }],
+      '02-20': [{ e:'🦅', n:'Всемирный день защиты морских млекопитающих' }],
+
+      /* ── МАРТ ── */
+      '03-01': [{ e:'🐱', n:'День кошек в России' }],
+      '03-08': [{ e:'🌹', n:'Международный женский день' }],
+      '03-20': [{ e:'🌸', n:'Международный день счастья' }, { e:'🌍', n:'День Земли (Весеннее равноденствие)' }],
+      '03-21': [{ e:'🌲', n:'Международный день лесов' }],
+      '03-22': [{ e:'💧', n:'Всемирный день воды' }],
+      '03-23': [{ e:'🌦️', n:'Всемирный метеорологический день' }],
+
+      /* ══════════ АПРЕЛЬ (полностью с картинки) ══════════ */
+      '04-01': [
+        { e:'😄', n:'День смеха' },
+        { e:'🐦', n:'Международный день птиц' }
+      ],
+      '04-02': [{ e:'📚', n:'Международный день детской книги' }],
+      '04-03': [{ e:'📱', n:'День рождения мобильного телефона' }],
+      '04-04': [{ e:'🥕', n:'Международный день моркови' }],
+      '04-05': [{ e:'💾', n:'День флешки' }],
+      '04-06': [{ e:'🎬', n:'Всемирный день мультфильма' }],
+      '04-07': [{ e:'🌿', n:'Всемирный день здоровья' }],
+      '04-08': [{ e:'🎨', n:'День российской анимации' }],
+      '04-09': [{ e:'🏺', n:'День бережного хранения антиквариата' }],
+      '04-10': [{ e:'🔥', n:'День рождения спички' }],
+      '04-11': [{ e:'🐾', n:'День домашних животных' }],
+      '04-12': [
+        { e:'✈️', n:'День авиации' },
+        { e:'🚀', n:'День космонавтики' }
+      ],
+      '04-13': [{ e:'🎸', n:'Всемирный день рок-н-ролла' }],
+      '04-14': [{ e:'😂', n:'Международный день внезапного смеха' }],
+      '04-15': [{ e:'♻️', n:'День экологических знаний' }],
+      '04-16': [{ e:'🎤', n:'Всемирный день голоса' }],
+      '04-17': [{ e:'☕', n:'Международный день кофе' }],
+      '04-18': [{ e:'🏅', n:'День воинской славы России' }],
+      '04-19': [{ e:'🌼', n:'День подснежника' }],
+      '04-20': [{ e:'🩸', n:'Национальный день донора в России' }],
+      '04-21': [{ e:'💡', n:'Всемирный день творчества и инновационной деятельности' }],
+      '04-22': [{ e:'🌍', n:'Всемирный день Земли' }],
+      '04-23': [{ e:'📖', n:'Всемирный день книги и авторского права' }],
+      '04-24': [{ e:'🌈', n:'День витражных сказок' }],
+      '04-25': [{ e:'🐧', n:'Всемирный день пингвинов' }],
+      '04-26': [{ e:'☢️', n:'День участников ликвидации радиационных аварий' }],
+      '04-27': [{ e:'🎨', n:'Всемирный день графического дизайна' }],
+      '04-28': [{ e:'🦺', n:'Всемирный день охраны труда' }],
+      '04-29': [{ e:'💃', n:'Международный день танца' }],
+      '04-30': [{ e:'🚒', n:'День пожарной охраны' }],
+
+      /* ── МАЙ ── */
+      '05-01': [{ e:'🌸', n:'День Весны и Труда' }],
+      '05-04': [{ e:'⭐', n:'Star Wars Day — May the 4th' }],
+      '05-07': [{ e:'📻', n:'День радио' }],
+      '05-09': [{ e:'🎖️', n:'День Победы' }],
+      '05-12': [{ e:'🏥', n:'Международный день медицинских сестёр' }],
+      '05-15': [{ e:'👨‍👩‍👧', n:'Международный день семьи' }],
+      '05-18': [{ e:'🏛️', n:'Международный день музеев' }],
+      '05-20': [{ e:'🐝', n:'Всемирный день пчёл' }],
+      '05-22': [{ e:'🌿', n:'День биологического разнообразия' }],
+      '05-24': [{ e:'✍️', n:'День славянской письменности' }],
+      '05-27': [{ e:'📚', n:'День библиотек России' }],
+      '05-28': [{ e:'🧪', n:'День химика' }],
+      '05-31': [{ e:'🚭', n:'Всемирный день без табака' }],
+
+      /* ── ИЮНЬ ── */
+      '06-01': [{ e:'🧒', n:'Международный день защиты детей' }],
+      '06-05': [{ e:'🌿', n:'Всемирный день охраны окружающей среды' }],
+      '06-06': [{ e:'📜', n:'День русского языка (Пушкин)' }],
+      '06-08': [{ e:'🐬', n:'Всемирный день океанов' }],
+
+      /* ── СЕНТЯБРЬ ── */
+      '09-01': [{ e:'🎒', n:'День знаний' }],
+      '09-16': [{ e:'🌤️', n:'День охраны озонового слоя' }],
+
+      /* ── ОКТЯБРЬ ── */
+      '10-04': [{ e:'🐾', n:'Всемирный день животных' }],
+      '10-05': [{ e:'🏫', n:'Всемирный день учителя' }],
+      '10-31': [{ e:'🎃', n:'Хеллоуин' }],
+
+      /* ── НОЯБРЬ ── */
+      '11-04': [{ e:'🇷🇺', n:'День народного единства' }],
+
+      /* ── ДЕКАБРЬ ── */
+      '12-05': [{ e:'🤝', n:'День добровольца' }],
+      '12-31': [{ e:'🎉', n:'Канун Нового года' }],
+    };
+
+    /* ================================================================
+       YEAR_EVENTS — переходящие праздники (Пасха, Масленица и т.д.)
+       Формат: 'YYYY-MM-DD'
+    ================================================================ */
+    const YEAR_EVENTS = {
+      /* Пасха православная */
+      '2024-05-05': [{ e:'🐣', n:'Светлое Христово Воскресение (Пасха)' }],
+      '2025-04-20': [{ e:'🐣', n:'Светлое Христово Воскресение (Пасха)' }],
+      '2026-04-12': [{ e:'🐣', n:'Светлое Христово Воскресение (Пасха)' }],
+      '2027-05-02': [{ e:'🐣', n:'Светлое Христово Воскресение (Пасха)' }],
+      '2028-04-16': [{ e:'🐣', n:'Светлое Христово Воскресение (Пасха)' }],
+    };
+
+    /* ─── CONSTANTS ─── */
+    const MONTHS = ['Январь','Февраль','Март','Апрель','Май','Июнь',
+                    'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+    const MONTHS_GEN = ['Января','Февраля','Марта','Апреля','Мая','Июня',
+                        'Июля','Августа','Сентября','Октября','Ноября','Декабря'];
+
+    function pad2(n){ return String(n).padStart(2,'0'); }
+    function mdKey(m,d){ return `${pad2(m+1)}-${pad2(d)}`; }
+
+    let cur = new Date(); cur.setDate(1); cur.setHours(0,0,0,0);
+
+    /* ─── RENDER ─── */
+    function render(){
+      const y = cur.getFullYear(), m = cur.getMonth();
+      document.getElementById('calLabel').textContent = `${MONTHS[m]} ${y}`;
+
+      const grid = document.getElementById('calGrid');
+      grid.innerHTML = '';
+
+      const today = new Date(); today.setHours(0,0,0,0);
+      const firstDow = new Date(y,m,1).getDay();         // 0=Sun
+      const offset   = firstDow===0 ? 6 : firstDow-1;   // shift to Mon-first
+      const daysInM  = new Date(y,m+1,0).getDate();
+      const daysInP  = new Date(y,m,0).getDate();
+      const total    = Math.ceil((offset+daysInM)/7)*7;
+
+      for(let i=0; i<total; i++){
+        let d, cm=m, cy=y;
+        if(i < offset){
+          d=daysInP-offset+1+i; cm=m-1;
+          if(cm<0){cm=11;cy--;}
+        } else if(i>=offset+daysInM){
+          d=i-offset-daysInM+1; cm=m+1;
+          if(cm>11){cm=0;cy++;}
+        } else {
+          d=i-offset+1;
+        }
+
+        const cellDate=new Date(cy,cm,d); cellDate.setHours(0,0,0,0);
+        const isToday  = cellDate.getTime()===today.getTime();
+        const isWkend  = (i%7>=5);
+        const isOther  = (cm!==m);
+        const key      = mdKey(cm,d);
+        const fullKey  = `${cy}-${pad2(cm+1)}-${pad2(d)}`;
+        const evs      = [...(EVENTS[key]||[]), ...(YEAR_EVENTS[fullKey]||[])];
+
+        /* Build cell */
+        const cell = document.createElement('div');
+        cell.className = 'cal-cell'
+          +(isToday  ? ' is-today'    : '')
+          +(isWkend  ? ' is-weekend'  : '')
+          +(isOther  ? ' other-month' : '')
+          +(evs.length ? ' has-ev'   : '');
+
+        /* Day number */
+        const numEl = document.createElement('div');
+        numEl.className='day-num';
+        numEl.textContent=d;
+        cell.appendChild(numEl);
+
+        /* Events (max 2 visible) */
+        if(!isOther){
+          evs.slice(0,2).forEach(ev=>{
+            const row=document.createElement('div');
+            row.className='cell-ev';
+            row.innerHTML=`<span class="cell-ev-emoji">${ev.e}</span><span class="cell-ev-text">${ev.n}</span>`;
+            cell.appendChild(row);
+          });
+          if(evs.length>2){
+            const m2=document.createElement('div');
+            m2.className='cell-more';
+            m2.textContent=`+${evs.length-2} ещё`;
+            cell.appendChild(m2);
+          }
+        }
+
+        /* Ripple on click */
+        if(evs.length && !isOther){
+          cell.addEventListener('click', e=>{
+            const r=document.createElement('span');
+            r.className='ripple';
+            const size=Math.max(cell.offsetWidth,cell.offsetHeight);
+            const rect=cell.getBoundingClientRect();
+            r.style.cssText=`width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+            cell.appendChild(r);
+            r.addEventListener('animationend',()=>r.remove());
+            openPopup(d, cm, y, evs);
+          });
+        }
+
+        grid.appendChild(cell);
+      }
+
+      /* Stagger entrance animation */
+      requestAnimationFrame(()=>{
+        const cells=[...grid.querySelectorAll('.cal-cell:not(.other-month)')];
+        cells.forEach((c,i)=>{
+          setTimeout(()=>c.classList.add('visible'), i*22);
+        });
+        /* also make other-month cells appear dimly */
+        grid.querySelectorAll('.cal-cell.other-month').forEach(c=>{
+          setTimeout(()=>{ c.style.opacity='0.12'; c.style.transform='none'; },0);
+        });
+      });
+    }
+
+    /* ─── POPUP ─── */
+    const ov=document.getElementById('popupOv');
+
+    document.getElementById('popupClose').addEventListener('click',()=>ov.classList.remove('open'));
+    ov.addEventListener('click',e=>{ if(e.target===ov) ov.classList.remove('open'); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') ov.classList.remove('open'); });
+
+    function openPopup(d,m,y,evs){
+      document.getElementById('popMeta').textContent=`${MONTHS_GEN[m]} ${y}`;
+      document.getElementById('popDay').textContent=d;
+      document.getElementById('popEvents').innerHTML=evs.map(ev=>`
+        <div class="popup-ev-row">
+          <div class="popup-emoji">${ev.e}</div>
+          <div class="popup-ev-name">${ev.n}</div>
+        </div>`).join('');
+      ov.classList.add('open');
+    }
+
+    /* ─── NAV ─── */
+    document.getElementById('btnPrev').addEventListener('click',()=>{
+      cur.setMonth(cur.getMonth()-1); render();
+    });
+    document.getElementById('btnNext').addEventListener('click',()=>{
+      cur.setMonth(cur.getMonth()+1); render();
+    });
+    document.getElementById('btnToday').addEventListener('click',()=>{
+      cur=new Date(); cur.setDate(1); cur.setHours(0,0,0,0); render();
+    });
+
+    render();
+  </script>
 </body>
 </html>
-
-
-
