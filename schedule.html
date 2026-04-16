@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -40,55 +40,165 @@
     </section>
 
     <section class="section">
-      <p class="section-subtitle">Расписание уроков химии и биологии</p>
-      <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Здесь можно разместить расписание по классам или
-        ссылку на общее расписание школы.</p>
-      <div class="content-grid">
-        <a href="#" class="content-card" style="text-decoration: none; color: inherit;">
-          <div class="content-card-image">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-          </div>
-          <div class="content-card-body">
-            <h4>8 класс</h4>
-            <p>Химия и биология</p>
-          </div>
-        </a>
-        <a href="#" class="content-card" style="text-decoration: none; color: inherit;">
-          <div class="content-card-image">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-          </div>
-          <div class="content-card-body">
-            <h4>9 класс</h4>
-            <p>Химия и биология</p>
-          </div>
-        </a>
-        <a href="#" class="content-card" style="text-decoration: none; color: inherit;">
-          <div class="content-card-image">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-          </div>
-          <div class="content-card-body">
-            <h4>10–11 класс</h4>
-            <p>Химия и биология</p>
-          </div>
-        </a>
+      <style>
+        .materials-announcement {
+          background: rgba(22, 33, 62, 0.7);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          border: 1px solid rgba(102, 126, 234, 0.3);
+          border-radius: 20px;
+          padding: 3rem 2rem;
+          text-align: center;
+          box-shadow: 0 10px 40px rgba(31, 38, 135, 0.3);
+          margin: 2rem auto;
+          position: relative;
+          overflow: hidden;
+          max-width: 800px;
+        }
+
+        .materials-announcement::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 4px;
+          background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe);
+          background-size: 300% 100%;
+          animation: gradientShift 4s ease infinite;
+        }
+
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .materials-announcement-icon {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background: rgba(102, 126, 234, 0.1);
+          color: #f093fb;
+          margin-bottom: 1.5rem;
+          box-shadow: 0 0 20px rgba(240, 147, 251, 0.2);
+          animation: float 4s ease-in-out infinite;
+        }
+
+        .materials-announcement-title {
+          font-family: 'Space Grotesk', sans-serif;
+          font-size: 2.2rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .materials-announcement-text {
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: rgba(255, 255, 255, 0.85);
+          max-width: 600px;
+          margin: 0 auto 2rem;
+        }
+
+        .materials-announcement-divider {
+          width: 60px;
+          height: 3px;
+          background: rgba(102, 126, 234, 0.5);
+          margin: 2rem auto;
+          border-radius: 3px;
+        }
+
+        .materials-actions {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-top: 2rem;
+        }
+
+        .btn-primary-glow {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white !important;
+          padding: 0.8rem 1.8rem;
+          border-radius: 12px;
+          text-decoration: none;
+          font-weight: 600;
+          border: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary-glow:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-secondary-glow {
+          background: rgba(255, 255, 255, 0.05);
+          color: white !important;
+          padding: 0.8rem 1.8rem;
+          border-radius: 12px;
+          text-decoration: none;
+          font-weight: 600;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          transition: all 0.3s ease;
+        }
+
+        .btn-secondary-glow:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.2);
+          transform: translateY(-3px);
+        }
+      </style>
+
+      <div class="materials-announcement" data-aos="fade-up">
+        <div class="materials-announcement-icon">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <path d="M8 14h.01"></path>
+            <path d="M12 14h.01"></path>
+            <path d="M16 14h.01"></path>
+            <path d="M8 18h.01"></path>
+            <path d="M12 18h.01"></path>
+            <path d="M16 18h.01"></path>
+          </svg>
+        </div>
+        <h2 class="materials-announcement-title">Расписание формируется</h2>
+        <p class="materials-announcement-text">
+          Совсем скоро здесь появится удобное и наглядное расписание наших индивидуальных занятий с возможностью выбора времени и записи.
+        </p>
+        <div class="materials-announcement-divider"></div>
+        <p class="materials-announcement-text" style="font-size: 1rem; opacity: 0.9; margin-bottom: 0;">
+          Чтобы не упустить возможность и забронировать удобное время для занятий уже сейчас, пожалуйста, свяжитесь со мной напрямую.
+        </p>
+        <div class="materials-actions">
+          <a href="contact.html" class="btn-primary-glow">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Отправить сообщение
+          </a>
+          <a href="contact.html" class="btn-secondary-glow">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            Связаться лично
+          </a>
+        </div>
       </div>
-      <div class="quick-links" style="margin-top: 2rem;">
-        <a href="index.html#students" class="quick-link">← Ученикам</a>
+
+      <div class="quick-links" style="margin-top: 3rem; text-align: center;">
+        <a href="index.html#students" class="quick-link">← Вернуться назад</a>
       </div>
     </section>
   </main>
